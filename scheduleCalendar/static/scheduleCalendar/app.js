@@ -28,7 +28,7 @@ document.addEventListener('DOMContentLoaded', function() {
             //alert("selected " + info.startStr + " to " + info.endStr);
 
             // 入力ダイアログ
-            const eventName = prompt("イベントを入力してください");
+            const eventName = prompt("予定を入力してください");
 
             if (eventName) {
 
