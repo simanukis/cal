@@ -11,6 +11,15 @@ document.addEventListener('DOMContentLoaded', function() {
 
         // 日本語化
         locale: 'ja',
+        buttonText: {
+            prev: '前月',
+            next: '翌月',
+            today: '今日',
+            dayGridMonth: '月',
+            timeGridWeek: '週',
+            timeGridDay: '日',
+            listMonth: '一覧'
+        },
 
         headerToolbar: {
             left: 'prev,next today',
@@ -24,11 +33,19 @@ document.addEventListener('DOMContentLoaded', function() {
 
         // 日付をクリック、または範囲を選択したイベント
         selectable: true,
+        editable: true, // イベントを編集
+
         select: function(info) {
-            //alert("selected " + info.startStr + " to " + info.endStr);
+            // alert("selected " + info.startStr + " to " + info.endStr);
 
             // 入力ダイアログ
             const eventName = prompt("予定を入力してください");
+            // $('#calendar').FullCalendar('addEventSource', [{
+            //     id: date,
+            //    title: eventName,
+            //    start: date,
+            //    allDay: allDay
+            //}]);
 
             if (eventName) {
 
@@ -47,7 +64,6 @@ document.addEventListener('DOMContentLoaded', function() {
                             end: info.end,
                             allDay: true,
                         });
-
                     })
                     .catch(() => {
                         // バリデーションエラーなど
@@ -55,6 +71,20 @@ document.addEventListener('DOMContentLoaded', function() {
                     });
             }
         },
+
+        // edit: function(eventName) {
+        //    // 更新ダイアログ
+        //    const eventName = prompt("予定を更新してください");
+
+        //    if (eventName && eventName != "") {
+        //        eventName.title = title;
+        //        //イベント（予定）の修正
+        //        $('#calendar').fullCalendar('updateEvent', eventName);
+        //    } else {
+        //        //イベント（予定）の削除  idを指定して削除。
+        //        $('#calendar').fullCalendar("removeEvents", eventName.id);
+        //    }
+        // },
 
         events: function(info, successCallback, failureCallback) {
 
@@ -71,7 +101,6 @@ document.addEventListener('DOMContentLoaded', function() {
                     // バリデーションエラーなど
                     alert("登録に失敗しました");
                 });
-
         },
     });
 
