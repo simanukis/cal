@@ -160,26 +160,26 @@
                 // ドロップされた要素の格納されたイベントオブジェクトを格納する
                 var originalEventObject = $(this).data('eventObject');
 
-                // we need to copy it, so that multiple events don't have a reference to the same object
+                // 複数のイベントが同じオブジェクトへの参照を持たないように、それをコピーする必要があります。
                 var copiedEventObject = $.extend({}, originalEventObject);
 
-                // assign it the date that was reported
+                // 報告された日付を割り当てます
                 copiedEventObject.start = date;
                 copiedEventObject.allDay = allDay;
                 copiedEventObject.className = originalEventObject.className;
 
-                // render the event on the calendar
+                // カレンダーにイベントをレンダリングする
                 // the last `true` argument determines if the event "sticks" (http://arshaw.com/fullcalendar/docs/event_rendering/renderEvent/)
                 $('#calendar').fullCalendar('renderEvent', copiedEventObject, true);
 
-                // is the "remove after drop" checkbox checked?
+                // 「ドロップ後に削除」チェックボックスはオンになっていますか?
                 if ($('#drop-remove').is(':checked')) {
-                    // if so, remove the element from the "Draggable Events" list
+                    // その場合は、「ドラッグ可能なイベント」リストから要素を削除します。
                     $(this).remove();
                 }
             },
 
-            //LISTA DE EVENTOS
+            // イベント
             events: '/api/bookings/',
 
 
