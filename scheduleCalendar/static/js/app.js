@@ -40,12 +40,6 @@ document.addEventListener('DOMContentLoaded', function() {
 
             // 入力ダイアログ
             const eventName = prompt("予定を入力してください");
-            // $('#calendar').FullCalendar('addEventSource', [{
-            //     id: date,
-            //    title: eventName,
-            //    start: date,
-            //    allDay: allDay
-            //}]);
 
             if (eventName) {
 
@@ -72,22 +66,8 @@ document.addEventListener('DOMContentLoaded', function() {
             }
         },
 
-        // edit: function(eventName) {
-        //    // 更新ダイアログ
-        //    const eventName = prompt("予定を更新してください");
-
-        //    if (eventName && eventName != "") {
-        //        eventName.title = title;
-        //        //イベント（予定）の修正
-        //        $('#calendar').fullCalendar('updateEvent', eventName);
-        //    } else {
-        //        //イベント（予定）の削除  idを指定して削除。
-        //        $('#calendar').fullCalendar("removeEvents", eventName.id);
-        //    }
-        // },
 
         events: function(info, successCallback, failureCallback) {
-
             axios
                 .post("/scheduleCalendar/list/", {
                     start_date: info.start.valueOf(),
