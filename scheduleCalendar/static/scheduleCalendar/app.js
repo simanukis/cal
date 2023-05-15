@@ -8,9 +8,8 @@ document.addEventListener('DOMContentLoaded', function() {
 
     var calendar = new FullCalendar.Calendar(calendarEl, {
         initialView: 'dayGridMonth',
-
-        // 日本語化
-        locale: 'ja',
+        themeSystem: 'bootstrap5',
+        locale: 'ja', // 日本語化
         buttonText: {
             prev: '前月',
             next: '翌月',
@@ -20,8 +19,7 @@ document.addEventListener('DOMContentLoaded', function() {
             timeGridDay: '日',
             listMonth: '一覧'
         },
-
-        headerToolbar: {
+        headerToolbar: { // ヘッダーに表示する内容を指定
             left: 'prev,next today',
             center: 'title',
             right: 'dayGridMonth,timeGridWeek,timeGridDay,listMonth'
@@ -65,8 +63,6 @@ document.addEventListener('DOMContentLoaded', function() {
                     });
             }
         },
-
-
         events: function(info, successCallback, failureCallback) {
             axios
                 .post("/scheduleCalendar/list/", {
@@ -82,6 +78,14 @@ document.addEventListener('DOMContentLoaded', function() {
                     alert("登録に失敗しました");
                 });
         },
+        eventClick: function(info) { // イベントをクリックした時に走るメソッド
+            alert('Event: ' + info.event.title);
+            alert('Coordinates: ' + info.jsEvent.pageX + ',' + info.jsEvent.pageY);
+            alert('View: ' + info.view.type);
+
+            // change the border color just for fun
+            info.el.style.borderColor = 'red';
+        }
     });
 
     calendar.render();
