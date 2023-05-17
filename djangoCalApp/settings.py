@@ -81,12 +81,12 @@ WSGI_APPLICATION = 'djangoCalApp.wsgi.application'
 
 DATABASES = {
     'default': {
-        # 'ENGINE': 'django.db.backends.sqlite3',
-        # 'NAME': BASE_DIR / 'db.sqlite3',
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': BASE_DIR / 'db.sqlite3',
         'ENGINE': 'django.db.backends.mysql',
         'NAME': 'django_cal', #データベースの名前
         'USER': 'root', #ユーザー名 
-        #'PASSWORD': 'password', パスワードがある場合は書く
+        # 'PASSWORD': 'password', パスワードがある場合は書く
         'PORT': '3306', #ポート番号 XAMPP>MySQL部に記載 デフォルト3306でOK
     }
 }

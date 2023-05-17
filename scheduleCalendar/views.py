@@ -1,104 +1,85 @@
-from django.shortcuts import render
-import json
-from .models import Event
-from .forms import EventForm, CalendarForm
-from django.http import Http404
-import time
-from django.template import loader
-from django.http import HttpResponse, JsonResponse
-from django.middleware.csrf import get_token
+import datetime
 
-# Create your views here.
-def index(request):
-    """
-    カレンダー画面
-    """
-    template = loader.get_template("scheduleCalendar/index.html")
-    return HttpResponse(template.render())
+from django.shortcuts import redirect
+from django.views import generic
+from . import mixins
+from .forms import BS4ScheduleForm
+from .models import Schedule
 
-def add_event(request):
-    """
-    イベント登録
-    """
-    if request.method == "GET":
-        # GETは対応しない
-        raise Http404()
+from django.views import generic
+from . import mixins
+from .models import Schedule
+
+
+class MonthCalendar(mixins.MonthCalendarMixin, generic.TemplateView):
+    """月間カレンダーを表示するビュー"""
+    template_name = 'scheduleCalendar/month.html'
     
-    # JSONの解析
-    datas = json.loads(request.body)
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        calendar_context = self.get_month_calendar()
+        context.update(calendar_context)
+        return context
     
-    # バリデーション
-    eventForm = EventForm(datas)
-    if eventForm.is_valid() == False:
-        # バリデーションエラー
-        raise Http404()
+class WeekCalendar(mixins.WeekCalendarMixin, generic.TemplateView):
+    """週間カレンダーを表示するビュー"""
+    template_name = 'scheduleCalendar/week.html'
     
-    # リクエストの取得
-    start_date = datas["start_date"]
-    end_date = datas["end_date"]
-    event_name = datas["event_name"]
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        calendar_context = self.get_week_calendar()
+        context.update(calendar_context)
+        return context
     
-    # 日付に変換。JavaScriptのタイムスタンプはミリ秒なので秒に変換
-    formatted_start_date = time.strftime(
-        "%Y-%m-%d", time.localtime(start_date / 1000)
-    )
-    formatted_end_date = time.strftime(
-        "%Y-%m-%d", time.localtime(end_date / 1000)
-    )
+class WeekWithScheduleCalendar(mixins.WeekWithScheduleMixin, generic.TemplateView):
+    """スケジュール付きの週間カレンダーを表示するビュー"""
+    template_name = 'scheduleCalendar/week_with_schedule.html'
+    model = Schedule
+    date_field = 'date'
     
-    # 登録処理
-    event = Event(
-        event_name=str(event_name),
-        start_date=formatted_start_date,
-        end_date=formatted_end_date,
-    )
-    event.save()
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        calendar_context = self.get_week_calendar()
+        context.update(calendar_context)
+        return context
     
-    # 空を返却
-    return HttpResponse("")
+class MonthWithScheduleCalendar(mixins.MonthWithScheduleMixin, generic.TemplateView):
+    """スケジュール付きの月間カレンダーを表示するビュー"""
+    template_name = 'scheduleCalendar/month_with_schedule.html'
+    model = Schedule
+    date_field = 'date'
+    
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        calendar_context = self.get_month_calendar()
+        context.update(calendar_context)
+        return context
 
-def get_events(request):
-    """
-    イベントの取得
-    """
-
-    if request.method == "GET":
-        # GETは対応しない
-        raise Http404()
-
-    # JSONの解析
-    datas = json.loads(request.body)
-
-    # バリデーション
-    calendarForm = CalendarForm(datas)
-    if calendarForm.is_valid() == False:
-        # バリデーションエラー
-        raise Http404()
-
-    # リクエストの取得
-    start_date = datas["start_date"]
-    end_date = datas["end_date"]
-
-    # 日付に変換。JavaScriptのタイムスタンプはミリ秒なので秒に変換
-    formatted_start_date = time.strftime(
-        "%Y-%m-%d", time.localtime(start_date / 1000))
-    formatted_end_date = time.strftime(
-        "%Y-%m-%d", time.localtime(end_date / 1000))
-
-    # FullCalendarの表示範囲のみ表示
-    events = Event.objects.filter(
-        start_date__lt=formatted_end_date, end_date__gt=formatted_start_date
-    )
-
-    # fullcalendarのため配列で返却
-    list = []
-    for event in events:
-        list.append(
-            {
-                "title": event.event_name,
-                "start": event.start_date,
-                "end": event.end_date,
-            }
-        )
-
-    return JsonResponse(list, safe=False)
+class MyCalendar(mixins.MonthCalendarMixin, mixins.WeekWithScheduleMixin, generic.CreateView):
+    """月間カレンダー、週間カレンダー、スケジュール登録画面のある欲張りビュー"""
+    template_name = 'scheduleCalendar/mycalendar.html'
+    model = Schedule
+    date_field = 'date'
+    form_class = BS4ScheduleForm
+    
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        week_calendar_context = self.get_week_calendar()
+        month_calendar_context = self.get_month_calendar()
+        context.update(week_calendar_context)
+        context.update(month_calendar_context)
+        return context
+    
+    def form_valid(self, form):
+        month = self.kwargs.get('month')
+        year = self.kwargs.get('year')
+        day = self.kwargs.get('day')
+        if month and year and day:
+            date = datetime.date(year=int(year), month=int(month), day=int(day))
+        else:
+            date = datetime.date.today()
+            
+        schedule = form.save(commit=False)
+        schedule.date = date
+        schedule.save()
+        return redirect('scheduleCalendar:mycalendar', year=date.year, month=date.month, day=date.day)
