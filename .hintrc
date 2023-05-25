@@ -1,0 +1,46 @@
+{
+  "extends": [
+    "development"
+  ],
+  "hints": {
+    "no-inline-styles": "off",
+    "axe/forms": [
+      "default",
+      {
+        "label": "off"
+      }
+    ],
+    "axe/name-role-value": [
+      "default",
+      {
+        "link-name": "off"
+      }
+    ],
+    "axe/text-alternatives": [
+      "default",
+      {
+        "frame-title": "off"
+      }
+    ],
+    "compat-api/css": [
+      "default",
+      {
+        "ignore": [
+          "backface-visibility",
+          "-webkit-text-size-adjust",
+          "-webkit-tap-highlight-color",
+          "text-decoration-skip-ink",
+          "scroll-behavior",
+          "text-align: -webkit-match-parent",
+          "-webkit-overflow-scrolling",
+          "overflow-anchor",
+          "-ms-filter",
+          "user-select",
+          "aspect-ratio",
+          "-ms-touch-action"
+        ]
+      }
+    ],
+    "css-prefix-order": "off"
+  }
+}
