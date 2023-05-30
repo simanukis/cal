@@ -102,7 +102,7 @@
             <!-- /cut -->
 
             <!-- nav -->
-            <nav class="navbar navbar-expand-lg navbar-light bg-light">
+            <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
                 <div class="container-fluid">
                     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarTogglerDemo03" aria-controls="navbarTogglerDemo03" aria-expanded="false" aria-label="Toggle navigation">
                         <span class="navbar-toggler-icon"></span>
@@ -139,12 +139,12 @@
                         </div>
                         <div class="form-group col-md-2 col-auto my-1">
                             <select id="selectPayroll" class="form-control">
-									<option value="payroll1" selected="selected">給与集計（一般）</option>
-									<option value="payroll2">給与集計（部門）</option>
-									<option value="payroll3">賞与集計</option>
-									<option value="payroll4">人員集計</option>
-									<option value="payroll5">保険等集計</option>
-								</select>
+								<option value="payroll1" selected="selected">給与集計（一般）</option>
+								<option value="payroll2">給与集計（部門）</option>
+								<option value="payroll3">賞与集計</option>
+								<option value="payroll4">人員集計</option>
+								<option value="payroll5">保険等集計</option>
+							</select>
                         </div>
                         <div class="container">
                             <div class="row">
@@ -774,7 +774,7 @@
                                         </tr>
                                         <tr>
                                             <td>延出勤率A</td>
-                                            <td>％</td>
+                                            <td>%</td>
                                             <td>------</td>
                                             <td>------</td>
                                             <td>------</td>
@@ -789,7 +789,7 @@
                                         </tr>
                                         <tr>
                                             <td>実出勤率</td>
-                                            <td>％</td>
+                                            <td>%</td>
                                             <td>------</td>
                                             <td>------</td>
                                             <td>------</td>
@@ -819,7 +819,7 @@
                                         </tr>
                                         <tr>
                                             <td>延出勤率B</td>
-                                            <td>％</td>
+                                            <td>%</td>
                                             <td>------</td>
                                             <td>------</td>
                                             <td>------</td>
@@ -5412,11 +5412,11 @@
                         <p>人員集計</p>
                     </div>
                     <div id="payroll5" style="display:none;">
-                        <ul id="accordion_menu01">
+                        <ul id="accordion_menu_1">
                             <li>
                                 <a data-toggle="collapse" href="#menu11" aria-controls="#menu11" aria-expanded="false">一般管理</a>
                             </li>
-                            <ul id="menu11" class="collapse" data-parent="#accordion_menu">
+                            <ul id="menu11" class="collapse" data-parent="#accordion_menu_1">
                                 <table class="table table-striped" data-sheet-name="社会保険一般管理集計表">
                                     <thead class="table-dark">
                                         <th scope="col"></th>
@@ -5529,7 +5529,7 @@
                             <li>
                                 <a data-toggle="collapse" href="#menu12" aria-controls="#menu12" aria-expanded="false">鍛造製造</a>
                             </li>
-                            <ul id="menu12" class="collapse" data-parent="#accordion_menu">
+                            <ul id="menu12" class="collapse" data-parent="#accordion_menu_1">
                                 <table class="table table-striped" data-sheet-name="社会保険鍛造製造集計表">
                                     <thead class="table-dark">
                                         <th scope="col"></th>
@@ -5642,7 +5642,7 @@
                             <li>
                                 <a data-toggle="collapse" href="#menu13" aria-controls="#menu13" aria-expanded="false">切削製造</a>
                             </li>
-                            <ul id="menu13" class="collapse" data-parent="#accordion_menu">
+                            <ul id="menu13" class="collapse" data-parent="#accordion_menu_1">
                                 <table class="table table-striped" data-sheet-name="社会保険切削製造集計表">
                                     <thead class="table-dark">
                                         <th scope="col"></th>
@@ -5755,7 +5755,7 @@
                             <li>
                                 <a data-toggle="collapse" href="#menu14" aria-controls="#menu14" aria-expanded="false">AC製造</a>
                             </li>
-                            <ul id="menu14" class="collapse" data-parent="#accordion_menu">
+                            <ul id="menu14" class="collapse" data-parent="#accordion_menu_1">
                                 <table class="table table-striped" data-sheet-name="社会保険AC製造集計表">
                                     <thead class="table-dark">
                                         <th scope="col"></th>
@@ -5852,7 +5852,7 @@
                             <li>
                                 <a data-toggle="collapse" href="#menu15" aria-controls="#menu15" aria-expanded="false">PC製造</a>
                             </li>
-                            <ul id="menu15" class="collapse" data-parent="#accordion_menu">
+                            <ul id="menu15" class="collapse" data-parent="#accordion_menu_1">
                                 <table class="table table-striped" data-sheet-name="社会保険PC製造集計表">
                                     <thead class="table-dark">
                                         <th scope="col"></th>
@@ -5949,7 +5949,7 @@
                             <li>
                                 <a data-toggle="collapse" href="#menu16" aria-controls="#menu16" aria-expanded="false">宮城工場</a>
                             </li>
-                            <ul id="menu16" class="collapse" data-parent="#accordion_menu">
+                            <ul id="menu16" class="collapse" data-parent="#accordion_menu_1">
                                 <table class="table table-striped" data-sheet-name="社会保険宮城工場造集計表">
                                     <thead class="table-dark">
                                         <th scope="col"></th>
@@ -5959,7 +5959,6 @@
                                         <th scope="col">間接④</th>
                                         <th scope="col">間接⑥</th>
                                         <th scope="col">直接①</th>
-
                                         <th scope="col">合計</th>
                                     </thead>
                                     <tbody>
@@ -6039,7 +6038,7 @@
                             <li>
                                 <a data-toggle="collapse" href="#menu17" aria-controls="#menu17" aria-expanded="false">住設製造</a>
                             </li>
-                            <ul id="menu17" class="collapse" data-parent="#accordion_menu">
+                            <ul id="menu17" class="collapse" data-parent="#accordion_menu_1">
                                 <table class="table table-striped" data-sheet-name="社会保険住設製造集計表">
                                     <thead class="table-dark">
                                         <th scope="col"></th>
@@ -6047,7 +6046,6 @@
                                         <th scope="col">間接②</th>
                                         <th scope="col">間接④</th>
                                         <th scope="col">間接⑥</th>
-
                                         <th scope="col">合計</th>
                                     </thead>
                                     <tbody>
