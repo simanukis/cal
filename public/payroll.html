@@ -101,43 +101,17 @@
             <!-- cut -->
             <!-- /cut -->
 
-            <!-- top navigation -->
-            <div class="top_nav">
-                <div class="nav_menu">
-                    <div class="row header dropdown pull-right mx-lg-auto container mt-8" style="width: 400px;">
-                        <button class="btn btn-default btn btn-primary">
-							<span class="glyphicon glyphicon-repeat mx-auto" style="font-size: 10px" aria-hidden="true"></span>更新
-						</button>
-                        <button class="btn btn-default btn btn-primary">
-							<span class="glyphicon glyphicon-user mx-auto" style="font-size: 10px" aria-hidden="true"></span>共有
-						</button>
-                        <button class="btn btn-default btn btn-primary">
-							<span class="glyphicon glyphicon-edit mx-auto" style="font-size: 10px" aria-hidden="true"></span>編集
-						</button>
-                        <button class="btn btn-default btn btn-primary">
-							<span class="glyphicon glyphicon-question-sign mx-auto" style="font-size: 10px" aria-hidden="true"></span>ヘルプ
-						</button>
-                        <button class="btn btn-default btn btn-primary" onclick="location.href='sales_d_main.jsp'">
-							<span class="glyphicon glyphicon-home mx-auto" style="font-size: 10px" aria-hidden="true"></span>Home
-                        </button>
-                    </div>
-                    <form>
-                        <div class="form-row">
-                            <div class="form-group col-md-2">
-                                <select id="inputState" class="form-control">
-									<option selected>All...</option>
-									<option>...</option>
-								</select>
-                            </div>
-                            <div class="form-group col-md-3">
-                                <input type="text" class="form-control" id="formGroupExampleInput2" placeholder="Another input">
-                            </div>
-                            <button type="submit" class="btn btn-primary">検 索</button>
-                        </div>
+            <!-- nav -->
+            <nav class="navbar navbar-light bg-light">
+                <div class="container-fluid">
+                    <a class="navbar-brand">給与集計</a>
+                    <form class="d-flex">
+                        <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+                        <button class="btn btn-outline-success" type="submit">Search</button>
                     </form>
                 </div>
-            </div>
-            <!-- /top navigation -->
+            </nav>
+            <!-- /nav -->
 
             <!-- page content -->
             <div class="right_col" role="main">
