@@ -7,19 +7,23 @@
     <title>給与集計表</title>
 
     <!-- Bootstrap -->
-    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" />
 
     <!-- Font Awesome -->
-    <link href="font-awesome.min.css" rel="stylesheet">
+    <link href="assets/vendor/Awesome/css/font-awesome.min.css" rel="stylesheet">
+
     <!-- iCheck -->
-    <link href="green.css" rel="stylesheet">
+    <link href="assets/vendor/iCeck/css/green.css" rel="stylesheet">
+
     <!-- bootstrap-progressbar -->
-    <link href="bootstrap-progressbar-3.3.4.min.css" rel="stylesheet">
+    <!-- <link href="bootstrap-progressbar-3.3.4.min.css" rel="stylesheet"> -->
+
     <!-- bootstrap-daterangepicker -->
-    <link href="daterangepicker.css" rel="stylesheet">
+    <link href="assets/vendor/bootstrap/css/daterangepicker.css" rel="stylesheet">
+
     <!-- Custom Theme Style -->
-    <link href="custom.min.css" rel="stylesheet">
+    <!-- <link href="assets/vendor/cdnjs/custom.min.css" rel="stylesheet"> -->
 
     <!-- Bootstrap用JavaScriptの読み込み -->
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
@@ -97,13 +101,13 @@
             <div class="col-md-3 left_col">
                 <div class="left_col scroll-view">
                     <div class="navbar nav_title" style="border: 0;">
-                        <a href="general_top.jsp" class="site_title"><i class="fa fa-paw"></i> <span>総務部門</span></a>
+                        <a href="index.html" class="site_title"><i class="fa fa-paw"></i> <span>総務部門</span></a>
                     </div>
                     <div class="clearfix"></div>
                     <!-- menu profile quick info -->
                     <div class="profile clearfix">
                         <div class="profile_pic">
-                            <img src="img/img.jpg" alt="..." class="img-circle profile_img">
+                            <!-- <img src="assets/img/img.jpg" alt="..." class="img-circle profile_img"> -->
                         </div>
                         <div class="profile_info">
                             <span>Welcome,</span>
@@ -126,10 +130,10 @@
                                 </li>
                                 <li><a><i class="fa fa-edit"></i> 各種メニュー <span class="fa fa-chevron-down"></span></a>
                                     <ul class="nav child_menu">
-                                        <li><a href="test.jsp">休業助成金申請</a></li>
-                                        <li><a href="car_res_index.jsp">社用車の予約</a></li>
-                                        <li><a href="room_res_index.jsp">会議室の予約</a></li>
-                                        <li><a href="Payroll.jsp">給与集計</a></li>
+                                        <li><a href="test.html">休業助成金申請</a></li>
+                                        <li><a href="car_res_index.html">社用車の予約</a></li>
+                                        <li><a href="room_res_index.html">会議室の予約</a></li>
+                                        <li><a href="Payroll.html">給与集計</a></li>
                                         <li><a href="#">----</a></li>
                                         <li><a href="#">----</a></li>
                                     </ul>
@@ -233,28 +237,28 @@
                 <div class="nav_menu">
                     <div class="row header dropdown pull-right mx-lg-auto container mt-8" style="width: 400px;">
                         <button class="btn btn-default btn btn-primary">
-								<span class="glyphicon glyphicon-repeat mx-auto" style="font-size: 10px" aria-hidden="true"></span>更新
-							</button>
+							<span class="glyphicon glyphicon-repeat mx-auto" style="font-size: 10px" aria-hidden="true"></span>更新
+						</button>
                         <button class="btn btn-default btn btn-primary">
-								<span class="glyphicon glyphicon-user mx-auto" style="font-size: 10px" aria-hidden="true"></span>共有
-							</button>
+							<span class="glyphicon glyphicon-user mx-auto" style="font-size: 10px" aria-hidden="true"></span>共有
+						</button>
                         <button class="btn btn-default btn btn-primary">
-								<span class="glyphicon glyphicon-edit mx-auto" style="font-size: 10px" aria-hidden="true"></span>編集
-							</button>
+							<span class="glyphicon glyphicon-edit mx-auto" style="font-size: 10px" aria-hidden="true"></span>編集
+						</button>
                         <button class="btn btn-default btn btn-primary">
-								<span class="glyphicon glyphicon-question-sign mx-auto" style="font-size: 10px" aria-hidden="true"></span>ヘルプ
-							</button>
+							<span class="glyphicon glyphicon-question-sign mx-auto" style="font-size: 10px" aria-hidden="true"></span>ヘルプ
+						</button>
                         <button class="btn btn-default btn btn-primary" onclick="location.href='sales_d_main.jsp'">
-								<span class="glyphicon glyphicon-home mx-auto" style="font-size: 10px" aria-hidden="true"></span>Home
-              </button>
+							<span class="glyphicon glyphicon-home mx-auto" style="font-size: 10px" aria-hidden="true"></span>Home
+                        </button>
                     </div>
                     <form>
                         <div class="form-row">
                             <div class="form-group col-md-2">
                                 <select id="inputState" class="form-control">
-										<option selected>All...</option>
-										<option>...</option>
-									</select>
+									<option selected>All...</option>
+									<option>...</option>
+								</select>
                             </div>
                             <div class="form-group col-md-3">
                                 <input type="text" class="form-control" id="formGroupExampleInput2" placeholder="Another input">
@@ -269,7 +273,7 @@
             <div class="right_col" role="main">
                 <!-- top tiles -->
                 <div class="page-header">
-                    <h1 class="bg-primary text-left"><img src="img/notepad.png" width="35" height="35">給与集計</h1>
+                    <h1 class="bg-primary text-left"><img src="assets/img/notepad.png" width="35" height="35">給与集計</h1>
                 </div>
                 <!-- /top tiles -->
                 <!-- Payroll -->

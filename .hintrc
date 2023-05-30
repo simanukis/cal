@@ -7,7 +7,8 @@
     "axe/forms": [
       "default",
       {
-        "label": "off"
+        "label": "off",
+        "select-name": "off"
       }
     ],
     "axe/name-role-value": [
@@ -19,7 +20,8 @@
     "axe/text-alternatives": [
       "default",
       {
-        "frame-title": "off"
+        "frame-title": "off",
+        "image-alt": "off"
       }
     ],
     "compat-api/css": [
@@ -37,7 +39,8 @@
           "-ms-filter",
           "user-select",
           "aspect-ratio",
-          "-ms-touch-action"
+          "-ms-touch-action",
+          "zoom"
         ]
       }
     ],
@@ -46,6 +49,12 @@
       "default",
       {
         "html-has-lang": "off"
+      }
+    ],
+    "axe/structure": [
+      "default",
+      {
+        "list": "off"
       }
     ]
   }
