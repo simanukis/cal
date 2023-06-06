@@ -21,7 +21,8 @@
       "default",
       {
         "frame-title": "off",
-        "image-alt": "off"
+        "image-alt": "off",
+        "document-title": "off"
       }
     ],
     "compat-api/css": [
@@ -56,6 +57,7 @@
       {
         "list": "off"
       }
-    ]
+    ],
+    "meta-viewport": "off"
   }
 }
