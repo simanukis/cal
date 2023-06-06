@@ -96,9 +96,9 @@
                     }
                 });
                 // ドラックイベントを追加
-                for (var i = 1; i <= 1; i++) {
+                for (var i = 1; i <= 5; i++) {
                     var $div = $("<div class='fc-event fc-h-event fc-daygrid-event fc-daygrid-block-event'></div>");
-                    $event = $("<div class='fc-event-main'></div>").text("アクアグレー ");
+                    $event = $("<div class='fc-event-main'></div>").text("アクアグレー " + i);
                     $('#external-events-list').append($div.append($event));
                 }
                 // calendarエレメント取得
