@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <!-- 画面解像度により文字サイズを対応(モバイル対応) -->
+    <meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=no">
+
+    <title>予約管理</title>
+    <!-- jQuery CDN -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <!-- fullcalendar CDN -->
+    <link href="https://cdn.jsdelivr.net/npm/fullcalendar@5.8.0/main.min.css" rel="stylesheet" />
+    <script src="https://cdn.jsdelivr.net/npm/fullcalendar@5.8.0/main.min.js"></script>
+    <!-- fullcalendar 言語 CDN -->
+    <script src="https://cdn.jsdelivr.net/npm/fullcalendar@5.8.0/locales-all.min.js"></script>
+</head>
+
+<body>
+    <div id="external-events">
+        <p>
+            <strong>営業用車両</strong>
+        </p>
+        <div class="fc-event">アクアグレー</div>
+        <p>
+            <input type="checkbox' id='drop-remove" />
+            <label for="drop-remove">remove after drop</label>
+        </p>
+    </div>
+
+    <div id="calendar-container">
+        <div id="calendar"></div>
+    </div>
+</body>
+
+</html>
