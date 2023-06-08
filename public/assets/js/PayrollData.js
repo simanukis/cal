@@ -52,7 +52,7 @@ function makeCSV(csvdata) {
 
     //6: 1行のデータから各項目（各列）のデータを取りだして、2次元配列にする
     var data = [];
-    document.write('<thead><th>項目</th>');
+
     for (var i = 0; i < tmp.length; i++) {
         //csvの1行のデータを取り出す
         var row_data = tmp[i];
