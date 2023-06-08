@@ -68,7 +68,7 @@ function makeCSV(csvdata) {
         htmldata += "<tr>";
         for (var j = 0; j < data[i].length; j++) {
             //各行の列のデータを個別に出力する
-            htmldata += "<td>" + data[9][j] + "</td>";
+            htmldata += "<td>" + data[1][j] + "</td>";
         }
         htmldata += "</tr>";
     }
