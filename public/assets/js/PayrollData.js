@@ -65,10 +65,11 @@ function makeCSV(csvdata) {
         */
         data[i] = row_data.split(",");
         //7:dataに入ってる各列のデータを出力する為のデータを作る
+        document.write('<thead class="table-dark"><th scope="col">項目</th>');
         htmldata += "<tr>";
         for (var j = 0; j < data[i].length; j++) {
             //各行の列のデータを個別に出力する
-            htmldata += "<td>" + data[1][j] + "</td>";
+            htmldata += "<td>" + data[i][j] + "</td>";
         }
         htmldata += "</tr>";
     }
