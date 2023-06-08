@@ -24,6 +24,7 @@ function upload(event) {
 
         //readerオブジェクトを作成
         var reader = new FileReader();
+
         //ファイル読み取りを実行
         reader.readAsText(file);
 
@@ -40,16 +41,16 @@ function upload(event) {
     }
 }
 
-//csvをうまく出力する
+// csvをうまく出力する
 function makeCSV(csvdata) {
-    //csvデータを1行ごとに配列にする
+    // csvデータを1行ごとに配列にする
     var tmp = csvdata.split("\n");
 
-    //csvデータをそのままtableで出力する
+    // csvデータをそのままtableで出力する
     var tabledata = $("#resulttable");
     var htmldata = "<table>";
 
-    //6:1行のデータから各項目（各列）のデータを取りだして、2次元配列にする
+    //6: 1行のデータから各項目（各列）のデータを取りだして、2次元配列にする
     var data = [];
     for (var i = 0; i < tmp.length; i++) {
         //csvの1行のデータを取り出す
@@ -67,9 +68,8 @@ function makeCSV(csvdata) {
         htmldata += "<tr>";
         for (var j = 0; j < data[i].length; j++) {
             //各行の列のデータを個別に出力する
-            htmldata += "<td>" + data[i][j] + "</td>";
+            htmldata += "<td>" + data[0][j] + "</td>";
         }
-
         htmldata += "</tr>";
     }
 
