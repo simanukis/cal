@@ -88,6 +88,58 @@
             transform: rotate(135deg);
             transition-duration: 0.3s;
         }
+        /********************************/
+        
+        #accordion_menu_1>li {
+            border: #0066ff 1rem solid;
+            margin-bottom: -1px;
+        }
+        
+        #accordion_menu_1 a {
+            color: #A9A9A9;
+            font-size: 1.2em;
+            font-weight: bold;
+            color: initial;
+        }
+        
+        #accordion_menu_1 a[data-toggle="collapse"] {
+            display: block;
+            padding: 10px;
+            text-decoration: none;
+            position: relative;
+        }
+        
+        #accordion_menu_1 a[data-toggle="collapse"]:hover {
+            background: #e7e7e7;
+        }
+        
+        #accordion_menu_1 a[data-toggle="collapse"]::after {
+            content: "";
+            display: block;
+            width: 8px;
+            height: 8px;
+            border-top: #666 1px solid;
+            border-right: #666 1px solid;
+            position: absolute;
+            right: 15px;
+            top: 0;
+            bottom: 0;
+            margin: auto;
+        }
+        
+        #accordion_menu_1 a[aria-expanded=false]::after {
+            -webkit-transform: rotate(45deg);
+            -ms-transform: rotate(45deg);
+            transform: rotate(45deg);
+            transition-duration: 0.3s;
+        }
+        
+        #accordion_menu_1 a[aria-expanded=true]::after {
+            -webkit-transform: rotate(135deg);
+            -ms-transform: rotate(135deg);
+            transform: rotate(135deg);
+            transition-duration: 0.3s;
+        }
         
         [id^="menu"] li {
             padding: 10px 10px 10px 20px;
@@ -500,7 +552,6 @@
                             </tbody>
                         </table>
                     </div>
-
                     <div id="payroll3" style="display:none;">
                         <ul id="accordion_menu">
                             <li>
@@ -1006,7 +1057,6 @@
                                         </tr>
                                         <tr>
                                             <td>地域手当</td>
-                                            <td>円</td>
                                         </tr>
                                         <tr>
                                             <td>特別作業手当</td>
@@ -2224,193 +2274,59 @@
                             <tbody>
                                 <tr class="table-secondary">
                                     <td>人員</td>
-                                    <td>------</td>
-                                    <td>------</td>
-                                    <td>------</td>
-                                    <td>------</td>
-                                    <td>------</td>
-                                    <td>------</td>
-                                    <td>------</td>
                                 </tr>
                                 <tr class="table-light">
-                                    <td>一律分</td>
-                                    <td>------</td>
-                                    <td>------</td>
-                                    <td>------</td>
-                                    <td>------</td>
-                                    <td>------</td>
-                                    <td>------</td>
-                                    <td>------</td>
                                 </tr>
                                 <tr class="table-light">
                                     <td>在年分</td>
-                                    <td>------</td>
-                                    <td>------</td>
-                                    <td>------</td>
-                                    <td>------</td>
-                                    <td>------</td>
-                                    <td>------</td>
-                                    <td>------</td>
                                 </tr>
                                 <tr class="table-light">
                                     <td>出勤分</td>
-                                    <td>------</td>
-                                    <td>------</td>
-                                    <td>------</td>
-                                    <td>------</td>
-                                    <td>------</td>
-                                    <td>------</td>
-                                    <td>------</td>
                                 </tr>
                                 <tr class="table-light">
                                     <td>考果分</td>
-                                    <td>------</td>
-                                    <td>------</td>
-                                    <td>------</td>
-                                    <td>------</td>
-                                    <td>------</td>
-                                    <td>------</td>
-                                    <td>------</td>
                                 </tr>
                                 <tr class="table-light">
                                     <td>特査分</td>
-                                    <td>------</td>
-                                    <td>------</td>
-                                    <td>------</td>
-                                    <td>------</td>
-                                    <td>------</td>
-                                    <td>------</td>
-                                    <td>------</td>
                                 </tr>
                                 <tr class="table-info">
                                     <td>総支給額</td>
-                                    <td>------</td>
-                                    <td>------</td>
-                                    <td>------</td>
-                                    <td>------</td>
-                                    <td>------</td>
-                                    <td>------</td>
-                                    <td>------</td>
                                 </tr>
                                 <tr class="table-light">
                                     <td>健康保険</td>
-                                    <td>------</td>
-                                    <td>------</td>
-                                    <td>------</td>
-                                    <td>------</td>
-                                    <td>------</td>
-                                    <td>------</td>
-                                    <td>------</td>
                                 </tr>
                                 <tr class="table-light">
                                     <td>厚生年金保険</td>
-                                    <td>------</td>
-                                    <td>------</td>
-                                    <td>------</td>
-                                    <td>------</td>
-                                    <td>------</td>
-                                    <td>------</td>
-                                    <td>------</td>
                                 </tr>
                                 <tr class="table-light">
                                     <td>雇用保険</td>
-                                    <td>------</td>
-                                    <td>------</td>
-                                    <td>------</td>
-                                    <td>------</td>
-                                    <td>------</td>
-                                    <td>------</td>
-                                    <td>------</td>
                                 </tr>
                                 <tr class="table-light">
                                     <td>所得税</td>
-                                    <td>------</td>
-                                    <td>------</td>
-                                    <td>------</td>
-                                    <td>------</td>
-                                    <td>------</td>
-                                    <td>------</td>
-                                    <td>------</td>
                                 </tr>
                                 <tr class="table-light">
                                     <td>財形預金</td>
-                                    <td>------</td>
-                                    <td>------</td>
-                                    <td>------</td>
-                                    <td>------</td>
-                                    <td>------</td>
-                                    <td>------</td>
-                                    <td>------</td>
                                 </tr>
                                 <tr class="table-light">
                                     <td>生命保険</td>
-                                    <td>------</td>
-                                    <td>------</td>
-                                    <td>------</td>
-                                    <td>------</td>
-                                    <td>------</td>
-                                    <td>------</td>
-                                    <td>------</td>
                                 </tr>
                                 <tr class="table-light">
                                     <td>自動車保険</td>
-                                    <td>------</td>
-                                    <td>------</td>
-                                    <td>------</td>
-                                    <td>------</td>
-                                    <td>------</td>
-                                    <td>------</td>
-                                    <td>------</td>
                                 </tr>
                                 <tr class="table-light">
                                     <td>労金</td>
-                                    <td>------</td>
-                                    <td>------</td>
-                                    <td>------</td>
-                                    <td>------</td>
-                                    <td>------</td>
-                                    <td>------</td>
-                                    <td>------</td>
                                 </tr>
                                 <tr class="table-info">
                                     <td>控除計</td>
-                                    <td>------</td>
-                                    <td>------</td>
-                                    <td>------</td>
-                                    <td>------</td>
-                                    <td>------</td>
-                                    <td>------</td>
-                                    <td>------</td>
                                 </tr>
                                 <tr class="table-danger">
                                     <td>差引支給額</td>
-                                    <td>------</td>
-                                    <td>------</td>
-                                    <td>------</td>
-                                    <td>------</td>
-                                    <td>------</td>
-                                    <td>------</td>
-                                    <td>------</td>
                                 </tr>
                                 <tr class="table-danger">
                                     <td>現金支給</td>
-                                    <td>------</td>
-                                    <td>------</td>
-                                    <td>------</td>
-                                    <td>------</td>
-                                    <td>------</td>
-                                    <td>------</td>
-                                    <td>------</td>
                                 </tr>
                                 <tr class="table-danger">
                                     <td>振込支給</td>
-                                    <td>------</td>
-                                    <td>------</td>
-                                    <td>------</td>
-                                    <td>------</td>
-                                    <td>------</td>
-                                    <td>------</td>
-                                    <td>------</td>
                                 </tr>
                             </tbody>
                         </table>
@@ -2418,6 +2334,7 @@
                     <div id="payroll5" style="display:none;">
                         <p>人員集計</p>
                     </div>
+
                     <div id="payroll6" style="display:none;">
                         <ul id="accordion_menu_1">
                             <li>
@@ -2441,7 +2358,6 @@
                                     <tbody>
                                         <tr>
                                             <td>健康保険</td>
-                                            <td>円</td>
                                             <td>------</td>
                                             <td>------</td>
                                             <td>------</td>
@@ -2454,81 +2370,21 @@
                                         </tr>
                                         <tr>
                                             <td>厚生年金</td>
-                                            <td>円</td>
-                                            <td>------</td>
-                                            <td>------</td>
-                                            <td>------</td>
-                                            <td>------</td>
-                                            <td>------</td>
-                                            <td>------</td>
-                                            <td>------</td>
-                                            <td>------</td>
-                                            <td>------</td>
                                         </tr>
                                         <tr>
                                             <td>児童手当</td>
-                                            <td>円</td>
-                                            <td>------</td>
-                                            <td>------</td>
-                                            <td>------</td>
-                                            <td>------</td>
-                                            <td>------</td>
-                                            <td>------</td>
-                                            <td>------</td>
-                                            <td>------</td>
-                                            <td>------</td>
                                         </tr>
                                         <tr>
                                             <td>小計</td>
-                                            <td></td>
-                                            <td>------</td>
-                                            <td>------</td>
-                                            <td>------</td>
-                                            <td>------</td>
-                                            <td>------</td>
-                                            <td>------</td>
-                                            <td>------</td>
-                                            <td>------</td>
-                                            <td>------</td>
                                         </tr>
                                         <tr>
                                             <td>雇用保険</td>
-                                            <td>円</td>
-                                            <td>------</td>
-                                            <td>------</td>
-                                            <td>------</td>
-                                            <td>------</td>
-                                            <td>------</td>
-                                            <td>------</td>
-                                            <td>------</td>
-                                            <td>------</td>
-                                            <td>------</td>
                                         </tr>
                                         <tr>
                                             <td>労働保険</td>
-                                            <td>円</td>
-                                            <td>------</td>
-                                            <td>------</td>
-                                            <td>------</td>
-                                            <td>------</td>
-                                            <td>------</td>
-                                            <td>------</td>
-                                            <td>------</td>
-                                            <td>------</td>
-                                            <td>------</td>
                                         </tr>
                                         <tr>
                                             <td>小計</td>
-                                            <td></td>
-                                            <td>------</td>
-                                            <td>------</td>
-                                            <td>------</td>
-                                            <td>------</td>
-                                            <td>------</td>
-                                            <td>------</td>
-                                            <td>------</td>
-                                            <td>------</td>
-                                            <td>------</td>
                                         </tr>
                                     </tbody>
                                 </table>
@@ -2554,94 +2410,24 @@
                                     <tbody>
                                         <tr>
                                             <td>健康保険</td>
-                                            <td>円</td>
-                                            <td>------</td>
-                                            <td>------</td>
-                                            <td>------</td>
-                                            <td>------</td>
-                                            <td>------</td>
-                                            <td>------</td>
-                                            <td>------</td>
-                                            <td>------</td>
-                                            <td>------</td>
                                         </tr>
                                         <tr>
                                             <td>厚生年金</td>
-                                            <td>円</td>
-                                            <td>------</td>
-                                            <td>------</td>
-                                            <td>------</td>
-                                            <td>------</td>
-                                            <td>------</td>
-                                            <td>------</td>
-                                            <td>------</td>
-                                            <td>------</td>
-                                            <td>------</td>
                                         </tr>
                                         <tr>
                                             <td>児童手当</td>
-                                            <td>円</td>
-                                            <td>------</td>
-                                            <td>------</td>
-                                            <td>------</td>
-                                            <td>------</td>
-                                            <td>------</td>
-                                            <td>------</td>
-                                            <td>------</td>
-                                            <td>------</td>
-                                            <td>------</td>
                                         </tr>
                                         <tr>
                                             <td>小計</td>
-                                            <td></td>
-                                            <td>------</td>
-                                            <td>------</td>
-                                            <td>------</td>
-                                            <td>------</td>
-                                            <td>------</td>
-                                            <td>------</td>
-                                            <td>------</td>
-                                            <td>------</td>
-                                            <td>------</td>
                                         </tr>
                                         <tr>
                                             <td>雇用保険</td>
-                                            <td>円</td>
-                                            <td>------</td>
-                                            <td>------</td>
-                                            <td>------</td>
-                                            <td>------</td>
-                                            <td>------</td>
-                                            <td>------</td>
-                                            <td>------</td>
-                                            <td>------</td>
-                                            <td>------</td>
                                         </tr>
                                         <tr>
                                             <td>労働保険</td>
-                                            <td>円</td>
-                                            <td>------</td>
-                                            <td>------</td>
-                                            <td>------</td>
-                                            <td>------</td>
-                                            <td>------</td>
-                                            <td>------</td>
-                                            <td>------</td>
-                                            <td>------</td>
-                                            <td>------</td>
                                         </tr>
                                         <tr>
                                             <td>小計</td>
-                                            <td></td>
-                                            <td>------</td>
-                                            <td>------</td>
-                                            <td>------</td>
-                                            <td>------</td>
-                                            <td>------</td>
-                                            <td>------</td>
-                                            <td>------</td>
-                                            <td>------</td>
-                                            <td>------</td>
                                         </tr>
                                     </tbody>
                                 </table>
@@ -2667,94 +2453,24 @@
                                     <tbody>
                                         <tr>
                                             <td>健康保険</td>
-                                            <td>円</td>
-                                            <td>------</td>
-                                            <td>------</td>
-                                            <td>------</td>
-                                            <td>------</td>
-                                            <td>------</td>
-                                            <td>------</td>
-                                            <td>------</td>
-                                            <td>------</td>
-                                            <td>------</td>
                                         </tr>
                                         <tr>
                                             <td>厚生年金</td>
-                                            <td>円</td>
-                                            <td>------</td>
-                                            <td>------</td>
-                                            <td>------</td>
-                                            <td>------</td>
-                                            <td>------</td>
-                                            <td>------</td>
-                                            <td>------</td>
-                                            <td>------</td>
-                                            <td>------</td>
                                         </tr>
                                         <tr>
                                             <td>児童手当</td>
-                                            <td>円</td>
-                                            <td>------</td>
-                                            <td>------</td>
-                                            <td>------</td>
-                                            <td>------</td>
-                                            <td>------</td>
-                                            <td>------</td>
-                                            <td>------</td>
-                                            <td>------</td>
-                                            <td>------</td>
                                         </tr>
                                         <tr>
                                             <td>小計</td>
-                                            <td></td>
-                                            <td>------</td>
-                                            <td>------</td>
-                                            <td>------</td>
-                                            <td>------</td>
-                                            <td>------</td>
-                                            <td>------</td>
-                                            <td>------</td>
-                                            <td>------</td>
-                                            <td>------</td>
                                         </tr>
                                         <tr>
                                             <td>雇用保険</td>
-                                            <td>円</td>
-                                            <td>------</td>
-                                            <td>------</td>
-                                            <td>------</td>
-                                            <td>------</td>
-                                            <td>------</td>
-                                            <td>------</td>
-                                            <td>------</td>
-                                            <td>------</td>
-                                            <td>------</td>
                                         </tr>
                                         <tr>
                                             <td>労働保険</td>
-                                            <td>円</td>
-                                            <td>------</td>
-                                            <td>------</td>
-                                            <td>------</td>
-                                            <td>------</td>
-                                            <td>------</td>
-                                            <td>------</td>
-                                            <td>------</td>
-                                            <td>------</td>
-                                            <td>------</td>
                                         </tr>
                                         <tr>
                                             <td>小計</td>
-                                            <td></td>
-                                            <td>------</td>
-                                            <td>------</td>
-                                            <td>------</td>
-                                            <td>------</td>
-                                            <td>------</td>
-                                            <td>------</td>
-                                            <td>------</td>
-                                            <td>------</td>
-                                            <td>------</td>
                                         </tr>
                                     </tbody>
                                 </table>
@@ -2778,80 +2494,24 @@
                                     <tbody>
                                         <tr>
                                             <td>健康保険</td>
-                                            <td>円</td>
-                                            <td>------</td>
-                                            <td>------</td>
-                                            <td>------</td>
-                                            <td>------</td>
-                                            <td>------</td>
-                                            <td>------</td>
-                                            <td>------</td>
                                         </tr>
                                         <tr>
                                             <td>厚生年金</td>
-                                            <td>円</td>
-                                            <td>------</td>
-                                            <td>------</td>
-                                            <td>------</td>
-                                            <td>------</td>
-                                            <td>------</td>
-                                            <td>------</td>
-                                            <td>------</td>
                                         </tr>
                                         <tr>
                                             <td>児童手当</td>
-                                            <td>円</td>
-                                            <td>------</td>
-                                            <td>------</td>
-                                            <td>------</td>
-                                            <td>------</td>
-                                            <td>------</td>
-                                            <td>------</td>
-                                            <td>------</td>
                                         </tr>
                                         <tr>
                                             <td>小計</td>
-                                            <td></td>
-                                            <td>------</td>
-                                            <td>------</td>
-                                            <td>------</td>
-                                            <td>------</td>
-                                            <td>------</td>
-                                            <td>------</td>
-                                            <td>------</td>
                                         </tr>
                                         <tr>
                                             <td>雇用保険</td>
-                                            <td>円</td>
-                                            <td>------</td>
-                                            <td>------</td>
-                                            <td>------</td>
-                                            <td>------</td>
-                                            <td>------</td>
-                                            <td>------</td>
-                                            <td>------</td>
                                         </tr>
                                         <tr>
                                             <td>労働保険</td>
-                                            <td>円</td>
-                                            <td>------</td>
-                                            <td>------</td>
-                                            <td>------</td>
-                                            <td>------</td>
-                                            <td>------</td>
-                                            <td>------</td>
-                                            <td>------</td>
                                         </tr>
                                         <tr>
                                             <td>小計</td>
-                                            <td></td>
-                                            <td>------</td>
-                                            <td>------</td>
-                                            <td>------</td>
-                                            <td>------</td>
-                                            <td>------</td>
-                                            <td>------</td>
-                                            <td>------</td>
                                         </tr>
                                     </tbody>
                                 </table>
@@ -2875,80 +2535,24 @@
                                     <tbody>
                                         <tr>
                                             <td>健康保険</td>
-                                            <td>円</td>
-                                            <td>------</td>
-                                            <td>------</td>
-                                            <td>------</td>
-                                            <td>------</td>
-                                            <td>------</td>
-                                            <td>------</td>
-                                            <td>------</td>
                                         </tr>
                                         <tr>
                                             <td>厚生年金</td>
-                                            <td>円</td>
-                                            <td>------</td>
-                                            <td>------</td>
-                                            <td>------</td>
-                                            <td>------</td>
-                                            <td>------</td>
-                                            <td>------</td>
-                                            <td>------</td>
                                         </tr>
                                         <tr>
                                             <td>児童手当</td>
-                                            <td>円</td>
-                                            <td>------</td>
-                                            <td>------</td>
-                                            <td>------</td>
-                                            <td>------</td>
-                                            <td>------</td>
-                                            <td>------</td>
-                                            <td>------</td>
                                         </tr>
                                         <tr>
                                             <td>小計</td>
-                                            <td></td>
-                                            <td>------</td>
-                                            <td>------</td>
-                                            <td>------</td>
-                                            <td>------</td>
-                                            <td>------</td>
-                                            <td>------</td>
-                                            <td>------</td>
                                         </tr>
                                         <tr>
                                             <td>雇用保険</td>
-                                            <td>円</td>
-                                            <td>------</td>
-                                            <td>------</td>
-                                            <td>------</td>
-                                            <td>------</td>
-                                            <td>------</td>
-                                            <td>------</td>
-                                            <td>------</td>
                                         </tr>
                                         <tr>
                                             <td>労働保険</td>
-                                            <td>円</td>
-                                            <td>------</td>
-                                            <td>------</td>
-                                            <td>------</td>
-                                            <td>------</td>
-                                            <td>------</td>
-                                            <td>------</td>
-                                            <td>------</td>
                                         </tr>
                                         <tr>
                                             <td>小計</td>
-                                            <td></td>
-                                            <td>------</td>
-                                            <td>------</td>
-                                            <td>------</td>
-                                            <td>------</td>
-                                            <td>------</td>
-                                            <td>------</td>
-                                            <td>------</td>
                                         </tr>
                                     </tbody>
                                 </table>
@@ -2971,73 +2575,24 @@
                                     <tbody>
                                         <tr>
                                             <td>健康保険</td>
-                                            <td>円</td>
-                                            <td>------</td>
-                                            <td>------</td>
-                                            <td>------</td>
-                                            <td>------</td>
-                                            <td>------</td>
-                                            <td>------</td>
                                         </tr>
                                         <tr>
                                             <td>厚生年金</td>
-                                            <td>円</td>
-                                            <td>------</td>
-                                            <td>------</td>
-                                            <td>------</td>
-                                            <td>------</td>
-                                            <td>------</td>
-                                            <td>------</td>
                                         </tr>
                                         <tr>
                                             <td>児童手当</td>
-                                            <td>円</td>
-                                            <td>------</td>
-                                            <td>------</td>
-                                            <td>------</td>
-                                            <td>------</td>
-                                            <td>------</td>
-                                            <td>------</td>
                                         </tr>
                                         <tr>
                                             <td>小計</td>
-                                            <td></td>
-                                            <td>------</td>
-                                            <td>------</td>
-                                            <td>------</td>
-                                            <td>------</td>
-                                            <td>------</td>
-                                            <td>------</td>
                                         </tr>
                                         <tr>
                                             <td>雇用保険</td>
-                                            <td>円</td>
-                                            <td>------</td>
-                                            <td>------</td>
-                                            <td>------</td>
-                                            <td>------</td>
-                                            <td>------</td>
-                                            <td>------</td>
                                         </tr>
                                         <tr>
                                             <td>労働保険</td>
-                                            <td>円</td>
-                                            <td>------</td>
-                                            <td>------</td>
-                                            <td>------</td>
-                                            <td>------</td>
-                                            <td>------</td>
-                                            <td>------</td>
                                         </tr>
                                         <tr>
                                             <td>小計</td>
-                                            <td></td>
-                                            <td>------</td>
-                                            <td>------</td>
-                                            <td>------</td>
-                                            <td>------</td>
-                                            <td>------</td>
-                                            <td>------</td>
                                         </tr>
                                     </tbody>
                                 </table>
@@ -3058,59 +2613,24 @@
                                     <tbody>
                                         <tr>
                                             <td>健康保険</td>
-                                            <td>円</td>
-                                            <td>------</td>
-                                            <td>------</td>
-                                            <td>------</td>
-                                            <td>------</td>
                                         </tr>
                                         <tr>
                                             <td>厚生年金</td>
-                                            <td>円</td>
-                                            <td>------</td>
-                                            <td>------</td>
-                                            <td>------</td>
-                                            <td>------</td>
                                         </tr>
                                         <tr>
                                             <td>児童手当</td>
-                                            <td>円</td>
-                                            <td>------</td>
-                                            <td>------</td>
-                                            <td>------</td>
-                                            <td>------</td>
                                         </tr>
                                         <tr>
                                             <td>小計</td>
-                                            <td></td>
-                                            <td>------</td>
-                                            <td>------</td>
-                                            <td>------</td>
-                                            <td>------</td>
                                         </tr>
                                         <tr>
                                             <td>雇用保険</td>
-                                            <td>円</td>
-                                            <td>------</td>
-                                            <td>------</td>
-                                            <td>------</td>
-                                            <td>------</td>
                                         </tr>
                                         <tr>
                                             <td>労働保険</td>
-                                            <td>円</td>
-                                            <td>------</td>
-                                            <td>------</td>
-                                            <td>------</td>
-                                            <td>------</td>
                                         </tr>
                                         <tr>
                                             <td>小計</td>
-                                            <td></td>
-                                            <td>------</td>
-                                            <td>------</td>
-                                            <td>------</td>
-                                            <td>------</td>
                                         </tr>
                                     </tbody>
                                 </table>
