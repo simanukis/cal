@@ -215,6 +215,7 @@
 								<option value="payroll4">賞与集計</option>
 								<option value="payroll5">人員集計</option>
 								<option value="payroll6">保険等集計</option>
+                                <option value="payroll7">勤怠支給控除一覧表</option>
 							</select>
                         </div>
                         <div class="container">
@@ -2331,6 +2332,7 @@
                             </tbody>
                         </table>
                     </div>
+
                     <div id="payroll5" style="display:none;">
                         <p>人員集計</p>
                     </div>
@@ -2358,15 +2360,6 @@
                                     <tbody>
                                         <tr>
                                             <td>健康保険</td>
-                                            <td>------</td>
-                                            <td>------</td>
-                                            <td>------</td>
-                                            <td>------</td>
-                                            <td>------</td>
-                                            <td>------</td>
-                                            <td>------</td>
-                                            <td>------</td>
-                                            <td>------</td>
                                         </tr>
                                         <tr>
                                             <td>厚生年金</td>
@@ -2636,6 +2629,223 @@
                                 </table>
                             </ul>
                         </ul>
+                    </div>
+                    <div id="payroll7" style="display:none;">
+                        <table class="table table-striped" data-sheet-name="勤怠支給控除一覧表">
+                            <thead class="table-dark">
+                                <th scope="col">所属/社員コード/所属名/人数</th>
+                                <th scope="col">合計</th>
+                            </thead>
+                            <tbody>
+                                <tr class="table-secondary">
+                                    <td>【勤怠】</td>
+                                </tr>
+                                <tr class="table-light">
+                                    <td>出勤日数</td>
+                                </tr>
+                                <tr class="table-light">
+                                    <td>有休日数</td>
+                                </tr>
+                                <tr class="table-light">
+                                    <td>特休日数</td>
+                                </tr>
+                                <tr class="table-light">
+                                    <td>欠勤日数</td>
+                                </tr>
+                                <tr class="table-light">
+                                    <td>勤務時間</td>
+                                </tr>
+                                <tr class="table-light">
+                                    <td>深夜時間</td>
+                                </tr>
+                                <tr class="table-light">
+                                    <td>遅早時間</td>
+                                </tr>
+                                <tr class="table-info">
+                                    <td>残業時間</td>
+                                </tr>
+                                <tr class="table-light">
+                                    <td>深夜残業</td>
+                                </tr>
+                                <tr class="table-light">
+                                    <td>法外休出</td>
+                                </tr>
+                                <tr class="table-light">
+                                    <td>法定休出</td>
+                                </tr>
+                                <tr class="table-light">
+                                    <td>代休時間</td>
+                                </tr>
+                                <tr class="table-light">
+                                    <td>ズレ時間</td>
+                                </tr>
+                                <tr class="table-light">
+                                    <td>深夜代休</td>
+                                </tr>
+                                <tr class="table-light">
+                                    <td>休業日数</td>
+                                </tr>
+                                <tr class="table-light">
+                                    <td>【支給】</td>
+                                </tr>
+                                <tr class="table-info">
+                                    <td>基本給（報酬）</td>
+                                </tr>
+                                <tr class="table-danger">
+                                    <td>役職手当</td>
+                                </tr>
+                                <tr class="table-danger">
+                                    <td>営業手当</td>
+                                </tr>
+                                <tr class="table-danger">
+                                    <td>地域手当</td>
+                                </tr>
+                                <tr class="table-danger">
+                                    <td>特殊手当</td>
+                                </tr>
+                                <tr class="table-danger">
+                                    <td>特別技技手当</td>
+                                </tr>
+                                <tr class="table-danger">
+                                    <td>調整手当</td>
+                                </tr>
+                                <tr class="table-danger">
+                                    <td>別居手当</td>
+                                </tr>
+                                <tr class="table-danger">
+                                    <td>残業手当</td>
+                                </tr>
+                                <tr class="table-danger">
+                                    <td>休出手当</td>
+                                </tr>
+                                <tr class="table-danger">
+                                    <td>深夜勤務手当</td>
+                                </tr>
+                                <tr class="table-light">
+                                    <td>深夜残業手当</td>
+                                </tr>
+                                <tr class="table-light">
+                                    <td>交替時差手当</td>
+                                </tr>
+                                <tr class="table-light">
+                                    <td>代休他</td>
+                                </tr>
+                                <tr class="table-light">
+                                    <td>休業手当</td>
+                                </tr>
+                                <tr class="table-light">
+                                    <td>欠勤控除</td>
+                                </tr>
+                                <tr class="table-light">
+                                    <td>遅早控除</td>
+                                </tr>
+                                <tr class="table-light">
+                                    <td>精算分</td>
+                                </tr>
+                                <tr class="table-light">
+                                    <td>休業控除</td>
+                                </tr>
+                                <tr class="table-light">
+                                    <td>通勤手当</td>
+                                </tr>
+                                <tr class="table-light">
+                                    <td>支給合計額</td>
+                                </tr>
+                                <tr class="table-light">
+                                    <td>課税支給合計額</td>
+                                </tr>
+                                <tr class="table-light">
+                                    <td>【控除】</td>
+                                </tr>
+                                <tr class="table-light">
+                                    <td>健康保険</td>
+                                </tr>
+                                <tr class="table-light">
+                                    <td>厚生年金保険</td>
+                                </tr>
+                                <tr class="table-light">
+                                    <td>雇用保険</td>
+                                </tr>
+                                <tr class="table-light">
+                                    <td>社会保険計</td>
+                                </tr>
+                                <tr class="table-light">
+                                    <td>（内）介護保険</td>
+                                </tr>
+                                <tr class="table-light">
+                                    <td>課税対象額</td>
+                                </tr>
+                                <tr class="table-light">
+                                    <td>所得税</td>
+                                </tr>
+                                <tr class="table-light">
+                                    <td>財形預金</td>
+                                </tr>
+                                <tr class="table-light">
+                                    <td>生命保険</td>
+                                </tr>
+                                <tr class="table-light">
+                                    <td>自動車保険</td>
+                                </tr>
+                                <tr class="table-light">
+                                    <td>社員積立</td>
+                                </tr>
+                                <tr class="table-light">
+                                    <td>雑費・食事代</td>
+                                </tr>
+                                <tr class="table-light">
+                                    <td>雑費・衣靴代</td>
+                                </tr>
+                                <tr class="table-light">
+                                    <td>雑費</td>
+                                </tr>
+                                <tr class="table-light">
+                                    <td>受診料・他</td>
+                                </tr>
+                                <tr class="table-light">
+                                    <td>雑費・会費等</td>
+                                </tr>
+                                <tr class="table-light">
+                                    <td>労金</td>
+                                </tr>
+                                <tr class="table-light">
+                                    <td>その他控除</td>
+                                </tr>
+                                <tr class="table-light">
+                                    <td>控除合計額</td>
+                                </tr>
+                                <tr class="table-light">
+                                    <td>【補助】</td>
+                                </tr>
+                                <tr class="table-light">
+                                    <td>職能等級</td>
+                                </tr>
+                                <tr class="table-light">
+                                    <td>基本給１</td>
+                                </tr>
+                                <tr class="table-light">
+                                    <td>基本給２</td>
+                                </tr>
+                                <tr class="table-light">
+                                    <td>【合計】</td>
+                                </tr>
+                                <tr class="table-light">
+                                    <td>差引支給合計額</td>
+                                </tr>
+                                <tr class="table-light">
+                                    <td>銀行振込１</td>
+                                </tr>
+                                <tr class="table-light">
+                                    <td>銀行振込２</td>
+                                </tr>
+                                <tr class="table-light">
+                                    <td>銀行振込３</td>
+                                </tr>
+                                <tr class="table-light">
+                                    <td>現金支給額</td>
+                                </tr>
+                            </tbody>
+                        </table>
                     </div>
                 </ul>
                 <!-- /Payroll -->
