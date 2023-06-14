@@ -210,12 +210,11 @@
                         <div class="form-group col-md-2 col-auto my-1">
                             <select id="selectPayroll" class="form-control">
 								<option value="payroll1" selected="selected">給与集計表</option>
-                                <option value="payroll2">給与集計（一般管理）</option>
 								<option value="payroll3">給与集計（部門別）</option>
 								<option value="payroll4">賞与集計</option>
 								<option value="payroll5">人員集計</option>
-								<option value="payroll6">保険等集計</option>
-                                <option value="payroll7">勤怠支給控除一覧表</option>
+								<option value="payroll6">社会保険集計</option>
+                                <option value="payroll7">勤怠支給控除一覧</option>
 							</select>
                         </div>
                         <div class="container">
@@ -234,7 +233,7 @@
                 </form>
                 <ul>
                     <div id="payroll1">
-                        <table class="table table-striped" data-sheet-name="給与集計(一般管理)">
+                        <table class="table table-striped" data-sheet-name="給与集計表">
                             <thead class="table-dark">
                                 <th scope="col">項目</th>
                                 <th scope="col">役員</th>
@@ -256,13 +255,16 @@
                                     <td>役職手当</td>
                                 </tr>
                                 <tr class="table-light">
+                                    <td>営業手当</td>
+                                </tr>
+                                <tr class="table-light">
                                     <td>地域手当</td>
                                 </tr>
                                 <tr class="table-light">
-                                    <td>特別作業手当</td>
+                                    <td>特別手当</td>
                                 </tr>
                                 <tr class="table-light">
-                                    <td>特別技術手当</td>
+                                    <td>特別技技手当</td>
                                 </tr>
                                 <tr class="table-light">
                                     <td>調整手当</td>
@@ -284,12 +286,6 @@
                                 </tr>
                                 <tr class="table-light">
                                     <td>深夜勤務手当</td>
-                                </tr>
-                                <tr class="table-light">
-                                    <td>深夜残業手当</td>
-                                </tr>
-                                <tr class="table-light">
-                                    <td>交替時差手当</td>
                                 </tr>
                                 <tr class="table-light">
                                     <td>休業手当</td>
@@ -349,7 +345,7 @@
                                     <td>雑費</td>
                                 </tr>
                                 <tr class="table-light">
-                                    <td>その他控除</td>
+                                    <td>寮費・その他</td>
                                 </tr>
                                 <tr class="table-light">
                                     <td>控除計</td>
@@ -367,199 +363,13 @@
                         </table>
                         <div id="resulttable"></div>
                     </div>
-                    <div id="payroll2" style="display:none;">
-                        <table class="table table-striped" data-sheet-name="">
-                            <thead class="table-dark">
-                                <th scope="col">項目</th>
-                                <th scope="col">役員①</th>
-                                <th scope="col">一般間接①</th>
-                                <th scope="col">一般間接②</th>
-                                <th scope="col">一般間接③</th>
-                                <th scope="col">一般間接⑥</th>
-                                <th scope="col">一般販売①</th>
-                                <th scope="col">一般販売②</th>
-                                <th scope="col">合計</th>
-                            </thead>
-                            <tbody>
-                                <tr class="table-secondary">
-                                    <td>在籍者</td>
-                                </tr>
-                                <tr class="table-light">
-                                    <td>在籍者係長以下</td>
-                                </tr>
-                                <tr class="table-light">
-                                    <td>延在籍者</td>
-                                </tr>
-                                <tr class="table-light">
-                                    <td>実在籍者</td>
-                                </tr>
-                                <tr class="table-light">
-                                    <td>有給時間</td>
-                                </tr>
-                                <tr class="table-light">
-                                    <td>在籍者平均</td>
-                                </tr>
-                                <tr class="table-info">
-                                    <td>欠勤時間</td>
-                                </tr>
-                                <tr class="table-light">
-                                    <td>勤務時間</td>
-                                </tr>
-                                <tr class="table-light">
-                                    <td>遅早時間</td>
-                                </tr>
-                                <tr class="table-light">
-                                    <td>延出勤者</td>
-                                </tr>
-                                <tr class="table-light">
-                                    <td>実出勤者</td>
-                                </tr>
-                                <tr class="table-light">
-                                    <td>延出勤率A</td>
-                                </tr>
-                                <tr class="table-light">
-                                    <td>実出勤率</td>
-                                </tr>
-                                <tr class="table-light">
-                                    <td>延長欠者</td>
-                                </tr>
-                                <tr class="table-light">
-                                    <td>延出勤率B</td>
-                                </tr>
-                                <tr class="table-info">
-                                    <td>延労働時間</td>
-                                </tr>
-                                <tr class="table-danger">
-                                    <td>実労働時間</td>
-                                </tr>
-                                <tr class="table-danger">
-                                    <td>休業日数</td>
-                                </tr>
-                                <tr class="table-danger">
-                                    <td>ズレ時間</td>
-                                </tr>
-                                <tr class="table-danger">
-                                    <td>残業時間</td>
-                                </tr>
-                                <tr class="table-danger">
-                                    <td>係長以下平均</td>
-                                </tr>
-                                <tr class="table-danger">
-                                    <td>休日出勤時間</td>
-                                </tr>
-                                <tr class="table-danger">
-                                    <td>係長以下平均</td>
-                                </tr>
-                                <tr class="table-danger">
-                                    <td>代休時間</td>
-                                </tr>
-                                <tr class="table-danger">
-                                    <td>応援時間</td>
-                                </tr>
-                                <tr class="table-danger">
-                                    <td>総労働時間</td>
-                                </tr>
-                            </tbody>
-                            <thead class="table-dark">
-                                <th scope="col">項目</th>
-                                <th scope="col">役員①</th>
-                                <th scope="col">一般間接①</th>
-                                <th scope="col">一般間接②</th>
-                                <th scope="col">一般間接③</th>
-                                <th scope="col">一般間接⑥</th>
-                                <th scope="col">一般販売①</th>
-                                <th scope="col">一般販売②</th>
-                                <th scope="col">合計</th>
-                            </thead>
-                            <tbody>
-                                <tr class="table-secondary">
-                                    <td>基本給</td>
-                                </tr>
-                                <tr class="table-light">
-                                    <td>役職手当</td>
-                                </tr>
-                                <tr class="table-light">
-                                    <td>営業手当</td>
-                                </tr>
-                                <tr class="table-light">
-                                    <td>地域手当</td>
-                                </tr>
-                                <tr class="table-light">
-                                    <td>特別作業手当</td>
-                                </tr>
-                                <tr class="table-light">
-                                    <td>特別技術手当</td>
-                                </tr>
-                                <tr class="table-info">
-                                    <td>調整手当</td>
-                                </tr>
-                                <tr class="table-light">
-                                    <td>別居手当</td>
-                                </tr>
-                                <tr class="table-light">
-                                    <td>通勤手当</td>
-                                </tr>
-                                <tr class="table-light">
-                                    <td>小計①</td>
-                                </tr>
-                                <tr class="table-light">
-                                    <td>残業手当</td>
-                                </tr>
-                                <tr class="table-light">
-                                    <td>休出手当</td>
-                                </tr>
-                                <tr class="table-light">
-                                    <td>深夜勤務手当</td>
-                                </tr>
-                                <tr class="table-light">
-                                    <td>深夜残業手当</td>
-                                </tr>
-                                <tr class="table-light">
-                                    <td>交替時差手当</td>
-                                </tr>
-                                <tr class="table-info">
-                                    <td>休業手当</td>
-                                </tr>
-                                <tr class="table-danger">
-                                    <td>休業控除</td>
-                                </tr>
-                                <tr class="table-danger">
-                                    <td>代休他</td>
-                                </tr>
-                                <tr class="table-danger">
-                                    <td>欠勤・遅早控除</td>
-                                </tr>
-                                <tr class="table-danger">
-                                    <td>精算分</td>
-                                </tr>
-                                <tr class="table-danger">
-                                    <td>小計②</td>
-                                </tr>
-                                <tr class="table-danger">
-                                    <td>総支給額</td>
-                                </tr>
-                                <tr class="table-danger">
-                                    <td>応援時間額</td>
-                                </tr>
-                                <tr class="table-danger">
-                                    <td>役員振替</td>
-                                </tr>
-                                <tr class="table-danger">
-                                    <td>部門振替</td>
-                                </tr>
-                                <tr class="table-danger">
-                                    <td>合計</td>
-                                </tr>
-                            </tbody>
-                        </table>
-                    </div>
                     <div id="payroll3" style="display:none;">
                         <ul id="accordion_menu">
                             <li>
-                                <a data-toggle="collapse" href="#menu01" aria-controls="#menu01" aria-expanded="false">部門全体</a>
+                                <a data-toggle="collapse" href="#menu01" aria-controls="#menu01" aria-expanded="false">部門別集計表</a>
                             </li>
                             <ul id="menu01" class="collapse" data-parent="#accordion_menu">
-                                <table class="table table-striped" data-sheet-name="全体集計表">
+                                <table class="table table-striped" data-sheet-name="部門別集計表（全体）">
                                     <thead class="table-dark">
                                         <th scope="col">項目</th>
                                         <th scope="col">一般管理</th>
@@ -574,81 +384,98 @@
                                     <tbody>
                                         <tr>
                                             <td>在籍者</td>
+                                            <td>人</td>
                                         </tr>
                                         <tr>
                                             <td>在籍者係長以下</td>
-                                        </tr>
-                                        <tr>
-                                            <td>延在籍者</td>
+                                            <td>人</td>
                                         </tr>
                                         <tr>
                                             <td>実在籍者</td>
+                                            <td>人</td>
                                         </tr>
                                         <tr>
                                             <td>有給時間</td>
+                                            <td>H</td>
                                         </tr>
                                         <tr>
                                             <td>在籍者平均</td>
+                                            <td>H</td>
                                         </tr>
                                         <tr>
                                             <td>欠勤時間</td>
+                                            <td>H</td>
                                         </tr>
                                         <tr>
                                             <td>勤務時間</td>
+                                            <td>H</td>
                                         </tr>
                                         <tr>
                                             <td>遅早時間</td>
+                                            <td>H</td>
                                         </tr>
                                         <tr>
-                                            <td>延出勤者</td>
-                                        </tr>
-                                        <tr>
-                                            <td>実出勤者</td>
-                                        </tr>
-                                        <tr>
-                                            <td>延出勤率A</td>
-                                        </tr>
-                                        <tr>
-                                            <td>実出勤率</td>
-                                        </tr>
-                                        <tr>
-                                            <td>延長欠者</td>
-                                        </tr>
-                                        <tr>
-                                            <td>延出勤率B</td>
-                                        </tr>
-                                        <tr>
-                                            <td>延労働時間</td>
+                                            <td>出勤率</td>
+                                            <td>%</td>
                                         </tr>
                                         <tr>
                                             <td>実労働時間</td>
+                                            <td>H</td>
                                         </tr>
                                         <tr>
                                             <td>休業日数</td>
+                                            <td>日</td>
                                         </tr>
                                         <tr>
                                             <td>ズレ時間</td>
+                                            <td>H</td>
                                         </tr>
                                         <tr>
                                             <td>残業時間</td>
+                                            <td>H</td>
                                         </tr>
                                         <tr>
-                                            <td>係長以下平均</td>
+                                            <td>係長以下 平均</td>
+                                            <td>H</td>
+                                        </tr>
+                                        <tr>
+                                            <td>法外休出時間</td>
+                                            <td>H</td>
+                                        </tr>
+                                        <tr>
+                                            <td>係長以下 平均</td>
+                                            <td>H</td>
+                                        </tr>
+                                        <tr>
+                                            <td>法定休出時間</td>
+                                            <td>H</td>
+                                        </tr>
+                                        <tr>
+                                            <td>係長以下 平均</td>
+                                            <td>H</td>
+                                        </tr>
+                                        <tr>
+                                            <td>時間外60時間超え</td>
                                         </tr>
                                         <tr>
                                             <td>休日出勤時間</td>
+                                            <td>H</td>
                                         </tr>
                                         <tr>
-                                            <td>係長以下平均</td>
+                                            <td>係長以下 平均</td>
+                                            <td>H</td>
                                         </tr>
                                         <tr>
                                             <td>代休時間</td>
+                                            <td>H</td>
                                         </tr>
                                         <tr>
                                             <td>応接時間</td>
+                                            <td>H</td>
                                         </tr>
                                         <tr>
                                             <td>総労働時間</td>
+                                            <td>H</td>
                                         </tr>
                                     </tbody>
                                     <thead class="table-dark">
@@ -665,81 +492,103 @@
                                     <tbody>
                                         <tr>
                                             <td>基本給</td>
+                                            <td>円</td>
                                         </tr>
                                         <tr>
                                             <td>役職手当</td>
+                                            <td>円</td>
                                         </tr>
                                         <tr>
                                             <td>営業手当</td>
+                                            <td>円</td>
                                         </tr>
                                         <tr>
                                             <td>地域手当</td>
+                                            <td>円</td>
                                         </tr>
                                         <tr>
-                                            <td>特別作業手当</td>
+                                            <td>特別手当</td>
+                                            <td>円</td>
                                         </tr>
                                         <tr>
-                                            <td>特別技術手当</td>
+                                            <td>特別技技手当</td>
+                                            <td>円</td>
                                         </tr>
                                         <tr>
                                             <td>調整手当</td>
+                                            <td>円</td>
                                         </tr>
                                         <tr>
                                             <td>別居手当</td>
+                                            <td>円</td>
                                         </tr>
                                         <tr>
                                             <td>通勤手当</td>
+                                            <td>円</td>
                                         </tr>
                                         <tr>
                                             <td>小計①</td>
+                                            <td>円</td>
                                         </tr>
                                         <tr>
                                             <td>残業手当</td>
+                                            <td>円</td>
                                         </tr>
                                         <tr>
                                             <td>休出手当</td>
+                                            <td>円</td>
                                         </tr>
                                         <tr>
                                             <td>深夜勤務手当</td>
-                                        </tr>
-                                        <tr>
-                                            <td>深夜残業手当</td>
+                                            <td>円</td>
                                         </tr>
                                         <tr>
                                             <td>交代時差手当</td>
+                                            <td>円</td>
                                         </tr>
                                         <tr>
                                             <td>休業手当</td>
+                                            <td>円</td>
                                         </tr>
                                         <tr>
                                             <td>休業控除</td>
+                                            <td>円</td>
                                         </tr>
                                         <tr>
                                             <td>代休他</td>
+                                            <td>円</td>
                                         </tr>
                                         <tr>
                                             <td>欠勤・遅早控除</td>
+                                            <td>円</td>
                                         </tr>
                                         <tr>
                                             <td>精算分</td>
+                                            <td>円</td>
                                         </tr>
                                         <tr>
                                             <td>小計②</td>
+                                            <td>円</td>
                                         </tr>
                                         <tr>
                                             <td>総支給額</td>
+                                            <td>円</td>
                                         </tr>
                                         <tr>
                                             <td>応援時間額</td>
+                                            <td>円</td>
                                         </tr>
                                         <tr>
                                             <td>役員振替</td>
+                                            <td>円</td>
                                         </tr>
                                         <tr>
                                             <td>部門振替</td>
+                                            <td>円</td>
                                         </tr>
                                         <tr>
                                             <td>合計</td>
+                                            <td>円</td>
                                         </tr>
                                     </tbody>
                                 </table>
@@ -763,81 +612,99 @@
                                     <tbody>
                                         <tr>
                                             <td>在籍者</td>
+                                            <td>人</td>
                                         </tr>
                                         <tr>
                                             <td>在籍者係長以下</td>
-                                        </tr>
-                                        <tr>
-                                            <td>延在籍者</td>
+                                            <td>人</td>
                                         </tr>
                                         <tr>
                                             <td>実在籍者</td>
+                                            <td>人</td>
                                         </tr>
                                         <tr>
                                             <td>有給時間</td>
+                                            <td>H</td>
                                         </tr>
                                         <tr>
                                             <td>在籍者平均</td>
+                                            <td>H</td>
                                         </tr>
                                         <tr>
                                             <td>欠勤時間</td>
+                                            <td>H</td>
                                         </tr>
                                         <tr>
                                             <td>勤務時間</td>
+                                            <td>H</td>
                                         </tr>
                                         <tr>
                                             <td>遅早時間</td>
+                                            <td>H</td>
                                         </tr>
                                         <tr>
-                                            <td>延出勤者</td>
-                                        </tr>
-                                        <tr>
-                                            <td>実出勤者</td>
-                                        </tr>
-                                        <tr>
-                                            <td>延出勤率A</td>
-                                        </tr>
-                                        <tr>
-                                            <td>実出勤率</td>
-                                        </tr>
-                                        <tr>
-                                            <td>延長欠者</td>
-                                        </tr>
-                                        <tr>
-                                            <td>延出勤率B</td>
-                                        </tr>
-                                        <tr>
-                                            <td>延労働時間</td>
+                                            <td>出勤率</td>
+                                            <td>%</td>
                                         </tr>
                                         <tr>
                                             <td>実労働時間</td>
+                                            <td>H</td>
                                         </tr>
                                         <tr>
                                             <td>休業日数</td>
+                                            <td>日</td>
                                         </tr>
                                         <tr>
                                             <td>ズレ時間</td>
+                                            <td>H</td>
                                         </tr>
                                         <tr>
                                             <td>残業時間</td>
+                                            <td>H</td>
                                         </tr>
                                         <tr>
-                                            <td>係長以下平均</td>
+                                            <td>係長以下 平均</td>
+                                            <td>H</td>
+                                        </tr>
+                                        <tr>
+                                            <td>法外休出時間</td>
+                                            <td>H</td>
+                                        </tr>
+                                        <tr>
+                                            <td>係長以下 平均</td>
+                                            <td>H</td>
+                                        </tr>
+                                        <tr>
+                                            <td>法定休出時間</td>
+                                            <td>H</td>
+                                        </tr>
+                                        <tr>
+                                            <td>係長以下 平均</td>
+                                            <td>H</td>
+                                        </tr>
+                                        <tr>
+                                            <td>時間外60時間超え</td>
+                                            <td>人</td>
                                         </tr>
                                         <tr>
                                             <td>休日出勤時間</td>
+                                            <td>H</td>
                                         </tr>
                                         <tr>
-                                            <td>係長以下平均</td>
+                                            <td>係長以下 平均</td>
+                                            <td>H</td>
                                         </tr>
                                         <tr>
                                             <td>代休時間</td>
+                                            <td>H</td>
                                         </tr>
                                         <tr>
                                             <td>応接時間</td>
+                                            <td>H</td>
                                         </tr>
                                         <tr>
                                             <td>総労働時間</td>
+                                            <td>H</td>
                                         </tr>
                                     </tbody>
                                     <thead class="table-dark">
@@ -854,81 +721,103 @@
                                     <tbody>
                                         <tr>
                                             <td>基本給</td>
+                                            <td>円</td>
                                         </tr>
                                         <tr>
                                             <td>役職手当</td>
+                                            <td>円</td>
                                         </tr>
                                         <tr>
                                             <td>営業手当</td>
+                                            <td>円</td>
                                         </tr>
                                         <tr>
                                             <td>地域手当</td>
+                                            <td>円</td>
                                         </tr>
                                         <tr>
-                                            <td>特別作業手当</td>
+                                            <td>特別手当</td>
+                                            <td>円</td>
                                         </tr>
                                         <tr>
-                                            <td>特別技術手当</td>
+                                            <td>特別技技手当</td>
+                                            <td>円</td>
                                         </tr>
                                         <tr>
                                             <td>調整手当</td>
+                                            <td>円</td>
                                         </tr>
                                         <tr>
                                             <td>別居手当</td>
+                                            <td>円</td>
                                         </tr>
                                         <tr>
                                             <td>通勤手当</td>
+                                            <td>円</td>
                                         </tr>
                                         <tr>
                                             <td>小計①</td>
+                                            <td>円</td>
                                         </tr>
                                         <tr>
                                             <td>残業手当</td>
+                                            <td>円</td>
                                         </tr>
                                         <tr>
                                             <td>休出手当</td>
+                                            <td>円</td>
                                         </tr>
                                         <tr>
                                             <td>深夜勤務手当</td>
-                                        </tr>
-                                        <tr>
-                                            <td>深夜残業手当</td>
+                                            <td>円</td>
                                         </tr>
                                         <tr>
                                             <td>交代時差手当</td>
+                                            <td>円</td>
                                         </tr>
                                         <tr>
                                             <td>休業手当</td>
+                                            <td>円</td>
                                         </tr>
                                         <tr>
                                             <td>休業控除</td>
+                                            <td>円</td>
                                         </tr>
                                         <tr>
                                             <td>代休他</td>
+                                            <td>円</td>
                                         </tr>
                                         <tr>
                                             <td>欠勤・遅早控除</td>
+                                            <td>円</td>
                                         </tr>
                                         <tr>
                                             <td>精算分</td>
+                                            <td>円</td>
                                         </tr>
                                         <tr>
                                             <td>小計②</td>
+                                            <td>円</td>
                                         </tr>
                                         <tr>
                                             <td>総支給額</td>
+                                            <td>円</td>
                                         </tr>
                                         <tr>
                                             <td>応援時間額</td>
+                                            <td>円</td>
                                         </tr>
                                         <tr>
                                             <td>役員振替</td>
+                                            <td>円</td>
                                         </tr>
                                         <tr>
                                             <td>部門振替</td>
+                                            <td>円</td>
                                         </tr>
                                         <tr>
                                             <td>合計</td>
+                                            <td>円</td>
                                         </tr>
                                     </tbody>
                                 </table>
@@ -955,81 +844,102 @@
                                     <tbody>
                                         <tr>
                                             <td>在籍者</td>
+                                            <td>人</td>
                                         </tr>
                                         <tr>
-                                            <td>在籍者係長以下</td>
-                                        </tr>
-                                        <tr>
-                                            <td>延在籍者</td>
+                                            <td>在籍者 係長以下</td>
+                                            <td>人</td>
                                         </tr>
                                         <tr>
                                             <td>実在籍者</td>
+                                            <td>人</td>
                                         </tr>
                                         <tr>
                                             <td>有給時間</td>
+                                            <td>H</td>
                                         </tr>
                                         <tr>
-                                            <td>在籍者平均</td>
+                                            <td>在籍者 平均</td>
+                                            <td>H</td>
                                         </tr>
                                         <tr>
                                             <td>欠勤時間</td>
+                                            <td>H</td>
                                         </tr>
                                         <tr>
                                             <td>勤務時間</td>
+                                            <td>H</td>
                                         </tr>
                                         <tr>
                                             <td>遅早時間</td>
+                                            <td>H</td>
                                         </tr>
                                         <tr>
-                                            <td>延出勤者</td>
-                                        </tr>
-                                        <tr>
-                                            <td>実出勤者</td>
-                                        </tr>
-                                        <tr>
-                                            <td>延出勤率A</td>
-                                        </tr>
-                                        <tr>
-                                            <td>実出勤率</td>
-                                        </tr>
-                                        <tr>
-                                            <td>延長欠者</td>
-                                        </tr>
-                                        <tr>
-                                            <td>延出勤率B</td>
-                                        </tr>
-                                        <tr>
-                                            <td>延労働時間</td>
+                                            <td>出勤率</td>
+                                            <td>%</td>
                                         </tr>
                                         <tr>
                                             <td>実労働時間</td>
+                                            <td>H</td>
                                         </tr>
                                         <tr>
                                             <td>休業日数</td>
+                                            <td>日</td>
                                         </tr>
                                         <tr>
                                             <td>ズレ時間</td>
+                                            <td>H</td>
                                         </tr>
                                         <tr>
                                             <td>残業時間</td>
+                                            <td>H</td>
                                         </tr>
                                         <tr>
-                                            <td>係長以下平均</td>
+                                            <td>係長以下 平均</td>
+                                            <td>H</td>
+                                        </tr>
+                                        <tr>
+                                            <td>残業時間</td>
+                                            <td>H</td>
+                                        </tr>
+                                        <tr>
+                                            <td>法外休出時間</td>
+                                            <td>H</td>
+                                        </tr>
+                                        <tr>
+                                            <td>係長以下 平均</td>
+                                        </tr>
+                                        <tr>
+                                            <td>法定休出時間</td>
+                                            <td>H</td>
+                                        </tr>
+                                        <tr>
+                                            <td>係長以下 平均</td>
+                                            <td>H</td>
+                                        </tr>
+                                        <tr>
+                                            <td>時間外60時間超え</td>
+                                            <td>人</td>
                                         </tr>
                                         <tr>
                                             <td>休日出勤時間</td>
+                                            <td>H</td>
                                         </tr>
                                         <tr>
-                                            <td>係長以下平均</td>
+                                            <td>係長以下 平均</td>
+                                            <td>H</td>
                                         </tr>
                                         <tr>
                                             <td>代休時間</td>
+                                            <td>H</td>
                                         </tr>
                                         <tr>
                                             <td>応接時間</td>
+                                            <td>H</td>
                                         </tr>
                                         <tr>
                                             <td>総労働時間</td>
+                                            <td>H</td>
                                         </tr>
                                     </tbody>
                                     <thead class="table-dark">
@@ -1049,81 +959,103 @@
                                     <tbody>
                                         <tr>
                                             <td>基本給</td>
+                                            <td>円</td>
                                         </tr>
                                         <tr>
                                             <td>役職手当</td>
+                                            <td>円</td>
                                         </tr>
                                         <tr>
                                             <td>営業手当</td>
+                                            <td>円</td>
                                         </tr>
                                         <tr>
                                             <td>地域手当</td>
+                                            <td>円</td>
                                         </tr>
                                         <tr>
-                                            <td>特別作業手当</td>
+                                            <td>特別手当</td>
+                                            <td>円</td>
                                         </tr>
                                         <tr>
-                                            <td>特別技術手当</td>
+                                            <td>特別技技手当</td>
+                                            <td>円</td>
                                         </tr>
                                         <tr>
                                             <td>調整手当</td>
+                                            <td>円</td>
                                         </tr>
                                         <tr>
                                             <td>別居手当</td>
+                                            <td>円</td>
                                         </tr>
                                         <tr>
                                             <td>通勤手当</td>
+                                            <td>円</td>
                                         </tr>
                                         <tr>
                                             <td>小計①</td>
+                                            <td>円</td>
                                         </tr>
                                         <tr>
                                             <td>残業手当</td>
+                                            <td>円</td>
                                         </tr>
                                         <tr>
                                             <td>休出手当</td>
+                                            <td>円</td>
                                         </tr>
                                         <tr>
                                             <td>深夜勤務手当</td>
-                                        </tr>
-                                        <tr>
-                                            <td>深夜残業手当</td>
+                                            <td>円</td>
                                         </tr>
                                         <tr>
                                             <td>交代時差手当</td>
+                                            <td>円</td>
                                         </tr>
                                         <tr>
                                             <td>休業手当</td>
+                                            <td>円</td>
                                         </tr>
                                         <tr>
                                             <td>休業控除</td>
+                                            <td>円</td>
                                         </tr>
                                         <tr>
                                             <td>代休他</td>
+                                            <td>円</td>
                                         </tr>
                                         <tr>
                                             <td>欠勤・遅早控除</td>
+                                            <td>円</td>
                                         </tr>
                                         <tr>
                                             <td>精算分</td>
+                                            <td>円</td>
                                         </tr>
                                         <tr>
                                             <td>小計②</td>
+                                            <td>円</td>
                                         </tr>
                                         <tr>
                                             <td>総支給額</td>
+                                            <td>円</td>
                                         </tr>
                                         <tr>
                                             <td>応援時間額</td>
+                                            <td>円</td>
                                         </tr>
                                         <tr>
                                             <td>役員振替</td>
+                                            <td>円</td>
                                         </tr>
                                         <tr>
                                             <td>部門振替</td>
+                                            <td>円</td>
                                         </tr>
                                         <tr>
                                             <td>合計</td>
+                                            <td>円</td>
                                         </tr>
                                     </tbody>
                                 </table>
@@ -1150,81 +1082,99 @@
                                     <tbody>
                                         <tr>
                                             <td>在籍者</td>
+                                            <td>人</td>
                                         </tr>
                                         <tr>
                                             <td>在籍者係長以下</td>
-                                        </tr>
-                                        <tr>
-                                            <td>延在籍者</td>
+                                            <td>人</td>
                                         </tr>
                                         <tr>
                                             <td>実在籍者</td>
+                                            <td>人</td>
                                         </tr>
                                         <tr>
                                             <td>有給時間</td>
+                                            <td>H</td>
                                         </tr>
                                         <tr>
-                                            <td>在籍者平均</td>
+                                            <td>在籍者 平均</td>
+                                            <td>人</td>
                                         </tr>
                                         <tr>
                                             <td>欠勤時間</td>
+                                            <td>H</td>
                                         </tr>
                                         <tr>
                                             <td>勤務時間</td>
+                                            <td>H</td>
                                         </tr>
                                         <tr>
                                             <td>遅早時間</td>
+                                            <td>H</td>
                                         </tr>
                                         <tr>
-                                            <td>延出勤者</td>
-                                        </tr>
-                                        <tr>
-                                            <td>実出勤者</td>
-                                        </tr>
-                                        <tr>
-                                            <td>延出勤率A</td>
-                                        </tr>
-                                        <tr>
-                                            <td>実出勤率</td>
-                                        </tr>
-                                        <tr>
-                                            <td>延長欠者</td>
-                                        </tr>
-                                        <tr>
-                                            <td>延出勤率B</td>
-                                        </tr>
-                                        <tr>
-                                            <td>延労働時間</td>
+                                            <td>出勤率</td>
+                                            <td>%</td>
                                         </tr>
                                         <tr>
                                             <td>実労働時間</td>
+                                            <td>H</td>
                                         </tr>
                                         <tr>
                                             <td>休業日数</td>
+                                            <td>日</td>
                                         </tr>
                                         <tr>
                                             <td>ズレ時間</td>
+                                            <td>H</td>
                                         </tr>
                                         <tr>
                                             <td>残業時間</td>
+                                            <td>H</td>
                                         </tr>
                                         <tr>
-                                            <td>係長以下平均</td>
+                                            <td>係長以下 平均</td>
+                                            <td>H</td>
+                                        </tr>
+                                        <tr>
+                                            <td>法外休出時間</td>
+                                            <td>H</td>
+                                        </tr>
+                                        <tr>
+                                            <td>係長以下 平均</td>
+                                            <td>H</td>
+                                        </tr>
+                                        <tr>
+                                            <td>法定休出時間</td>
+                                            <td>H</td>
+                                        </tr>
+                                        <tr>
+                                            <td>係長以下 平均</td>
+                                            <td>H</td>
+                                        </tr>
+                                        <tr>
+                                            <td>時間外60時間超え</td>
+                                            <td>人</td>
                                         </tr>
                                         <tr>
                                             <td>休日出勤時間</td>
+                                            <td>H</td>
                                         </tr>
                                         <tr>
                                             <td>係長以下平均</td>
+                                            <td>H</td>
                                         </tr>
                                         <tr>
                                             <td>代休時間</td>
+                                            <td>H</td>
                                         </tr>
                                         <tr>
                                             <td>応接時間</td>
+                                            <td>H</td>
                                         </tr>
                                         <tr>
                                             <td>総労働時間</td>
+                                            <td>H</td>
                                         </tr>
                                     </tbody>
                                     <thead class="table-dark">
@@ -1244,81 +1194,107 @@
                                     <tbody>
                                         <tr>
                                             <td>基本給</td>
+                                            <td>円</td>
                                         </tr>
                                         <tr>
                                             <td>役職手当</td>
+                                            <td>円</td>
                                         </tr>
                                         <tr>
                                             <td>営業手当</td>
+                                            <td>円</td>
                                         </tr>
                                         <tr>
                                             <td>地域手当</td>
+                                            <td>円</td>
                                         </tr>
                                         <tr>
-                                            <td>特別作業手当</td>
+                                            <td>特別手当</td>
+                                            <td>円</td>
                                         </tr>
                                         <tr>
                                             <td>特別技術手当</td>
+                                            <td>円</td>
                                         </tr>
                                         <tr>
                                             <td>調整手当</td>
+                                            <td>円</td>
                                         </tr>
                                         <tr>
                                             <td>別居手当</td>
+                                            <td>円</td>
                                         </tr>
                                         <tr>
                                             <td>通勤手当</td>
+                                            <td>円</td>
                                         </tr>
                                         <tr>
                                             <td>小計①</td>
+                                            <td>円</td>
                                         </tr>
                                         <tr>
                                             <td>残業手当</td>
+                                            <td>円</td>
                                         </tr>
                                         <tr>
                                             <td>休出手当</td>
+                                            <td>円</td>
                                         </tr>
                                         <tr>
                                             <td>深夜勤務手当</td>
+                                            <td>円</td>
                                         </tr>
                                         <tr>
                                             <td>深夜残業手当</td>
+                                            <td>円</td>
                                         </tr>
                                         <tr>
                                             <td>交代時差手当</td>
+                                            <td>円</td>
                                         </tr>
                                         <tr>
                                             <td>休業手当</td>
+                                            <td>円</td>
                                         </tr>
                                         <tr>
                                             <td>休業控除</td>
+                                            <td>円</td>
                                         </tr>
                                         <tr>
                                             <td>代休他</td>
+                                            <td>円</td>
                                         </tr>
                                         <tr>
                                             <td>欠勤・遅早控除</td>
+                                            <td>円</td>
                                         </tr>
                                         <tr>
                                             <td>精算分</td>
+                                            <td>円</td>
                                         </tr>
                                         <tr>
                                             <td>小計②</td>
+                                            <td>円</td>
                                         </tr>
                                         <tr>
                                             <td>総支給額</td>
+                                            <td>円</td>
                                         </tr>
                                         <tr>
                                             <td>応援時間額</td>
+                                            <td>円</td>
                                         </tr>
                                         <tr>
                                             <td>役員振替</td>
+                                            <td>円</td>
                                         </tr>
                                         <tr>
                                             <td>部門振替</td>
+                                            <td>円</td>
                                         </tr>
                                         <tr>
                                             <td>合計</td>
+                                            <td>円</td>
                                         </tr>
                                     </tbody>
                                 </table>
@@ -1343,81 +1319,98 @@
                                     <tbody>
                                         <tr>
                                             <td>在籍者</td>
+                                            <td>人</td>
                                         </tr>
                                         <tr>
-                                            <td>在籍者係長以下</td>
-                                        </tr>
-                                        <tr>
-                                            <td>延在籍者</td>
+                                            <td>在籍者 係長以下</td>
+                                            <td>人</td>
                                         </tr>
                                         <tr>
                                             <td>実在籍者</td>
+                                            <td>人</td>
                                         </tr>
                                         <tr>
                                             <td>有給時間</td>
+                                            <td>H</td>
                                         </tr>
                                         <tr>
-                                            <td>在籍者平均</td>
+                                            <td>在籍者 平均</td>
+                                            <td>H</td>
                                         </tr>
                                         <tr>
                                             <td>欠勤時間</td>
+                                            <td>H</td>
                                         </tr>
                                         <tr>
                                             <td>勤務時間</td>
+                                            <td>H</td>
                                         </tr>
                                         <tr>
                                             <td>遅早時間</td>
+                                            <td>H</td>
                                         </tr>
                                         <tr>
-                                            <td>延出勤者</td>
-                                        </tr>
-                                        <tr>
-                                            <td>実出勤者</td>
-                                        </tr>
-                                        <tr>
-                                            <td>延出勤率A</td>
-                                        </tr>
-                                        <tr>
-                                            <td>実出勤率</td>
-                                        </tr>
-                                        <tr>
-                                            <td>延長欠者</td>
-                                        </tr>
-                                        <tr>
-                                            <td>延出勤率B</td>
-                                        </tr>
-                                        <tr>
-                                            <td>延労働時間</td>
+                                            <td>出勤率</td>
+                                            <td>%</td>
                                         </tr>
                                         <tr>
                                             <td>実労働時間</td>
+                                            <td>H</td>
                                         </tr>
                                         <tr>
                                             <td>休業日数</td>
+                                            <td>日</td>
                                         </tr>
                                         <tr>
                                             <td>ズレ時間</td>
+                                            <td>H</td>
                                         </tr>
                                         <tr>
                                             <td>残業時間</td>
+                                            <td>H</td>
                                         </tr>
                                         <tr>
-                                            <td>係長以下平均</td>
+                                            <td>係長以下 平均</td>
+                                        </tr>
+                                        <tr>
+                                            <td>法外休出時間</td>
+                                            <td>H</td>
+                                        </tr>
+                                        <tr>
+                                            <td>係長以下 平均</td>
+                                            <td>H</td>
+                                        </tr>
+                                        <tr>
+                                            <td>法定休出時間</td>
+                                            <td>H</td>
+                                        </tr>
+                                        <tr>
+                                            <td>係長以下 平均</td>
+                                            <td>H</td>
+                                        </tr>
+                                        <tr>
+                                            <td>時間外60時間超え</td>
+                                            <td>H</td>
                                         </tr>
                                         <tr>
                                             <td>休日出勤時間</td>
+                                            <td>H</td>
                                         </tr>
                                         <tr>
-                                            <td>係長以下平均</td>
+                                            <td>係長以下 平均</td>
+                                            <td>H</td>
                                         </tr>
                                         <tr>
                                             <td>代休時間</td>
+                                            <td>H</td>
                                         </tr>
                                         <tr>
                                             <td>応接時間</td>
+                                            <td>H</td>
                                         </tr>
                                         <tr>
                                             <td>総労働時間</td>
+                                            <td>H</td>
                                         </tr>
                                     </tbody>
                                     <thead class="table-dark">
@@ -1435,81 +1428,103 @@
                                     <tbody>
                                         <tr>
                                             <td>基本給</td>
+                                            <td>円</td>
                                         </tr>
                                         <tr>
                                             <td>役職手当</td>
+                                            <td>円</td>
                                         </tr>
                                         <tr>
                                             <td>営業手当</td>
+                                            <td>円</td>
                                         </tr>
                                         <tr>
                                             <td>地域手当</td>
+                                            <td>円</td>
                                         </tr>
                                         <tr>
-                                            <td>特別作業手当</td>
+                                            <td>特別手当</td>
+                                            <td>円</td>
                                         </tr>
                                         <tr>
-                                            <td>特別技術手当</td>
+                                            <td>特別技技手当</td>
+                                            <td>円</td>
                                         </tr>
                                         <tr>
                                             <td>調整手当</td>
+                                            <td>円</td>
                                         </tr>
                                         <tr>
                                             <td>別居手当</td>
+                                            <td>円</td>
                                         </tr>
                                         <tr>
                                             <td>通勤手当</td>
+                                            <td>円</td>
                                         </tr>
                                         <tr>
                                             <td>小計①</td>
+                                            <td>円</td>
                                         </tr>
                                         <tr>
                                             <td>残業手当</td>
+                                            <td>円</td>
                                         </tr>
                                         <tr>
                                             <td>休出手当</td>
+                                            <td>円</td>
                                         </tr>
                                         <tr>
                                             <td>深夜勤務手当</td>
-                                        </tr>
-                                        <tr>
-                                            <td>深夜残業手当</td>
+                                            <td>円</td>
                                         </tr>
                                         <tr>
                                             <td>交代時差手当</td>
+                                            <td>円</td>
                                         </tr>
                                         <tr>
                                             <td>休業手当</td>
+                                            <td>円</td>
                                         </tr>
                                         <tr>
                                             <td>休業控除</td>
+                                            <td>円</td>
                                         </tr>
                                         <tr>
                                             <td>代休他</td>
+                                            <td>円</td>
                                         </tr>
                                         <tr>
                                             <td>欠勤・遅早控除</td>
+                                            <td>円</td>
                                         </tr>
                                         <tr>
                                             <td>精算分</td>
+                                            <td>円</td>
                                         </tr>
                                         <tr>
                                             <td>小計②</td>
+                                            <td>円</td>
                                         </tr>
                                         <tr>
                                             <td>総支給額</td>
+                                            <td>円</td>
                                         </tr>
                                         <tr>
                                             <td>応援時間額</td>
+                                            <td>円</td>
                                         </tr>
                                         <tr>
                                             <td>役員振替</td>
+                                            <td>円</td>
                                         </tr>
                                         <tr>
                                             <td>部門振替</td>
+                                            <td>円</td>
                                         </tr>
                                         <tr>
                                             <td>合計</td>
+                                            <td>円</td>
                                         </tr>
                                     </tbody>
                                 </table>
@@ -1535,81 +1550,94 @@
                                     <tbody>
                                         <tr>
                                             <td>在籍者</td>
+                                            <td>人</td>
                                         </tr>
                                         <tr>
-                                            <td>在籍者係長以下</td>
-                                        </tr>
-                                        <tr>
-                                            <td>延在籍者</td>
+                                            <td>在籍者 係長以下</td>
+                                            <td>人</td>
                                         </tr>
                                         <tr>
                                             <td>実在籍者</td>
+                                            <td>人</td>
                                         </tr>
                                         <tr>
                                             <td>有給時間</td>
+                                            <td>H</td>
                                         </tr>
                                         <tr>
-                                            <td>在籍者平均</td>
+                                            <td>在籍者 平均</td>
+                                            <td>H</td>
                                         </tr>
                                         <tr>
                                             <td>欠勤時間</td>
+                                            <td>H</td>
                                         </tr>
                                         <tr>
                                             <td>勤務時間</td>
+                                            <td>H</td>
                                         </tr>
                                         <tr>
                                             <td>遅早時間</td>
+                                            <td>H</td>
                                         </tr>
                                         <tr>
-                                            <td>延出勤者</td>
-                                        </tr>
-                                        <tr>
-                                            <td>実出勤者</td>
-                                        </tr>
-                                        <tr>
-                                            <td>延出勤率A</td>
-                                        </tr>
-                                        <tr>
-                                            <td>実出勤率</td>
-                                        </tr>
-                                        <tr>
-                                            <td>延長欠者</td>
-                                        </tr>
-                                        <tr>
-                                            <td>延出勤率B</td>
-                                        </tr>
-                                        <tr>
-                                            <td>延労働時間</td>
+                                            <td>出勤率</td>
+                                            <td>%</td>
                                         </tr>
                                         <tr>
                                             <td>実労働時間</td>
+                                            <td>H</td>
                                         </tr>
                                         <tr>
                                             <td>休業日数</td>
+                                            <td>日</td>
                                         </tr>
                                         <tr>
                                             <td>ズレ時間</td>
+                                            <td>H</td>
                                         </tr>
                                         <tr>
                                             <td>残業時間</td>
+                                            <td>H</td>
+                                        </tr>
+                                        <tr>
+                                            <td>係長以下 平均</td>
+                                        </tr>
+                                        <tr>
+                                            <td>法外休出時間</td>
+                                            <td>H</td>
+                                        </tr>
+                                        <tr>
+                                            <td>係長以下 平均</td>
+                                            <td>H</td>
+                                        </tr>
+                                        <tr>
+                                            <td>法定休出時間</td>
+                                            <td>H</td>
+                                        </tr>
+                                        <tr>
+                                            <td>係長以下 平均</td>
+                                            <td>H</td>
+                                        </tr>
+                                        <tr>
+                                            <td>時間外60時間超え</td>
+                                            <td>人</td>
                                         </tr>
                                         <tr>
                                             <td>係長以下平均</td>
-                                        </tr>
-                                        <tr>
-                                            <td>休日出勤時間</td>
-                                        </tr>
-                                        <tr>
-                                            <td>係長以下平均</td>
+                                            <td>H</td>
                                         </tr>
                                         <tr>
                                             <td>代休時間</td>
+                                            <td>H</td>
                                         </tr>
                                         <tr>
                                             <td>応接時間</td>
+                                            <td>H</td>
                                         </tr>
                                         <tr>
                                             <td>総労働時間</td>
+                                            <td>H</td>
                                         </tr>
                                     </tbody>
                                     <thead class="table-dark">
@@ -1628,81 +1656,103 @@
                                     <tbody>
                                         <tr>
                                             <td>基本給</td>
+                                            <td>円</td>
                                         </tr>
                                         <tr>
                                             <td>役職手当</td>
+                                            <td>円</td>
                                         </tr>
                                         <tr>
                                             <td>営業手当</td>
+                                            <td>円</td>
                                         </tr>
                                         <tr>
                                             <td>地域手当</td>
+                                            <td>円</td>
                                         </tr>
                                         <tr>
-                                            <td>特別作業手当</td>
+                                            <td>特別手当</td>
+                                            <td>円</td>
                                         </tr>
                                         <tr>
-                                            <td>特別技術手当</td>
+                                            <td>特別技技手当</td>
+                                            <td>円</td>
                                         </tr>
                                         <tr>
                                             <td>調整手当</td>
+                                            <td>円</td>
                                         </tr>
                                         <tr>
                                             <td>別居手当</td>
+                                            <td>円</td>
                                         </tr>
                                         <tr>
                                             <td>通勤手当</td>
+                                            <td>円</td>
                                         </tr>
                                         <tr>
                                             <td>小計①</td>
+                                            <td>円</td>
                                         </tr>
                                         <tr>
                                             <td>残業手当</td>
+                                            <td>円</td>
                                         </tr>
                                         <tr>
                                             <td>休出手当</td>
+                                            <td>円</td>
                                         </tr>
                                         <tr>
                                             <td>深夜勤務手当</td>
-                                        </tr>
-                                        <tr>
-                                            <td>深夜残業手当</td>
+                                            <td>円</td>
                                         </tr>
                                         <tr>
                                             <td>交代時差手当</td>
+                                            <td>円</td>
                                         </tr>
                                         <tr>
                                             <td>休業手当</td>
+                                            <td>円</td>
                                         </tr>
                                         <tr>
                                             <td>休業控除</td>
+                                            <td>円</td>
                                         </tr>
                                         <tr>
                                             <td>代休他</td>
+                                            <td>円</td>
                                         </tr>
                                         <tr>
                                             <td>欠勤・遅早控除</td>
+                                            <td>円</td>
                                         </tr>
                                         <tr>
                                             <td>精算分</td>
+                                            <td>円</td>
                                         </tr>
                                         <tr>
                                             <td>小計②</td>
+                                            <td>円</td>
                                         </tr>
                                         <tr>
                                             <td>総支給額</td>
+                                            <td>円</td>
                                         </tr>
                                         <tr>
                                             <td>応援時間額</td>
+                                            <td>円</td>
                                         </tr>
                                         <tr>
                                             <td>役員振替</td>
+                                            <td>円</td>
                                         </tr>
                                         <tr>
                                             <td>部門振替</td>
+                                            <td>円</td>
                                         </tr>
                                         <tr>
                                             <td>合計</td>
+                                            <td>円</td>
                                         </tr>
                                     </tbody>
                                 </table>
@@ -1726,81 +1776,98 @@
                                     <tbody>
                                         <tr>
                                             <td>在籍者</td>
+                                            <td>人</td>
                                         </tr>
                                         <tr>
-                                            <td>在籍者係長以下</td>
-                                        </tr>
-                                        <tr>
-                                            <td>延在籍者</td>
+                                            <td>在籍者係長 以下</td>
+                                            <td>人</td>
                                         </tr>
                                         <tr>
                                             <td>実在籍者</td>
+                                            <td>人</td>
                                         </tr>
                                         <tr>
                                             <td>有給時間</td>
+                                            <td>H</td>
                                         </tr>
                                         <tr>
-                                            <td>在籍者平均</td>
+                                            <td>在籍者 平均</td>
+                                            <td>H</td>
                                         </tr>
                                         <tr>
                                             <td>欠勤時間</td>
+                                            <td>H</td>
                                         </tr>
                                         <tr>
                                             <td>勤務時間</td>
+                                            <td>H</td>
                                         </tr>
                                         <tr>
                                             <td>遅早時間</td>
+                                            <td>H</td>
                                         </tr>
                                         <tr>
-                                            <td>延出勤者</td>
-                                        </tr>
-                                        <tr>
-                                            <td>実出勤者</td>
-                                        </tr>
-                                        <tr>
-                                            <td>延出勤率A</td>
-                                        </tr>
-                                        <tr>
-                                            <td>実出勤率</td>
-                                        </tr>
-                                        <tr>
-                                            <td>延長欠者</td>
-                                        </tr>
-                                        <tr>
-                                            <td>延出勤率B</td>
-                                        </tr>
-                                        <tr>
-                                            <td>延労働時間</td>
+                                            <td>出勤率</td>
+                                            <td>%</td>
                                         </tr>
                                         <tr>
                                             <td>実労働時間</td>
+                                            <td>H</td>
                                         </tr>
                                         <tr>
                                             <td>休業日数</td>
+                                            <td>日</td>
                                         </tr>
                                         <tr>
                                             <td>ズレ時間</td>
+                                            <td>H</td>
                                         </tr>
                                         <tr>
                                             <td>残業時間</td>
+                                            <td>H</td>
                                         </tr>
                                         <tr>
-                                            <td>係長以下平均</td>
+                                            <td>係長以下 平均</td>
+                                            <td>H</td>
+                                        </tr>
+                                        <tr>
+                                            <td>法外休出時間</td>
+                                            <td>H</td>
+                                        </tr>
+                                        <tr>
+                                            <td>係長以下 平均</td>
+                                            <td>H</td>
+                                        </tr>
+                                        <tr>
+                                            <td>法定休出時間</td>
+                                            <td>H</td>
+                                        </tr>
+                                        <tr>
+                                            <td>係長以下 平均</td>
+                                            <td>H</td>
+                                        </tr>
+                                        <tr>
+                                            <td>時間外60時間超え</td>
+                                            <td>人</td>
                                         </tr>
                                         <tr>
                                             <td>休日出勤時間</td>
+                                            <td>H</td>
                                         </tr>
                                         <tr>
-                                            <td>係長以下平均</td>
+                                            <td>係長以下 平均</td>
                                         </tr>
                                         <tr>
                                             <td>代休時間</td>
+                                            <td>H</td>
                                         </tr>
                                         <tr>
-                                            <td>応接時間</td>
+                                            <td>応援時間</td>
+                                            <td>H</td>
                                         </tr>
                                         <tr>
                                             <td>総労働時間</td>
+                                            <td>H</td>
                                         </tr>
                                     </tbody>
                                     <thead class="table-dark">
@@ -1817,81 +1884,103 @@
                                     <tbody>
                                         <tr>
                                             <td>基本給</td>
+                                            <td>円</td>
                                         </tr>
                                         <tr>
                                             <td>役職手当</td>
+                                            <td>円</td>
                                         </tr>
                                         <tr>
                                             <td>営業手当</td>
+                                            <td>円</td>
                                         </tr>
                                         <tr>
                                             <td>地域手当</td>
+                                            <td>円</td>
                                         </tr>
                                         <tr>
-                                            <td>特別作業手当</td>
+                                            <td>特別手当</td>
+                                            <td>円</td>
                                         </tr>
                                         <tr>
-                                            <td>特別技術手当</td>
+                                            <td>特別技技手当</td>
+                                            <td>円</td>
                                         </tr>
                                         <tr>
                                             <td>調整手当</td>
+                                            <td>円</td>
                                         </tr>
                                         <tr>
                                             <td>別居手当</td>
+                                            <td>円</td>
                                         </tr>
                                         <tr>
                                             <td>通勤手当</td>
+                                            <td>円</td>
                                         </tr>
                                         <tr>
                                             <td>小計①</td>
+                                            <td>円</td>
                                         </tr>
                                         <tr>
                                             <td>残業手当</td>
+                                            <td>円</td>
                                         </tr>
                                         <tr>
                                             <td>休出手当</td>
+                                            <td>円</td>
                                         </tr>
                                         <tr>
                                             <td>深夜勤務手当</td>
-                                        </tr>
-                                        <tr>
-                                            <td>深夜残業手当</td>
+                                            <td>円</td>
                                         </tr>
                                         <tr>
                                             <td>交代時差手当</td>
+                                            <td>円</td>
                                         </tr>
                                         <tr>
                                             <td>休業手当</td>
+                                            <td>円</td>
                                         </tr>
                                         <tr>
                                             <td>休業控除</td>
+                                            <td>円</td>
                                         </tr>
                                         <tr>
                                             <td>代休他</td>
+                                            <td>円</td>
                                         </tr>
                                         <tr>
                                             <td>欠勤・遅早控除</td>
+                                            <td>円</td>
                                         </tr>
                                         <tr>
                                             <td>精算分</td>
+                                            <td>円</td>
                                         </tr>
                                         <tr>
                                             <td>小計②</td>
+                                            <td>円</td>
                                         </tr>
                                         <tr>
                                             <td>総支給額</td>
+                                            <td>円</td>
                                         </tr>
                                         <tr>
                                             <td>応援時間額</td>
+                                            <td>円</td>
                                         </tr>
                                         <tr>
                                             <td>役員振替</td>
+                                            <td>円</td>
                                         </tr>
                                         <tr>
                                             <td>部門振替</td>
+                                            <td>円</td>
                                         </tr>
                                         <tr>
                                             <td>合計</td>
+                                            <td>円</td>
                                         </tr>
                                     </tbody>
                                 </table>
@@ -1912,81 +2001,102 @@
                                     <tbody>
                                         <tr>
                                             <td>在籍者</td>
+                                            <td>人</td>
                                         </tr>
                                         <tr>
-                                            <td>在籍者係長以下</td>
-                                        </tr>
-                                        <tr>
-                                            <td>延在籍者</td>
+                                            <td>在籍者係長 以下</td>
+                                            <td>人</td>
                                         </tr>
                                         <tr>
                                             <td>実在籍者</td>
+                                            <td>人</td>
                                         </tr>
                                         <tr>
                                             <td>有給時間</td>
+                                            <td>H</td>
                                         </tr>
                                         <tr>
-                                            <td>在籍者平均</td>
+                                            <td>在籍者 平均</td>
+                                            <td>H</td>
                                         </tr>
                                         <tr>
                                             <td>欠勤時間</td>
+                                            <td>H</td>
                                         </tr>
                                         <tr>
                                             <td>勤務時間</td>
+                                            <td>H</td>
                                         </tr>
                                         <tr>
                                             <td>遅早時間</td>
+                                            <td>H</td>
                                         </tr>
                                         <tr>
-                                            <td>延出勤者</td>
+                                            <td>出勤者</td>
+                                            <td>人</td>
                                         </tr>
                                         <tr>
-                                            <td>実出勤者</td>
-                                        </tr>
-                                        <tr>
-                                            <td>延出勤率A</td>
-                                        </tr>
-                                        <tr>
-                                            <td>実出勤率</td>
-                                        </tr>
-                                        <tr>
-                                            <td>延長欠者</td>
-                                        </tr>
-                                        <tr>
-                                            <td>延出勤率B</td>
-                                        </tr>
-                                        <tr>
-                                            <td>延労働時間</td>
+                                            <td>出勤率</td>
+                                            <td>%</td>
                                         </tr>
                                         <tr>
                                             <td>実労働時間</td>
+                                            <td>H</td>
                                         </tr>
                                         <tr>
                                             <td>休業日数</td>
+                                            <td>日</td>
                                         </tr>
                                         <tr>
                                             <td>ズレ時間</td>
+                                            <td>H</td>
                                         </tr>
                                         <tr>
                                             <td>残業時間</td>
+                                            <td>H</td>
                                         </tr>
                                         <tr>
-                                            <td>係長以下平均</td>
+                                            <td>係長以下 平均</td>
+                                        </tr>
+                                        <tr>
+                                            <td>法外休出時間</td>
+                                            <td>H</td>
+                                        </tr>
+                                        <tr>
+                                            <td>係長以下 平均</td>
+                                            <td>H</td>
+                                        </tr>
+                                        <tr>
+                                            <td>法定休出時間</td>
+                                            <td>H</td>
+                                        </tr>
+                                        <tr>
+                                            <td>係長以下 平均</td>
+                                            <td>H</td>
+                                        </tr>
+                                        <tr>
+                                            <td>時間外60時間超え</td>
+                                            <td>人</td>
                                         </tr>
                                         <tr>
                                             <td>休日出勤時間</td>
+                                            <td>H</td>
                                         </tr>
                                         <tr>
-                                            <td>係長以下平均</td>
+                                            <td>係長以下 平均</td>
+                                            <td>H</td>
                                         </tr>
                                         <tr>
                                             <td>代休時間</td>
+                                            <td>H</td>
                                         </tr>
                                         <tr>
                                             <td>応接時間</td>
+                                            <td>H</td>
                                         </tr>
                                         <tr>
                                             <td>総労働時間</td>
+                                            <td>H</td>
                                         </tr>
                                     </tbody>
                                     <thead class="table-dark">
@@ -2000,260 +2110,103 @@
                                     <tbody>
                                         <tr>
                                             <td>基本給</td>
+                                            <td>円</td>
                                         </tr>
                                         <tr>
                                             <td>役職手当</td>
+                                            <td>円</td>
                                         </tr>
                                         <tr>
                                             <td>営業手当</td>
+                                            <td>円</td>
                                         </tr>
                                         <tr>
                                             <td>地域手当</td>
+                                            <td>円</td>
                                         </tr>
                                         <tr>
-                                            <td>特別作業手当</td>
+                                            <td>特別手当</td>
+                                            <td>円</td>
                                         </tr>
                                         <tr>
-                                            <td>特別技術手当</td>
-                                        </tr>
-                                        <tr>
-                                            <td>調整手当</td>
-                                        </tr>
-                                        <tr>
-                                            <td>別居手当</td>
-                                        </tr>
-                                        <tr>
-                                            <td>通勤手当</td>
-                                        </tr>
-                                        <tr>
-                                            <td>小計①</td>
-                                        </tr>
-                                        <tr>
-                                            <td>残業手当</td>
-                                        </tr>
-                                        <tr>
-                                            <td>休出手当</td>
-                                        </tr>
-                                        <tr>
-                                            <td>深夜勤務手当</td>
-                                        </tr>
-                                        <tr>
-                                            <td>深夜残業手当</td>
-                                        </tr>
-                                        <tr>
-                                            <td>交代時差手当</td>
-                                        </tr>
-                                        <tr>
-                                            <td>休業手当</td>
-                                        </tr>
-                                        <tr>
-                                            <td>休業控除</td>
-                                        </tr>
-                                        <tr>
-                                            <td>代休他</td>
-                                        </tr>
-                                        <tr>
-                                            <td>欠勤・遅早控除</td>
-                                        </tr>
-                                        <tr>
-                                            <td>精算分</td>
-                                        </tr>
-                                        <tr>
-                                            <td>小計②</td>
-                                        </tr>
-                                        <tr>
-                                            <td>総支給額</td>
-                                        </tr>
-                                        <tr>
-                                            <td>応援時間額</td>
-                                        </tr>
-                                        <tr>
-                                            <td>役員振替</td>
-                                        </tr>
-                                        <tr>
-                                            <td>部門振替</td>
-                                        </tr>
-                                        <tr>
-                                            <td>合計</td>
-                                        </tr>
-                                    </tbody>
-                                </table>
-                            </ul>
-                            <li>
-                                <a data-toggle="collapse" href="#menu09" aria-controls="#menu09" aria-expanded="false">生産技術</a>
-                            </li>
-                            <ul id="menu09" class="collapse" data-parent="#accordion_menu">
-                                <table class="table table-striped" data-sheet-name="生産技術集計表">
-                                    <thead class="table-dark">
-                                        <th scope="col">項目</th>
-                                        <th scope="col">間接⑤</th>
-                                        <th scope="col">間接計</th>
-                                        <th scope="col">合計</th>
-                                    </thead>
-                                    <tbody>
-                                        <tr>
-                                            <td>在籍者</td>
-                                        </tr>
-                                        <tr>
-                                            <td>在籍者係長以下</td>
-                                        </tr>
-                                        <tr>
-                                            <td>延在籍者</td>
-                                        </tr>
-                                        <tr>
-                                            <td>実在籍者</td>
-                                        </tr>
-                                        <tr>
-                                            <td>有給時間</td>
-                                        </tr>
-                                        <tr>
-                                            <td>在籍者平均</td>
-                                        </tr>
-                                        <tr>
-                                            <td>欠勤時間</td>
-                                        </tr>
-                                        <tr>
-                                            <td>勤務時間</td>
-                                        </tr>
-                                        <tr>
-                                            <td>遅早時間</td>
-                                        </tr>
-                                        <tr>
-                                            <td>延出勤者</td>
-                                        </tr>
-                                        <tr>
-                                            <td>実出勤者</td>
-                                        </tr>
-                                        <tr>
-                                            <td>延出勤率A</td>
-                                        </tr>
-                                        <tr>
-                                            <td>実出勤率</td>
-                                        </tr>
-                                        <tr>
-                                            <td>延長欠者</td>
-                                        </tr>
-                                        <tr>
-                                            <td>延出勤率B</td>
-                                        </tr>
-                                        <tr>
-                                            <td>延労働時間</td>
-                                        </tr>
-                                        <tr>
-                                            <td>実労働時間</td>
-                                        </tr>
-                                        <tr>
-                                            <td>休業日数</td>
-                                        </tr>
-                                        <tr>
-                                            <td>ズレ時間</td>
-                                        </tr>
-                                        <tr>
-                                            <td>残業時間</td>
-                                        </tr>
-                                        <tr>
-                                            <td>係長以下平均</td>
-                                        </tr>
-                                        <tr>
-                                            <td>休日出勤時間</td>
-                                        </tr>
-                                        <tr>
-                                            <td>係長以下平均</td>
-                                        </tr>
-                                        <tr>
-                                            <td>代休時間</td>
-                                        </tr>
-                                        <tr>
-                                            <td>応接時間</td>
-                                        </tr>
-                                        <tr>
-                                            <td>総労働時間</td>
-                                        </tr>
-                                    </tbody>
-                                    <thead class="table-dark">
-                                        <th scope="col">項目</th>
-                                        <th scope="col">間接⑤</th>
-                                        <th scope="col">間接計</th>
-                                        <th scope="col">合計</th>
-                                    </thead>
-                                    <tbody>
-                                        <tr>
-                                            <td>基本給</td>
-                                        </tr>
-                                        <tr>
-                                            <td>役職手当</td>
-                                        </tr>
-                                        <tr>
-                                            <td>営業手当</td>
-                                        </tr>
-                                        <tr>
-                                            <td>地域手当</td>
-                                        </tr>
-                                        <tr>
-                                            <td>特別作業手当</td>
-                                        </tr>
-                                        <tr>
-                                            <td>特別技術手当</td>
+                                            <td>特別技技手当</td>
+                                            <td>円</td>
                                         </tr>
                                         <tr>
                                             <td>調整手当</td>
+                                            <td>円</td>
                                         </tr>
                                         <tr>
                                             <td>別居手当</td>
+                                            <td>円</td>
                                         </tr>
                                         <tr>
                                             <td>通勤手当</td>
+                                            <td>円</td>
                                         </tr>
                                         <tr>
                                             <td>小計①</td>
+                                            <td>円</td>
                                         </tr>
                                         <tr>
                                             <td>残業手当</td>
+                                            <td>円</td>
                                         </tr>
                                         <tr>
                                             <td>休出手当</td>
+                                            <td>円</td>
                                         </tr>
                                         <tr>
                                             <td>深夜勤務手当</td>
-                                        </tr>
-                                        <tr>
-                                            <td>深夜残業手当</td>
+                                            <td>円</td>
                                         </tr>
                                         <tr>
                                             <td>交代時差手当</td>
+                                            <td>円</td>
                                         </tr>
                                         <tr>
                                             <td>休業手当</td>
+                                            <td>円</td>
                                         </tr>
                                         <tr>
                                             <td>休業控除</td>
+                                            <td>円</td>
                                         </tr>
                                         <tr>
                                             <td>代休他</td>
+                                            <td>円</td>
                                         </tr>
                                         <tr>
                                             <td>欠勤・遅早控除</td>
+                                            <td>円</td>
                                         </tr>
                                         <tr>
                                             <td>精算分</td>
+                                            <td>円</td>
                                         </tr>
                                         <tr>
                                             <td>小計②</td>
+                                            <td>円</td>
                                         </tr>
                                         <tr>
                                             <td>総支給額</td>
+                                            <td>円</td>
                                         </tr>
                                         <tr>
                                             <td>応援時間額</td>
+                                            <td>円</td>
                                         </tr>
                                         <tr>
                                             <td>役員振替</td>
+                                            <td>円</td>
                                         </tr>
                                         <tr>
                                             <td>部門振替</td>
+                                            <td>円</td>
                                         </tr>
                                         <tr>
                                             <td>合計</td>
+                                            <td>円</td>
                                         </tr>
                                     </tbody>
                                 </table>
@@ -2261,7 +2214,11 @@
                         </ul>
                     </div>
                     <div id="payroll4" style="display:none;">
-                        <table class="table table-striped" data-sheet-name="賞与集計表">
+                        <div>
+                            <button onclick="add()">行追加</button>
+                            <button onclick="del()">行削除</button>
+                        </div>
+                        <table class="table table-striped" id="tbl" data-sheet-name="賞与集計表">
                             <thead class="table-dark">
                                 <th scope="col">項目</th>
                                 <th scope="col">役員</th>
@@ -2275,59 +2232,75 @@
                             <tbody>
                                 <tr class="table-secondary">
                                     <td>人員</td>
+                                    <td>人</td>
                                 </tr>
                                 <tr class="table-light">
+                                    <td>一律分</td>
+                                    <td>円</td>
                                 </tr>
                                 <tr class="table-light">
                                     <td>在年分</td>
-                                </tr>
-                                <tr class="table-light">
-                                    <td>出勤分</td>
+                                    <td>円</td>
                                 </tr>
                                 <tr class="table-light">
                                     <td>考果分</td>
+                                    <td>円</td>
                                 </tr>
                                 <tr class="table-light">
                                     <td>特査分</td>
+                                    <td>円</td>
                                 </tr>
                                 <tr class="table-info">
                                     <td>総支給額</td>
+                                    <td>円</td>
                                 </tr>
                                 <tr class="table-light">
                                     <td>健康保険</td>
+                                    <td>円</td>
                                 </tr>
                                 <tr class="table-light">
                                     <td>厚生年金保険</td>
+                                    <td>円</td>
                                 </tr>
                                 <tr class="table-light">
                                     <td>雇用保険</td>
+                                    <td>円</td>
                                 </tr>
                                 <tr class="table-light">
                                     <td>所得税</td>
+                                    <td>円</td>
                                 </tr>
                                 <tr class="table-light">
                                     <td>財形預金</td>
+                                    <td>円</td>
                                 </tr>
                                 <tr class="table-light">
                                     <td>生命保険</td>
+                                    <td>円</td>
                                 </tr>
                                 <tr class="table-light">
                                     <td>自動車保険</td>
+                                    <td>円</td>
                                 </tr>
                                 <tr class="table-light">
                                     <td>労金</td>
+                                    <td>円</td>
                                 </tr>
                                 <tr class="table-info">
                                     <td>控除計</td>
+                                    <td>円</td>
                                 </tr>
                                 <tr class="table-danger">
                                     <td>差引支給額</td>
+                                    <td>円</td>
                                 </tr>
                                 <tr class="table-danger">
                                     <td>現金支給</td>
+                                    <td>円</td>
                                 </tr>
                                 <tr class="table-danger">
                                     <td>振込支給</td>
+                                    <td>円</td>
                                 </tr>
                             </tbody>
                         </table>
@@ -2340,10 +2313,10 @@
                     <div id="payroll6" style="display:none;">
                         <ul id="accordion_menu_1">
                             <li>
-                                <a data-toggle="collapse" href="#menu11" aria-controls="#menu11" aria-expanded="false">一般管理</a>
+                                <a data-toggle="collapse" href="#menu11" aria-controls="#menu11" aria-expanded="false">社会保険集計</a>
                             </li>
                             <ul id="menu11" class="collapse" data-parent="#accordion_menu_1">
-                                <table class="table table-striped" data-sheet-name="社会保険一般管理集計表">
+                                <table class="table table-striped" data-sheet-name="社会保険集計">
                                     <thead class="table-dark">
                                         <th scope="col"></th>
                                         <th scope="col"></th>
