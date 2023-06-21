@@ -51,7 +51,7 @@ function makeCSV(csvdata) {
     var htmldata = "<table>";
 
     //6: 1行のデータから各項目（各列）のデータを取りだして、2次元配列にする
-    var data = [];
+    var data = []; // 配列の初期化
 
     for (var i = 0; i < tmp.length; i++) {
         //csvの1行のデータを取り出す
