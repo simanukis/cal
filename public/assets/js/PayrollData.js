@@ -54,8 +54,11 @@ function makeCSV(csvdata) {
     var data = []; // 配列の初期化
 
     for (var i = 0; i < tmp.length; i++) {
-        //csvの1行のデータを取り出す
+        // csvの1行のデータを取り出す
         var row_data = tmp[i];
+
+        //csvの目的のデータを取り出す
+        // var target_data = target_tmp[i];
 
         /*各行の列のデータを配列にする
         data[
@@ -65,6 +68,8 @@ function makeCSV(csvdata) {
             ]
         */
         data[i] = row_data.split(",");
+        // data[i] = target_data.split(",");
+
         //7:dataに入ってる各列のデータを出力する為のデータを作る
         htmldata += "<tr>";
         for (var j = 0; j < data[i].length; j++) {

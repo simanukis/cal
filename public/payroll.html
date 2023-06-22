@@ -30,6 +30,10 @@
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
 
+    <!-- PyScript -->
+    <link rel="stylesheet" href="https://pyscript.net/alpha/pyscript.css" />
+    <script defer src="https://pyscript.net/alpha/pyscript.js"></script>
+
     <style type="text/css">
         ul,
         li {
@@ -230,6 +234,11 @@
                         </div>
                     </div>
                 </form>
+
+                <py-script>
+                    import datetime pyscript.write('current_time', datetime.datetime.now())
+                </py-script>
+
                 <ul>
                     <div id="payroll1">
                         <table class="table table-striped" data-sheet-name="給与集計表">
@@ -246,7 +255,6 @@
                             <tbody>
                                 <tr class="table-secondary">
                                     <td>在籍者</td>
-                                    <script defer src="assets/js/PayrollData.js"></script>
                                 </tr>
                                 <tr class="table-light">
                                     <td>基本給</td>
