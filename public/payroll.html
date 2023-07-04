@@ -34,6 +34,9 @@
     <link rel="stylesheet" href="https://pyscript.net/alpha/pyscript.css" />
     <script defer src="https://pyscript.net/alpha/pyscript.js"></script>
 
+    <!-- 給与集計データの読込 -->
+    <script defer src="assets/js/PayrollData.js"></script>
+
     <style type="text/css">
         ul,
         li {
@@ -2841,14 +2844,7 @@
                         </table>
                     </div>
                     <div id="payroll8" style="display:none;">
-                        <table class="table table-striped" data-sheet-name="社員情報更新">
-                            <thead class="table-dark">
-                                <!-- <th scope="col">所属/社員コード/所属名/人数</th> -->
-                            </thead>
-                            <tbody>
-                                <div id="userCsvTable"></div>
-                            </tbody>
-                        </table>
+                        <div id="resulttable"></div>
                     </div>
                 </ul>
                 <!-- /Payroll -->
@@ -2883,8 +2879,6 @@
     <script async src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-daterangepicker/3.0.5/daterangepicker.min.js"></script>
     <!-- Custom Theme Scripts -->
     <script async src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.13.2/jquery-ui.min.js"></script>
-    <!-- 給与集計データの読込 -->
-    <script defer src="assets/js/PayrollData.js"></script>
     <!-- select Payroll -->
     <script type="text/javascript">
         $(function() {
