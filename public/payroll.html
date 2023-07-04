@@ -2847,96 +2847,114 @@
                     </div>
 
                     <div id="payroll8" style="display:none;">
-                        <input type="file" name="select" id="loadBtn" />
+                        <input type="file" id="input_02_file" style="width:100%; margin:0px 0px 10px 0px;" /> 結果:
+                        <br>
+                        <textarea id="edit_02_result" style="width:100%; height:200px; margin:0px 0px 5px 0px;" disabled></textarea>
                         <script>
-                            // 1: ボタンを取得してchangeイベントの設定
-                            var loadBtn = document.querySelector("#loadBtn");
-                            loadBtn.addEventListener("change", upload, false);
+                            // 匿名関数内で実行
+                            (function() {
 
-                            function upload(event) {
-                                // 2：chekFileReader関数でFileAPIにブラウザが対応してるかチェック
-                                if (!checkFileReader()) {
-                                    alert("エラー:FileAPI非対応のブラウザです。");
-                                } else {
-                                    // 3: 選択されたファイル情報を取得
-                                    var file = event.target.files[0];
-                                    var type = file.type; // MIMEタイプ
-                                    var size = file.size; // ファイル容量（byte）
-                                    var limit = 10000; // byte, 10KB
+                                // 各エレメントを取得
+                                var element_file = document.getElementById("input_02_file");
+                                var element_result = document.getElementById("edit_02_result");
 
-                                    // MIMEタイプの判定
-                                    if (type == "image/jpeg") {
-                                        alert("画像はアップロードできません");
-                                        loadBtn.value = "";
-                                        return;
+                                // ------------------------------------------------------------
+                                // サポート状況
+                                // ------------------------------------------------------------
+                                if (!window.File) {
+                                    element_result.value = "File クラスに対応していません。";
+                                    return;
+                                }
+                                if (!window.FileReader) {
+                                    element_result.value = "FileReader クラスに対応していません。";
+                                    return;
+                                }
+
+                                // ------------------------------------------------------------
+                                // 値が変化した時に実行されるイベント
+                                // ------------------------------------------------------------
+                                element_file.addEventListener("change", function(e) {
+
+                                    // ファイルが選択されたか
+                                    if (!(element_file.value)) return;
+
+                                    // ------------------------------------------------------------
+                                    // File オブジェクトを取得（HTML5 世代）
+                                    // ------------------------------------------------------------
+                                    // ファイルリストを取得
+                                    var file_list = element_file.files;
+                                    if (!file_list) return;
+
+                                    // 0 番目の File オブジェクトを取得
+                                    var file = file_list[0];
+                                    if (!file) return;
+
+                                    // ------------------------------------------------------------
+                                    // FileReader オブジェクトを生成
+                                    // ------------------------------------------------------------
+                                    var file_reader = new FileReader();
+
+                                    // ------------------------------------------------------------
+                                    // テキストとして読み込む
+                                    // ------------------------------------------------------------
+                                    if (file.type.indexOf("text") == 0) {
+
+                                        // ------------------------------------------------------------
+                                        // 読み込み成功時に実行されるイベント
+                                        // ------------------------------------------------------------
+                                        file_reader.onload = function(e) {
+                                            element_result.value = file_reader.result;
+                                        };
+
+                                        // ------------------------------------------------------------
+                                        // 読み込みを開始する（テキスト文字列を得る）
+                                        // ------------------------------------------------------------
+                                        file_reader.readAsText(file);
+
+
+                                        // ------------------------------------------------------------
+                                        // バイナリとして読み込む
+                                        // ------------------------------------------------------------
+                                    } else {
+
+                                        // ------------------------------------------------------------
+                                        // 読み込み成功時に実行されるイベント
+                                        // ------------------------------------------------------------
+                                        file_reader.onload = function(e) {
+                                            var result = "";
+                                            var ary_u8 = new Uint8Array(file_reader.result);
+                                            var i;
+                                            var str;
+                                            var num = ary_u8.length;
+                                            for (i = 0; i < num; i++) {
+                                                if (ary_u8[i] < 0x10) {
+                                                    str = "0" + ary_u8[i].toString(16);
+                                                } else {
+                                                    str = ary_u8[i].toString(16);
+                                                }
+
+                                                if ((i % 16) == 0) {
+                                                    result += str;
+                                                } else if ((i % 16) == 15) {
+                                                    result += " " + str + "\n";
+                                                } else {
+                                                    result += " " + str;
+                                                }
+                                            }
+                                            element_result.value = result;
+                                        };
+
+                                        // ------------------------------------------------------------
+                                        // 読み込みを開始する（ArrayBuffer オブジェクトを得る）
+                                        // ------------------------------------------------------------
+                                        file_reader.readAsArrayBuffer(file);
+
                                     }
+                                });
 
-                                    //readerオブジェクトを作成
-                                    var reader = new FileReader();
-                                    // ファイル読み取りを実行
-                                    reader.readAsText(file);
-
-                                    // 4：CSVファイルを読み込む処理とエラー処理をする
-                                    reader.onload = function(event) {
-                                        var result = event.target.result;
-                                        makeCSV(result);
-                                    };
-
-                                    //読み込めなかった場合のエラー処理
-                                    reader.onerror = function() {
-                                        alert("エラー：ファイルをロードできません。");
-                                    };
-                                }
-                            }
-
-                            //csvをうまく出力する
-                            function makeCSV(csvdata) {
-                                //csvデータを1行ごとに配列にする
-                                var tmp = csvdata.split("\n");
-
-                                //csvデータをそのままtableで出力する
-                                var tabledata = $("#resulttable");
-                                var htmldata = "<table>";
-
-                                //６：1行のデータから各項目（各列）のデータを取りだして、2次元配列にする
-                                var data = [];
-                                for (var i = 0; i < tmp.length; i++) {
-                                    //csvの1行のデータを取り出す
-                                    var row_data = tmp[i];
-
-                                    /*各行の列のデータを配列にする
-                                    data[
-                                        [1列目、2列目、3列目]　←1行目のデータ　
-                                        [1列目、2列目、3列目]　←2行目のデータ　
-                                        [1列目、2列目、3列目]　←3行目のデータ　
-                                        ]
-                                    */
-
-                                    data[i] = row_data.split(",");
-                                    //7：dataに入ってる各列のデータを出力する為のデータを作る
-                                    htmldata += "<tr>";
-                                    for (var j = 0; j < data[i].length; j++) {
-                                        //各行の列のデータを個別に出力する
-                                        htmldata += "<td>" + data[i][j] + "</td>";
-                                    }
-
-                                    htmldata += "</tr>";
-                                }
-
-                                // 8： データをWebページに出力する
-                                htmldata += "</table>";
-                                tabledata.append(htmldata);
-                            }
-                            // ファイルアップロード判定
-                            function checkFileReader() {
-                                var isUse = false;
-                                if (window.File && window.FileReader && window.FileList && window.Blob) {
-                                    isUse = true;
-                                }
-                                return isUse;
-                            }
+                            })();
                         </script>
-                        <div id="#resulttable"></div>
+
                     </div>
                 </ul>
                 <!-- /Payroll -->
