@@ -34,8 +34,7 @@
     <link rel="stylesheet" href="https://pyscript.net/alpha/pyscript.css" />
     <script defer src="https://pyscript.net/alpha/pyscript.js"></script>
 
-    <!-- 給与集計データの読込 -->
-    <script defer src="assets/js/PayrollData.js"></script>
+
 
     <style type="text/css">
         ul,
@@ -2845,7 +2844,10 @@
                         </table>
                     </div>
                     <div id="payroll8" style="display:none;">
-                        <input type="file" id="file">
+                        <!-- 社員情報データの読込 -->
+                        <script defer src="assets/js/PayrollData.js"></script>
+                        <input type="file" name="select" id="payRollFile" />
+                        <div id="resulttable"></div>
                     </div>
                 </ul>
                 <!-- /Payroll -->
