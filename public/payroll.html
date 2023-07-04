@@ -2847,112 +2847,60 @@
                     </div>
 
                     <div id="payroll8" style="display:none;">
-                        <input type="file" id="input_02_file" style="width:100%; margin:0px 0px 10px 0px;" /> 結果:
-                        <br>
-                        <textarea id="edit_02_result" style="width:100%; height:200px; margin:0px 0px 5px 0px;" disabled></textarea>
+                        <input type="file" name="file" id="file">
+                        <div id="result"></div>
                         <script>
-                            // 匿名関数内で実行
-                            (function() {
+                            var file = document.getElementById('file');
+                            var result = document.getElementById('result');
 
-                                // 各エレメントを取得
-                                var element_file = document.getElementById("input_02_file");
-                                var element_result = document.getElementById("edit_02_result");
+                            // File APIに対応しているか確認
+                            if (window.File && window.FileReader && window.FileList && window.Blob) {
+                                function loadLocalCsv(e) {
+                                    // ファイル情報を取得
+                                    var fileData = e.target.files[0];
+                                    console.log(fileData); // 取得した内容の確認用
 
-                                // ------------------------------------------------------------
-                                // サポート状況
-                                // ------------------------------------------------------------
-                                if (!window.File) {
-                                    element_result.value = "File クラスに対応していません。";
-                                    return;
-                                }
-                                if (!window.FileReader) {
-                                    element_result.value = "FileReader クラスに対応していません。";
-                                    return;
-                                }
-
-                                // ------------------------------------------------------------
-                                // 値が変化した時に実行されるイベント
-                                // ------------------------------------------------------------
-                                element_file.addEventListener("change", function(e) {
-
-                                    // ファイルが選択されたか
-                                    if (!(element_file.value)) return;
-
-                                    // ------------------------------------------------------------
-                                    // File オブジェクトを取得（HTML5 世代）
-                                    // ------------------------------------------------------------
-                                    // ファイルリストを取得
-                                    var file_list = element_file.files;
-                                    if (!file_list) return;
-
-                                    // 0 番目の File オブジェクトを取得
-                                    var file = file_list[0];
-                                    if (!file) return;
-
-                                    // ------------------------------------------------------------
-                                    // FileReader オブジェクトを生成
-                                    // ------------------------------------------------------------
-                                    var file_reader = new FileReader();
-
-                                    // ------------------------------------------------------------
-                                    // テキストとして読み込む
-                                    // ------------------------------------------------------------
-                                    if (file.type.indexOf("text") == 0) {
-
-                                        // ------------------------------------------------------------
-                                        // 読み込み成功時に実行されるイベント
-                                        // ------------------------------------------------------------
-                                        file_reader.onload = function(e) {
-                                            element_result.value = file_reader.result;
-                                        };
-
-                                        // ------------------------------------------------------------
-                                        // 読み込みを開始する（テキスト文字列を得る）
-                                        // ------------------------------------------------------------
-                                        file_reader.readAsText(file, 'Shift_JIS');
-
-
-                                        // ------------------------------------------------------------
-                                        // バイナリとして読み込む
-                                        // ------------------------------------------------------------
-                                    } else {
-
-                                        // ------------------------------------------------------------
-                                        // 読み込み成功時に実行されるイベント
-                                        // ------------------------------------------------------------
-                                        file_reader.onload = function(e) {
-                                            var result = "";
-                                            var ary_u8 = new Uint8Array(file_reader.result);
-                                            var i;
-                                            var str;
-                                            var num = ary_u8.length;
-                                            for (i = 0; i < num; i++) {
-                                                if (ary_u8[i] < 0x10) {
-                                                    str = "0" + ary_u8[i].toString(16);
-                                                } else {
-                                                    str = ary_u8[i].toString(16);
-                                                }
-
-                                                if ((i % 16) == 0) {
-                                                    result += str;
-                                                } else if ((i % 16) == 15) {
-                                                    result += " " + str + "\n";
-                                                } else {
-                                                    result += " " + str;
-                                                }
-                                            }
-                                            element_result.value = result;
-                                        };
-
-                                        // ------------------------------------------------------------
-                                        // 読み込みを開始する（ArrayBuffer オブジェクトを得る）
-                                        // ------------------------------------------------------------
-                                        file_reader.readAsArrayBuffer(file);
-
+                                    // CSVファイル以外は処理を止める
+                                    if (!fileData.name.match('.csv$')) {
+                                        alert('CSVファイルを選択してください');
+                                        return;
                                     }
-                                });
 
-                            })();
+                                    // FileReaderオブジェクトを使ってファイル読み込み
+                                    var reader = new FileReader();
+                                    // ファイル読み込みに成功したときの処理
+                                    reader.onload = function() {
+                                            var cols = reader.result.split('\n');
+                                            var data = [];
+                                            for (var i = 0; i < cols.length; i++) {
+                                                data[i] = cols[i].split(',');
+                                            }
+                                            var insert = createTable(data);
+                                            result.appendChild(insert);
+                                        }
+                                        // ファイル読み込みを実行
+                                    reader.readAsText(fileData, 'Shift_JIS');
+                                }
+                                file.addEventListener('change', loadLocalCsv, false);
+
+                            } else {
+                                file.style.display = 'none';
+                                result.innerHTML = 'File APIに対応したブラウザでご確認ください';
+                            }
+
+                            function createTable(data) {
+                                var table = document.createElement('table');
+                                for (var i = 0; i < data.length; i++) {
+                                    var tr = document.createElement('tr');
+                                    for (var j = 0; j < data[i].length; j++) {
+                                        var td = document.createElement('td');
+                                        td.innerText = data[i][j];
+                                        tr.appendChild(td);
+                                    }
+                                    table.appendChild(tr);
+                                }
+                                return table;
+                            }
                         </script>
 
                     </div>
