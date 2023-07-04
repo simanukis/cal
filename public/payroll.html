@@ -2845,11 +2845,32 @@
                             </tbody>
                         </table>
                     </div>
+
                     <div id="payroll8" style="display:none;">
-                        <!-- 社員情報データの読込 -->
-                        <script defer src="assets/js/PayrollData.js"></script>
-                        <input type="file" name="select" id="payRollFile" />
-                        <div id="resulttable"></div>
+                        <form name="test">
+                            <input type="file" id="selfile"><br>
+                            <textarea name="txt" rows="10" cols="40" readonly></textarea>
+                        </form>
+                        <script>
+                            var obj1 = document.getElementById("selfile");
+
+                            //ダイアログでファイルが選択された時
+                            obj1.addEventListener("change", function(evt) {
+
+                                var file = evt.target.files;
+
+                                //FileReaderの作成
+                                var reader = new FileReader();
+                                //テキスト形式で読み込む
+                                reader.readAsText(file[0]);
+
+                                //読込終了後の処理
+                                reader.onload = function(ev) {
+                                    //テキストエリアに表示する
+                                    document.test.txt.value = reader.result;
+                                }
+                            }, false);
+                        </script>
                     </div>
                 </ul>
                 <!-- /Payroll -->
