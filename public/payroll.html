@@ -208,6 +208,7 @@
             <!-- page content -->
             <div class="right_col" role="main">
                 <!-- Payroll -->
+
                 <form>
                     <div class="form-row">
                         <div class="col-auto my-1">
@@ -224,10 +225,18 @@
                                 <option value="payroll8">社員情報更新</option>
 							</select>
                         </div>
-
-
-
-
+                        <div class="container">
+                            <div class="row">
+                                <div class="col-4 mt-3">
+                                    <div class="input-daterange input-group" id="datepicker">
+                                        <div>
+                                            <!-- ファイルの読み込み -->
+                                            <input type="file" name="select" id="payRollFile" accept=".txt">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </form>
 
@@ -2836,18 +2845,6 @@
                         </table>
                     </div>
                     <div id="payroll8" style="display:none;">
-                        <div class="container">
-                            <div class="row">
-                                <div class="col-4 mt-3">
-                                    <div class="input-daterange input-group" id="datepicker">
-                                        <div>
-                                            <!-- ファイルの読み込み -->
-                                            <input type="file" name="select" id="payRollFile" accept=".txt">
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
                         <div id="resulttable"></div>
                     </div>
                 </ul>
