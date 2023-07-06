@@ -5,15 +5,822 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <title>給与集計表</title>
+    <!-- Bootstrap -->
+    <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" />
+    <!-- Font Awesome -->
+    <link href="assets/vendor/Awesome/css/font-awesome.min.css" rel="stylesheet">
+    <!-- iCheck -->
+    <link href="assets/vendor/iCeck/css/green.css" rel="stylesheet">
+    <!-- bootstrap-daterangepicker -->
+    <link href="assets/vendor/bootstrap/css/daterangepicker.css" rel="stylesheet">
+    <!-- Bootstrap用JavaScriptの読み込み -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
+    <!-- PyScript -->
+    <link rel="stylesheet" href="https://pyscript.net/alpha/pyscript.css" />
+    <script defer src="https://pyscript.net/alpha/pyscript.js"></script>
+    <!-- jQuery -->
+    <script async src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+    <!-- syain.txt -->
+    <!-- <script src="assets/js/syain.js"></script> -->
 
+    <!-- select payroll script -->
+    <script type="text/javascript">
+        $(function() {
+            $('#selectPayroll').change(function() {
+                //選択したoptionのvalueを取得
+                var val = $(this).val();
+                //先頭に#を付けてvalueの値をidに変換
+                var selectPayrollId = '#' + val;
+                //一度すべてのブロックを非表示にする
+                $('ul div').hide();
+                //選択したブロックのみを表示
+                $(selectPayrollId).show();
+            });
+        });
+    </script>
+    <!-- css -->
+    <style type="text/css">
+        ul,
+        li {
+            margin: 0;
+            padding: 0;
+            list-style: none;
+        }
+        
+        #accordion_menu>li {
+            border: #0066ff 1rem solid;
+            margin-bottom: -1px;
+        }
+        
+        #accordion_menu a {
+            color: #A9A9A9;
+            font-size: 1.2em;
+            font-weight: bold;
+            color: initial;
+        }
+        
+        #accordion_menu a[data-toggle="collapse"] {
+            display: block;
+            padding: 10px;
+            text-decoration: none;
+            position: relative;
+        }
+        
+        #accordion_menu a[data-toggle="collapse"]:hover {
+            background: #e7e7e7;
+        }
+        
+        #accordion_menu a[data-toggle="collapse"]::after {
+            content: "";
+            display: block;
+            width: 8px;
+            height: 8px;
+            border-top: #666 1px solid;
+            border-right: #666 1px solid;
+            position: absolute;
+            right: 15px;
+            top: 0;
+            bottom: 0;
+            margin: auto;
+        }
+        
+        #accordion_menu a[aria-expanded=false]::after {
+            -webkit-transform: rotate(45deg);
+            -ms-transform: rotate(45deg);
+            transform: rotate(45deg);
+            transition-duration: 0.3s;
+        }
+        
+        #accordion_menu a[aria-expanded=true]::after {
+            -webkit-transform: rotate(135deg);
+            -ms-transform: rotate(135deg);
+            transform: rotate(135deg);
+            transition-duration: 0.3s;
+        }
+        /********************************/
+        
+        #accordion_menu_1>li {
+            border: #0066ff 1rem solid;
+            margin-bottom: -1px;
+        }
+        
+        #accordion_menu_1 a {
+            color: #A9A9A9;
+            font-size: 1.2em;
+            font-weight: bold;
+            color: initial;
+        }
+        
+        #accordion_menu_1 a[data-toggle="collapse"] {
+            display: block;
+            padding: 10px;
+            text-decoration: none;
+            position: relative;
+        }
+        
+        #accordion_menu_1 a[data-toggle="collapse"]:hover {
+            background: #e7e7e7;
+        }
+        
+        #accordion_menu_1 a[data-toggle="collapse"]::after {
+            content: "";
+            display: block;
+            width: 8px;
+            height: 8px;
+            border-top: #666 1px solid;
+            border-right: #666 1px solid;
+            position: absolute;
+            right: 15px;
+            top: 0;
+            bottom: 0;
+            margin: auto;
+        }
+        
+        #accordion_menu_1 a[aria-expanded=false]::after {
+            -webkit-transform: rotate(45deg);
+            -ms-transform: rotate(45deg);
+            transform: rotate(45deg);
+            transition-duration: 0.3s;
+        }
+        
+        #accordion_menu_1 a[aria-expanded=true]::after {
+            -webkit-transform: rotate(135deg);
+            -ms-transform: rotate(135deg);
+            transform: rotate(135deg);
+            transition-duration: 0.3s;
+        }
+        
+        [id^="menu"] li {
+            padding: 10px 10px 10px 20px;
+        }
+        /********************************/
+        
+        table {
+            border-collapse: collapse;
+            margin: 30px auto;
+        }
+        
+        td,
+        th {
+            padding: 5px;
+            text-align: center;
+        }
+        
+        th {
+            color: #fff;
+            background: #005ab3;
+        }
+        
+        table tr:nth-child(odd) {
+            background: #e6f2ff;
+        }
+    </style>
 </head>
 
-<body>
-    <input type="file" name="file" id="file">
-    <div id="result"></div>
+<body class="nav-md">
+    <div class="container body">
+        <div class="main_container">
+            <!-- nav -->
+            <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+                <div class="container-fluid">
+                    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarTogglerDemo03" aria-controls="navbarTogglerDemo03" aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+                    <a class="navbar-brand" href="#">給与集計</a>
+                    <div class="collapse navbar-collapse" id="navbarTogglerDemo03">
+                        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                            <li class="nav-item">
+                                <a class="nav-link active" aria-current="page" href="index.html">Home</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="#">Link</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
+                            </li>
+                        </ul>
+                        <form class="d-flex">
+                            <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+                            <button class="btn btn-outline-success" type="submit">Search</button>
+                        </form>
+                    </div>
+                </div>
+            </nav>
+            <!-- /nav -->
+            <!-- page content -->
+            <div class="right_col" role="main">
+                <!-- Payroll -->
+                <!-- 集計区分選択 -->
+                <form>
+                    <div class="form-row">
+                        <div class="col-auto my-1">
+                            <label for="selectPayroll">選択してください</label>
+                        </div>
+                        <div class="form-group col-md-2 col-auto my-1">
+                            <select id="selectPayroll" class="form-control">
+								<option value="payroll1">給与集計表</option>
+								<option value="payroll3">給与集計（部門別）</option>
+								<option value="payroll4">賞与集計</option>
+								<option value="payroll5">人員集計</option>
+								<option value="payroll6">社会保険集計</option>
+                                <option value="payroll7">勤怠支給控除一覧</option>
+                                <option value="payroll8">社員情報更新</option>
+							</select>
+                        </div>
+                        <div class="container">
+                            <div class="row">
+                                <div class="col-4 mt-3">
+                                    <div class="input-daterange input-group" id="datepicker">
+                                        <div>
+                                            <!-- ファイルの読み込み -->
+                                            <!-- <input type="file" name="select" id="payRollFile" accept=".txt"> -->
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+                <!-- /集計区分選択 -->
+                <ul>
+                    <!-- 給与集計表 -->
+                    <div id="payroll1">
+                        <!-- ファイルの読み込み -->
+                        <!-- <input type="file" name="select" id="payRollFile"> -->
+                        <input type="file" name="file" id="file">
+                        <table class="table table-striped" data-sheet-name="給与集計表">
+                            <thead class="table-dark">
+                                <th scope="col">項目</th>
+                                <th scope="col">役員</th>
+                                <th scope="col">一般</th>
+                                <th scope="col">製造間接</th>
+                                <th scope="col">製造直接</th>
+                                <th scope="col">合計</th>
+                                <th scope="col">季節社員</th>
+                                <th scope="col">総合計</th>
+                            </thead>
+                            <tbody>
+                                <!-- <div id="resulttable"></div> -->
+                            </tbody>
+                        </table>
+                        <div id="result"></div>
 
-    <!--PayrollData.js -->
-    <script src="assets/js/PayrollData.js"></script>
+                        <!--PayrollData.js -->
+                        <script src="assets/js/PayrollData.js"></script>
+                    </div>
+                    <!-- /給与集計表 -->
+                    <!-- 給与集計表(部門別) -->
+                    <div id="payroll3" style="display:none;">
+                        <!-- ファイルの読み込み -->
+                        <input type="file" name="select" id="payRollFile-3">
+                        <ul id="accordion_menu">
+                            <!-- 部門別集計表 -->
+                            <li>
+                                <a data-toggle="collapse" href="#menu01" aria-controls="#menu01" aria-expanded="false">部門別集計表</a>
+                            </li>
+                            <ul id="menu01" class="collapse" data-parent="#accordion_menu">
+                                <table class="table table-striped" data-sheet-name="部門別集計表（全体）">
+                                    <thead class="table-dark">
+                                        <th scope="col">項目</th>
+                                        <th scope="col">単位</th>
+                                        <th scope="col">一般管理</th>
+                                        <th scope="col">鍛造工場</th>
+                                        <th scope="col">切削工場</th>
+                                        <th scope="col">AC工場</th>
+                                        <th scope="col">PC工場</th>
+                                        <th scope="col">宮城工場</th>
+                                        <th scope="col">住設</th>
+                                        <th scope="col">合計</th>
+                                    </thead>
+                                    <tbody>
+                                    </tbody>
+                                    <thead class="table-dark">
+                                        <th scope="col">項目</th>
+                                        <th scope="col">単位</th>
+                                        <th scope="col">一般管理</th>
+                                        <th scope="col">鍛造工場</th>
+                                        <th scope="col">切削工場</th>
+                                        <th scope="col">AC工場</th>
+                                        <th scope="col">PC工場</th>
+                                        <th scope="col">宮城工場</th>
+                                        <th scope="col">住設</th>
+                                        <th scope="col">合計</th>
+                                    </thead>
+                                    <tbody>
+                                    </tbody>
+                                </table>
+                            </ul>
+                            <!-- /部門別集計表 -->
+                            <!-- 一般管理 -->
+                            <li>
+                                <a data-toggle="collapse" href="#menu02" aria-controls="#menu02" aria-expanded="false">一般管理</a>
+                            </li>
+                            <ul id="menu02" class="collapse" data-parent="#accordion_menu">
+                                <table class="table table-striped" data-sheet-name="一般管理">
+                                    <thead class="table-dark">
+                                        <th scope="col">項目</th>
+                                        <th scope="col">単位</th>
+                                        <th scope="col">役員①</th>
+                                        <th scope="col">一般間接①</th>
+                                        <th scope="col">一般間接②</th>
+                                        <th scope="col">一般間接③</th>
+                                        <th scope="col">一般間接⑥</th>
+                                        <th scope="col">一般販売①</th>
+                                        <th scope="col">一般販売②</th>
+                                        <th scope="col">【合計】</th>
+                                    </thead>
+                                    <tbody>
+                                    </tbody>
+                                    <thead class="table-dark">
+                                        <th scope="col">項目</th>
+                                        <th scope="col">単位</th>
+                                        <th scope="col">役員①</th>
+                                        <th scope="col">一般間接①</th>
+                                        <th scope="col">一般間接②</th>
+                                        <th scope="col">一般間接③</th>
+                                        <th scope="col">一般間接⑥</th>
+                                        <th scope="col">一般販売①</th>
+                                        <th scope="col">一般販売②</th>
+                                        <th scope="col">【合計】</th>
+                                    </thead>
+                                    <tbody>
+                                    </tbody>
+                                </table>
+                            </ul>
+                            <!-- /一般管理 -->
+                            <!-- 鍛造工場 -->
+                            <li>
+                                <a data-toggle="collapse" href="#menu03" aria-controls="#menu03" aria-expanded="false">鍛造工場</a>
+                            </li>
+                            <ul id="menu03" class="collapse" data-parent="#accordion_menu">
+                                <table class="table table-striped" data-sheet-name="鍛造工場集計表">
+                                    <thead class="table-dark">
+                                        <th scope="col">項目</th>
+                                        <th scope="col">単位</th>
+                                        <th scope="col">間接①</th>
+                                        <th scope="col">間接②</th>
+                                        <th scope="col">間接③</th>
+                                        <th scope="col">間接④</th>
+                                        <th scope="col">間接⑤</th>
+                                        <th scope="col">間接⑥</th>
+                                        <th scope="col">【間接計】</th>
+                                        <th scope="col">直接①</th>
+                                        <th scope="col">直接④</th>
+                                        <th scope="col">【直接計】</th>
+                                        <th scope="col">【合計】</th>
+                                    </thead>
+                                    <tbody>
+                                    </tbody>
+                                    <thead class="table-dark">
+                                        <th scope="col">項目</th>
+                                        <th scope="col">単位</th>
+                                        <th scope="col">間接①</th>
+                                        <th scope="col">間接②</th>
+                                        <th scope="col">間接③</th>
+                                        <th scope="col">間接④</th>
+                                        <th scope="col">間接⑤</th>
+                                        <th scope="col">間接⑥</th>
+                                        <th scope="col">【間接計】</th>
+                                        <th scope="col">直接①</th>
+                                        <th scope="col">直接④</th>
+                                        <th scope="col">【直接計】</th>
+                                        <th scope="col">【合計】</th>
+                                    </thead>
+                                    <tbody>
+                                    </tbody>
+                                </table>
+                            </ul>
+                            <!-- /鍛造工場 -->
+                            <!-- 切削工場 -->
+                            <li>
+                                <a data-toggle="collapse" href="#menu04" aria-controls="#menu04" aria-expanded="false">切削工場</a>
+                            </li>
+                            <ul id="menu04" class="collapse" data-parent="#accordion_menu">
+                                <table class="table table-striped" data-sheet-name="切削工場集計表">
+                                    <thead class="table-dark">
+                                        <th scope="col">項目</th>
+                                        <th scope="col">単位</th>
+                                        <th scope="col">間接①</th>
+                                        <th scope="col">間接②</th>
+                                        <th scope="col">間接④</th>
+                                        <th scope="col">間接⑤</th>
+                                        <th scope="col">間接⑥</th>
+                                        <th scope="col">【間接計】</th>
+                                        <th scope="col">直接①</th>
+                                        <th scope="col">直接②</th>
+                                        <th scope="col">直接④</th>
+                                        <th scope="col">【直接計】</th>
+                                        <th scope="col">合計</th>
+                                    </thead>
+                                    <tbody>
+                                    </tbody>
+                                    <thead class="table-dark">
+                                        <th scope="col">項目</th>
+                                        <th scope="col">単位</th>
+                                        <th scope="col">間接①</th>
+                                        <th scope="col">間接②</th>
+                                        <th scope="col">間接④</th>
+                                        <th scope="col">間接⑤</th>
+                                        <th scope="col">間接⑥</th>
+                                        <th scope="col">【間接計】</th>
+                                        <th scope="col">直接①</th>
+                                        <th scope="col">直接②</th>
+                                        <th scope="col">直接④</th>
+                                        <th scope="col">【直接計】</th>
+                                        <th scope="col">【合計】</th>
+                                    </thead>
+                                    <tbody>
+                                    </tbody>
+                                </table>
+                            </ul>
+                            <!-- /切削工場 -->
+                            <!-- AC工場 -->
+                            <li>
+                                <a data-toggle="collapse" href="#menu05" aria-controls="#menu05" aria-expanded="false">AC工場</a>
+                            </li>
+                            <ul id="menu05" class="collapse" data-parent="#accordion_menu">
+                                <table class="table table-striped" data-sheet-name="AC工場集計表">
+                                    <thead class="table-dark">
+                                        <th scope="col">項目</th>
+                                        <th scope="col">単位</th>
+                                        <th scope="col">間接①</th>
+                                        <th scope="col">間接②</th>
+                                        <th scope="col">間接④</th>
+                                        <th scope="col">間接⑤</th>
+                                        <th scope="col">【間接計】</th>
+                                        <th scope="col">直接①</th>
+                                        <th scope="col">直接④</th>
+                                        <th scope="col">直接計</th>
+                                        <th scope="col">合計</th>
+                                    </thead>
+                                    <tbody>
+                                    </tbody>
+                                    <thead class="table-dark">
+                                        <th scope="col">項目</th>
+                                        <th scope="col">単位</th>
+                                        <th scope="col">間接①</th>
+                                        <th scope="col">間接②</th>
+                                        <th scope="col">間接④</th>
+                                        <th scope="col">間接⑤</th>
+                                        <th scope="col">【間接計】</th>
+                                        <th scope="col">直接①</th>
+                                        <th scope="col">直接④</th>
+                                        <th scope="col">【直接計】</th>
+                                        <th scope="col">【合計】</th>
+                                    </thead>
+                                    <tbody>
+                                    </tbody>
+                                </table>
+                            </ul>
+                            <!-- /AC工場 -->
+                            <!-- PC工場 -->
+                            <li>
+                                <a data-toggle="collapse" href="#menu06" aria-controls="#menu06" aria-expanded="false">PC工場</a>
+                            </li>
+                            <ul id="menu06" class="collapse" data-parent="#accordion_menu">
+                                <table class="table table-striped" data-sheet-name="PC工場集計表">
+                                    <thead class="table-dark">
+                                        <th scope="col">項目</th>
+                                        <th scope="col">単位</th>
+                                        <th scope="col">間接①</th>
+                                        <th scope="col">間接②</th>
+                                        <th scope="col">間接④</th>
+                                        <th scope="col">間接⑤</th>
+                                        <th scope="col">間接⑥</th>
+                                        <th scope="col">【間接計】</th>
+                                        <th scope="col">直接①</th>
+                                        <th scope="col">直接④</th>
+                                        <th scope="col">【直接計】</th>
+                                        <th scope="col">【合計】</th>
+                                    </thead>
+                                    <tbody>
+                                    </tbody>
+                                    <thead class="table-dark">
+                                        <th scope="col">項目</th>
+                                        <th scope="col">単位</th>
+                                        <th scope="col">間接①</th>
+                                        <th scope="col">間接②</th>
+                                        <th scope="col">間接④</th>
+                                        <th scope="col">間接⑤</th>
+                                        <th scope="col">間接⑥</th>
+                                        <th scope="col">【間接計】</th>
+                                        <th scope="col">直接①</th>
+                                        <th scope="col">直接④</th>
+                                        <th scope="col">【直接計】</th>
+                                        <th scope="col">【合計】</th>
+                                    </thead>
+                                    <tbody>
+                                    </tbody>
+                                </table>
+                            </ul>
+                            <!-- /PC工場 -->
+                            <!-- 宮城工場 -->
+                            <li>
+                                <a data-toggle="collapse" href="#menu07" aria-controls="#menu07" aria-expanded="false">宮城工場</a>
+                            </li>
+                            <ul id="menu07" class="collapse" data-parent="#accordion_menu">
+                                <table class="table table-striped" data-sheet-name="宮城工場集計表">
+                                    <thead class="table-dark">
+                                        <th scope="col">項目</th>
+                                        <th scope="col">単位</th>
+                                        <th scope="col">間接①</th>
+                                        <th scope="col">間接②</th>
+                                        <th scope="col">間接④</th>
+                                        <th scope="col">間接⑥</th>
+                                        <th scope="col">【間接計】</th>
+                                        <th scope="col">直接①</th>
+                                        <th scope="col">【直接計】</th>
+                                        <th scope="col">【合計】</th>
+                                    </thead>
+                                    <tbody>
+                                    </tbody>
+                                    <thead class="table-dark">
+                                        <th scope="col">項目</th>
+                                        <th scope="col">単位</th>
+                                        <th scope="col">間接①</th>
+                                        <th scope="col">間接②</th>
+                                        <th scope="col">間接④</th>
+                                        <th scope="col">間接⑥</th>
+                                        <th scope="col">【間接計】</th>
+                                        <th scope="col">直接①</th>
+                                        <th scope="col">【直接計】</th>
+                                        <th scope="col">合計</th>
+                                    </thead>
+                                    <tbody>
+                                    </tbody>
+                                </table>
+                            </ul>
+                            <!-- /宮城工場 -->
+                            <!-- 住設 -->
+                            <li>
+                                <a data-toggle="collapse" href="#menu08" aria-controls="#menu08" aria-expanded="false">住設</a>
+                            </li>
+                            <ul id="menu08" class="collapse" data-parent="#accordion_menu">
+                                <table class="table table-striped" data-sheet-name="住設集計表">
+                                    <thead class="table-dark">
+                                        <th scope="col">項目</th>
+                                        <th scope="col">単位</th>
+                                        <th scope="col">間接②</th>
+                                        <th scope="col">間接④</th>
+                                        <th scope="col">間接⑥</th>
+                                        <th scope="col">【間接計】</th>
+                                        <th scope="col">【合計】</th>
+                                    </thead>
+                                    <tbody>
+                                    </tbody>
+                                    <thead class="table-dark">
+                                        <th scope="col">項目</th>
+                                        <th scope="col">単位</th>
+                                        <th scope="col">間接②</th>
+                                        <th scope="col">間接④</th>
+                                        <th scope="col">間接⑥</th>
+                                        <th scope="col">【間接計】</th>
+                                        <th scope="col">【合計】</th>
+                                    </thead>
+                                    <tbody>
+                                    </tbody>
+                                </table>
+                            </ul>
+                            <!-- /住設 -->
+                        </ul>
+                    </div>
+                    <!-- /給与集計表(部門別) -->
+                    <!-- 賞与集計表 -->
+                    <div id="payroll4" style="display:none;">
+                        <!-- ファイルの読み込み -->
+                        <input type="file" name="select" id="payRollFile-4">
+                        <table class="table table-striped" id="tbl" data-sheet-name="賞与集計表">
+                            <thead class="table-dark">
+                                <th scope="col">項目</th>
+                                <th scope="col">単位</th>
+                                <th scope="col">役員</th>
+                                <th scope="col">一般間接</th>
+                                <th scope="col">製造間接</th>
+                                <th scope="col">製造直接</th>
+                                <th scope="col">合計</th>
+                                <th scope="col">季節社員</th>
+                                <th scope="col">総合計</th>
+                            </thead>
+                            <tbody>
+                            </tbody>
+                        </table>
+                    </div>
+                    <!-- /賞与集計表 -->
+                    <!-- 人員集計 -->
+                    <div id="payroll5" style="display:none;">
+                        <!-- ファイルの読み込み -->
+                        <input type="file" name="select" id="payRollFile-5">
+                        <p>人員集計</p>
+                    </div>
+                    <!-- /人員集計 -->
+                    <!-- 社会保険集計 -->
+                    <div id="payroll6" style="display:none;">
+                        <!-- ファイルの読み込み -->
+                        <input type="file" name="select" id="payRollFile-6">
+                        <ul id="accordion_menu_1">
+                            <!-- 社会保険集計 -->
+                            <li>
+                                <a data-toggle="collapse" href="#menu11" aria-controls="#menu11" aria-expanded="false">社会保険集計</a>
+                            </li>
+                            <ul id="menu11" class="collapse" data-parent="#accordion_menu_1">
+                                <table class="table table-striped" data-sheet-name="社会保険集計">
+                                    <thead class="table-dark">
+                                        <th scope="col"></th>
+                                        <th scope="col"></th>
+                                        <th scope="col">役員①</th>
+                                        <th scope="col">一般間接①</th>
+                                        <th scope="col">一般間接②</th>
+                                        <th scope="col">一般間接③</th>
+                                        <th scope="col">一般販売①</th>
+                                        <th scope="col">一般販売②</th>
+                                        <th scope="col">その他</th>
+                                        <th scope="col">一般間接</th>
+                                        <th scope="col">合計</th>
+                                    </thead>
+                                    <tbody>
+                                    </tbody>
+                                </table>
+                            </ul>
+                            <!-- /社会保険集計 -->
+                            <!-- 鍛造製造 -->
+                            <li>
+                                <a data-toggle="collapse" href="#menu12" aria-controls="#menu12" aria-expanded="false">鍛造製造</a>
+                            </li>
+                            <ul id="menu12" class="collapse" data-parent="#accordion_menu_1">
+                                <table class="table table-striped" data-sheet-name="社会保険鍛造製造集計表">
+                                    <thead class="table-dark">
+                                        <th scope="col"></th>
+                                        <th scope="col"></th>
+                                        <th scope="col">間接①</th>
+                                        <th scope="col">間接②</th>
+                                        <th scope="col">間接③</th>
+                                        <th scope="col">間接④</th>
+                                        <th scope="col">間接⑤</th>
+                                        <th scope="col">間接⑥</th>
+                                        <th scope="col">直接①</th>
+                                        <th scope="col">直接④</th>
+                                        <th scope="col">合計</th>
+                                    </thead>
+                                    <tbody>
+                                    </tbody>
+                                </table>
+                            </ul>
+                            <!-- /鍛造製造 -->
+                            <!-- 切削製造 -->
+                            <li>
+                                <a data-toggle="collapse" href="#menu13" aria-controls="#menu13" aria-expanded="false">切削製造</a>
+                            </li>
+                            <ul id="menu13" class="collapse" data-parent="#accordion_menu_1">
+                                <table class="table table-striped" data-sheet-name="社会保険切削製造集計表">
+                                    <thead class="table-dark">
+                                        <th scope="col"></th>
+                                        <th scope="col"></th>
+                                        <th scope="col">間接①</th>
+                                        <th scope="col">間接②</th>
+                                        <th scope="col">間接④</th>
+                                        <th scope="col">間接⑤</th>
+                                        <th scope="col">間接⑥</th>
+                                        <th scope="col">直接①</th>
+                                        <th scope="col">直接②</th>
+                                        <th scope="col">直接④</th>
+                                        <th scope="col">合計</th>
+                                    </thead>
+                                    <tbody>
+                                    </tbody>
+                                </table>
+                            </ul>
+                            <!-- /切削製造 -->
+                            <!-- AC製造 -->
+                            <li>
+                                <a data-toggle="collapse" href="#menu14" aria-controls="#menu14" aria-expanded="false">AC製造</a>
+                            </li>
+                            <ul id="menu14" class="collapse" data-parent="#accordion_menu_1">
+                                <table class="table table-striped" data-sheet-name="社会保険AC製造集計表">
+                                    <thead class="table-dark">
+                                        <th scope="col"></th>
+                                        <th scope="col"></th>
+                                        <th scope="col">間接①</th>
+                                        <th scope="col">間接②</th>
+                                        <th scope="col">間接④</th>
+                                        <th scope="col">間接⑤</th>
+                                        <th scope="col">直接①</th>
+                                        <th scope="col">直接④</th>
+                                        <th scope="col">合計</th>
+                                    </thead>
+                                    <tbody>
+                                    </tbody>
+                                </table>
+                            </ul>
+                            <!-- /AC製造 -->
+                            <!-- PC製造 -->
+                            <li>
+                                <a data-toggle="collapse" href="#menu15" aria-controls="#menu15" aria-expanded="false">PC製造</a>
+                            </li>
+                            <ul id="menu15" class="collapse" data-parent="#accordion_menu_1">
+                                <table class="table table-striped" data-sheet-name="社会保険PC製造集計表">
+                                    <thead class="table-dark">
+                                        <th scope="col"></th>
+                                        <th scope="col"></th>
+                                        <th scope="col">間接①</th>
+                                        <th scope="col">間接②</th>
+                                        <th scope="col">間接④</th>
+                                        <th scope="col">間接⑤</th>
+                                        <th scope="col">直接①</th>
+                                        <th scope="col">直接④</th>
+                                        <th scope="col">合計</th>
+                                    </thead>
+                                    <tbody>
+                                    </tbody>
+                                </table>
+                            </ul>
+                            <!-- /PC製造 -->
+                            <!-- 宮城工場 -->
+                            <li>
+                                <a data-toggle="collapse" href="#menu16" aria-controls="#menu16" aria-expanded="false">宮城工場</a>
+                            </li>
+                            <ul id="menu16" class="collapse" data-parent="#accordion_menu_1">
+                                <table class="table table-striped" data-sheet-name="社会保険宮城工場造集計表">
+                                    <thead class="table-dark">
+                                        <th scope="col"></th>
+                                        <th scope="col"></th>
+                                        <th scope="col">間接①</th>
+                                        <th scope="col">間接②</th>
+                                        <th scope="col">間接④</th>
+                                        <th scope="col">間接⑥</th>
+                                        <th scope="col">直接①</th>
+                                        <th scope="col">合計</th>
+                                    </thead>
+                                    <tbody>
+                                    </tbody>
+                                </table>
+                            </ul>
+                            <!-- /宮城工場 -->
+                            <!-- 住設製造 -->
+                            <li>
+                                <a data-toggle="collapse" href="#menu17" aria-controls="#menu17" aria-expanded="false">住設製造</a>
+                            </li>
+                            <ul id="menu17" class="collapse" data-parent="#accordion_menu_1">
+                                <table class="table table-striped" data-sheet-name="社会保険住設製造集計表">
+                                    <thead class="table-dark">
+                                        <th scope="col"></th>
+                                        <th scope="col"></th>
+                                        <th scope="col">間接②</th>
+                                        <th scope="col">間接④</th>
+                                        <th scope="col">間接⑥</th>
+                                        <th scope="col">合計</th>
+                                    </thead>
+                                    <tbody>
+                                    </tbody>
+                                </table>
+                            </ul>
+                            <!-- /住設製造 -->
+                        </ul>
+                    </div>
+                    <!-- /社会保険集計 -->
+
+                    <!-- 勤怠控除一覧 -->
+                    <div id="payroll7" style="display:none;">
+                        <!-- ファイルの読み込み -->
+                        <input type="file" name="select" id="payRollFile-7">
+                        <table class="table table-striped" data-sheet-name="勤怠支給控除一覧表">
+                            <thead class="table-dark">
+                                <th scope="col">所属/社員コード/所属名/人数</th>
+                                <th scope="col">合計</th>
+                            </thead>
+                            <tbody>
+                            </tbody>
+                        </table>
+                    </div>
+                    <!-- /勤怠控除一覧 -->
+                    <!-- 社員情報更新 -->
+                    <div id="payroll8" style="display:none;">
+                        <!-- ファイルの読み込み -->
+                        <input type="file" name="select" id="payRollFile-8">
+                    </div>
+                    <!-- /社員情報更新 -->
+                </ul>
+                <!-- /Payroll -->
+            </div>
+            <!-- /page content -->
+        </div>
+    </div>
+    <!-- Bootstrap -->
+    <script defer src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <!-- iCheck -->
+    <script async src="https://cdnjs.cloudflare.com/ajax/libs/iCheck/1.0.3/icheck.min.js"></script>
+    <!-- DateJS -->
+    <script async src="https://cdnjs.cloudflare.com/ajax/libs/datejs/1.0/date.min.js"></script>
+    <!-- JQVMap -->
+    <script async src="https://cdnjs.cloudflare.com/ajax/libs/jqvmap/1.5.1/jquery.vmap.min.js"></script>
+    <!-- bootstrap-daterangepicker -->
+    <script async src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.4/moment.min.js"></script>
+    <script async src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-daterangepicker/3.0.5/daterangepicker.min.js"></script>
+    <!-- Custom Theme Scripts -->
+    <script async src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.13.2/jquery-ui.min.js"></script>
+    <!-- select Payroll -->
 </body>
 
 </html>
