@@ -249,9 +249,11 @@
                 <ul>
                     <!-- Excel結合 -->
                     <div id="payroll1">
-                        <py-script>
-                            import glob import pandas as pd import os files=glob.glob('c:\\Users\\s-shimanukis\\Desktop\\somu\\test\\*.xls') list = [] for file in files: list.append(pd.read_excel(file)) df = pd.concat(list, axis=1) df.to_excel('c:\\Users\\s-shimanukis\\Desktop\\somu\\test\\syukeihyou.xls',
-                            index=False)
+                        <main class="py-5 grid gap-y-4 grid-cols-1 place-items-center">
+                            <p id="title" class="text-center text-7xl"></p>
+                        </main>
+                        <py-script output="title">
+                            print('I love PyScript')
                         </py-script>
                     </div>
                     <!-- 給与集計表 -->
