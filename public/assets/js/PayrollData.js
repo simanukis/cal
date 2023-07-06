@@ -27,12 +27,9 @@ if (window.File && window.FileReader && window.FileList && window.Blob) {
                 result.appendChild(insert);
             }
             // ファイル読み込みを実行
-        reader.readAsText(fileData);
+        reader.readAsText(fileData, 'Shift_JIS');
     }
-
-    if (file) {
-        file.addEventListener('change', loadLocalCsv, false);
-    }
+    file.addEventListener('change', loadLocalCsv, false);
 
 } else {
     file.style.display = 'none';
