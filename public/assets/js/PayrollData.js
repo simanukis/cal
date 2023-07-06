@@ -1,95 +1,51 @@
-// 1:ボタンを取得してchangeイベントの設定
-// var loadBtn = document.querySelector("#loadBtn");
-var loadBtn = document.querySelector("#payRollFile");
+var file = document.getElementById('file');
+var result = document.getElementById('result');
 
-if (loadBtn) {
-    loadBtn.addEventListener("change", upload, false);
-}
+// File APIに対応しているか確認
+if (window.File && window.FileReader && window.FileList && window.Blob) {
+    function loadLocalCsv(e) {
+        // ファイル情報を取得
+        var fileData = e.target.files[0];
+        console.log(fileData); // 取得した内容の確認用
 
-function upload(event) {
-    // 2:chekFileReader関数でFileAPIにブラウザが対応してるかチェック
-    if (!checkFileReader()) {
-        alert("エラー:FileAPI非対応のブラウザです。");
-    } else {
-        // 3:選択されたファイル情報を取得
-        var file = event.target.files[0];
-        var type = file.type; // MIMEタイプ
-        var size = file.size; // ファイル容量（byte）
-        var limit = 1000000; // byte, 1000KB, 1MB
-
-        // MIMEタイプの判定
-        if (type == "image/jpeg") {
-            alert("画像はアップロードできません");
-            loadBtn.value = "";
+        // CSVファイル以外は処理を止める
+        if (!fileData.name.match('.csv$')) {
+            alert('CSVファイルを選択してください');
             return;
         }
 
-        //readerオブジェクトを作成
+        // FileReaderオブジェクトを使ってファイル読み込み
         var reader = new FileReader();
-
-        //ファイル読み取りを実行
-        reader.readAsText(file);
-
-        //4:CSVファイルを読み込む処理とエラー処理をする
-        reader.onload = function(event) {
-            var result = event.target.result;
-            makeCSV(result);
-        };
-
-        //読み込めなかった場合のエラー処理
-        reader.onerror = function() {
-            alert("エラー:ファイルをロードできません。");
-        };
+        // ファイル読み込みに成功したときの処理
+        reader.onload = function() {
+                var cols = reader.result.split('\n');
+                var data = [];
+                for (var i = 0; i < cols.length; i++) {
+                    data[i] = cols[i].split(',');
+                }
+                var insert = createTable(data);
+                result.appendChild(insert);
+            }
+            // ファイル読み込みを実行
+        reader.readAsText(fileData);
     }
+    file.addEventListener('change', loadLocalCsv, false);
+
+} else {
+    file.style.display = 'none';
+    result.innerHTML = 'File APIに対応したブラウザでご確認ください';
 }
 
-// csvをうまく出力する
-function makeCSV(csvdata) {
-    // csvデータを1行ごとに配列にする
-    var tmp = csvdata.split("\n");
-
-    // csvデータをそのままtableで出力する
-    var tabledata = $("#resulttable");
-    var htmldata = "<table>";
-
-    //6: 1行のデータから各項目（各列）のデータを取りだして、2次元配列にする
-    var data = []; // 配列の初期化
-
-    for (var i = 0; i < tmp.length; i++) {
-        // csvの1行のデータを取り出す
-        var row_data = tmp[i];
-
-        //csvの目的のデータを取り出す
-        // var target_data = target_tmp[i];
-
-        /*各行の列のデータを配列にする
-        data[
-            [1列目、2列目、3列目]←1行目のデータ
-            [1列目、2列目、3列目]←2行目のデータ
-            [1列目、2列目、3列目]←3行目のデータ
-            ]
-        */
-        data[i] = row_data.split(",");
-        // data[i] = target_data.split(",");
-
-        //7:dataに入ってる各列のデータを出力する為のデータを作る
-        htmldata += "<tr>";
+function createTable(data) {
+    var table = document.createElement('table');
+    for (var i = 0; i < data.length; i++) {
+        var tr = document.createElement('tr');
         for (var j = 0; j < data[i].length; j++) {
-            //各行の列のデータを個別に出力する
-            htmldata += "<td>" + data[i][j] + "</td>";
+            var td = document.createElement('td');
+            td.innerText = data[i][j];
+            tr.appendChild(td);
         }
-        htmldata += "</tr>";
+        table.appendChild(tr);
     }
-
-    // 8:データをWebページに出力する
-    htmldata += "</table>";
-    tabledata.append(htmldata);
-}
-// ファイルアップロード判定
-function checkFileReader() {
-    var isUse = false;
-    if (window.File && window.FileReader && window.FileList && window.Blob) {
-        isUse = true;
-    }
-    return isUse;
+    return table;
 }
