@@ -29,7 +29,10 @@ if (window.File && window.FileReader && window.FileList && window.Blob) {
             // ファイル読み込みを実行
         reader.readAsText(fileData);
     }
-    file.addEventListener('change', loadLocalCsv, false);
+
+    if (file) {
+        file.addEventListener('change', loadLocalCsv, false);
+    }
 
 } else {
     file.style.display = 'none';
