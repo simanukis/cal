@@ -2,7 +2,9 @@
 // var loadBtn = document.querySelector("#loadBtn");
 var loadBtn = document.querySelector("#payRollFile");
 
-loadBtn.addEventListener("change", upload, false);
+if (loadBtn) {
+    loadBtn.addEventListener("change", upload, false);
+}
 
 function upload(event) {
     // 2:chekFileReader関数でFileAPIにブラウザが対応してるかチェック
