@@ -249,12 +249,7 @@
                 <ul>
                     <!-- Excel結合 -->
                     <div id="payroll1">
-                        <main class="py-5 grid gap-y-4 grid-cols-1 place-items-center">
-                            <p id="title" class="text-center text-7xl"></p>
-                        </main>
-                        <py-script output="title">
-                            title = 'I love PyScript' \ pyscript.write('title', title)
-                        </py-script>
+                        <script type="text/python" src="assets/py/bond_main.py"></script>
                     </div>
                     <!-- 給与集計表 -->
                     <div id="payroll2" style="display:none;">
@@ -826,7 +821,6 @@
     <script async src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-daterangepicker/3.0.5/daterangepicker.min.js"></script>
     <!-- Custom Theme Scripts -->
     <script async src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.13.2/jquery-ui.min.js"></script>
-    <!-- select Payroll -->
 </body>
 
 </html>
