@@ -27,7 +27,6 @@
     <link rel="stylesheet" href="https://pyscript.net/alpha/pyscript.css" />
     <script defer src="https://pyscript.net/alpha/pyscript.js"></script>
     <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/brython/3.8.7/brython.js"></script> -->
-
     <!-- select payroll script -->
     <script type="text/javascript">
         $(function() {
@@ -255,10 +254,13 @@
                             <p id="title" class="text-center text-7xl"></p>
                         </main>
                         <py-script output="title">
-                            title = 'Excel結合完了'
+                            import platform
                         </py-script>
                         <py-script output="title">
-                            pyscript.write('title', title)
+                            print('Excel結合完了')
+                        </py-script>
+                        <py-script output="title">
+                            print('Python version: {}'.format(platform.python_version()))
                         </py-script>
                     </div>
 
