@@ -29,10 +29,10 @@
     <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/brython/3.8.7/brython.js"></script> -->
 
     <py-env>
-        - numpy
+        - pandas
     </py-env>
     <py-env>
-        - matplotlib
+        - openpyxl
     </py-env>
 
     <!-- select payroll script -->
@@ -226,7 +226,6 @@
                     <div class="form-row">
                         <div class="col-auto my-1">
                             <label for="selectPayroll">選択してください</label>
-
                         </div>
                         <div class="form-group col-md-2 col-auto my-1">
                             <select id="selectPayroll" class="form-control">
@@ -260,7 +259,7 @@
                     <div id="payroll1">
                         <main class="py-5 grid gap-y-4 grid-cols-1 place-items-center">
                             <p id="title" class="text-center"></p>
-                            <py-button id="graph-button" label="グラフを表示"></py-button>
+                            <py-button id="graph-button" label="Excel結合"></py-button>
                             <div id="graph-container"></div>
                         </main>
                         <py-script output="title">
@@ -273,37 +272,43 @@
                             print('Python version: {}'.format(platform.python_version()))
                         </py-script>
                         <py-script>
-                            import numpy as np
+                            from glob import glob
                         </py-script>
                         <py-script>
-                            from numpy import pi, sin, cos
+                            import pandas
                         </py-script>
                         <py-script>
-                            import matplotlib.pyplot as plt
+                            books=glob("C:\\Users\\sunlit\\Desktop\\somu\\test\\*.xls")
                         </py-script>
                         <py-script>
-                            graph_button = Element('graph-button')
+                            resultdf = pandas.DataFrame()
                         </py-script>
                         <py-script>
-                            def display_graph(*ags, **kwgs):
+                            for book in books:
                         </py-script>
                         <py-script>
-                            t = np.arange(0,2*pi,0.01)
+                            try:
                         </py-script>
                         <py-script>
-                            x = 16*sin(t)**3
+                            df = pandas.read_excel(book,sheet_name=0,usecols="A:M")
                         </py-script>
                         <py-script>
-                            y = 13*cos(t)-5*cos(2*t)-2*cos(3*t)-cos(4*t)
+                            df = df.iloc[:,[1,3,6,7]]
                         </py-script>
                         <py-script>
-                            fig, ax = plt.subplots()
+                            df.dropna(axis="index",how='all',inplace=True)
                         </py-script>
                         <py-script>
-                            ax.fill_between(x, y, facecolor='red', alpha=0.5)
+                            df.fillna(method="ffill", inplace=True)
                         </py-script>
                         <py-script>
-                            pyscript.write('graph-container', fig)
+                            df.insert(loc=len(df.columns),column="ファイル名",value=book)
+                        </py-script>
+                        <py-script>
+                            resultdf = pandas.concat([df,resultdf])
+                        </py-script>
+                        <py-script>
+
                         </py-script>
                         <py-script>
                             graph_button.element.onclick = display_graph

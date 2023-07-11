@@ -4,7 +4,8 @@ import pandas as pd # エクセルなどのデータを操作するためのラ�
 import os
 
 # 所定フォルダ内の「*.xls」を取得
-files=glob.glob('c:\\Users\\s-shimanukis\\Desktop\\somu\\test\\*.xls')
+# files=glob.glob('c:\\Users\\s-shimanukis\\Desktop\\somu\\test\\*.xls')
+files=glob.glob('C:\\Users\\sunlit\\Desktop\\somu\\test\\*.xls')
 
 # 変数[list]を空リストで設定
 list = []
