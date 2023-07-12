@@ -8,12 +8,6 @@
     <!-- the connector. must go AFTER moment-timezone -->
     <!-- <script src="https://cdn.jsdelivr.net/npm/@fullcalendar/moment-timezone@6.1.8/index.global.min.js"></script> -->
     <script>
-        //        import {
-        //            Calendar
-        //        } from "@fullcalendar/core";
-        //        import interactionPlugin from "@fullcalendar/interaction";
-        //        import dayGridPlugin from "@fullcalendar/daygrid";
-
         document.addEventListener('DOMContentLoaded', function() {
             var calendarEl = document.getElementById('calendar');
 
@@ -35,20 +29,11 @@
                 businessHours: true, // display business hours
                 editable: true,
 
-                // 日付をクリック、または範囲を選択したイベント
-                selectable: true,
-                // select: function(info) {
-                //     alert("selected " + info.startStr + " to " + info.endStr);
-                // },
-
-                // timeFormat: 'HH:mm', // 時間表示フォーマット
+                selectable: true, // 日付をクリック、または範囲を選択したイベント
                 slotDuration: '00:15:00',
                 slotLabelInterval: '01:00',
-                // timezone: 'Asia/Tokyo', // タイムゾーン設定
-                // eventLimit: true, // イベント増えた時にリンクボタン表示
                 editable: true, // 編集可能設定
                 slotEventOverlap: true, // イベントの見た目を重ねて表示
-                // selectHelper: true, // これをtrueにすると範囲設定できます
                 selectMinDistance: 1, // selectMinDistanceに設定した間を超えたらドラッグイベントで扱う
 
                 events: function(start, end, timezone, callback) {
@@ -82,7 +67,6 @@
         #calendar {
             max-width: 1100px;
             margin: 0 auto;
-            align-items: center;
         }
     </style>
 </head>
