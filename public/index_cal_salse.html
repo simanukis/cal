@@ -6,7 +6,7 @@
     <title>営業車両予約</title>
     <script src="assets/js/index.global.js"></script>
     <!-- the connector. must go AFTER moment-timezone -->
-    <script src="https://cdn.jsdelivr.net/npm/@fullcalendar/moment-timezone@6.1.8/index.global.min.js"></script>
+    <!-- <script src="https://cdn.jsdelivr.net/npm/@fullcalendar/moment-timezone@6.1.8/index.global.min.js"></script> -->
     <script>
         document.addEventListener('DOMContentLoaded', function() {
             var calendarEl = document.getElementById('calendar');
@@ -29,7 +29,7 @@
                 // timeFormat: 'HH:mm', // 時間表示フォーマット
                 slotDuration: '00:15:00',
                 slotLabelInterval: '01:00',
-                timezone: 'Asia/Tokyo', // タイムゾーン設定
+                // timezone: 'Asia/Tokyo', // タイムゾーン設定
                 // eventLimit: true, // イベント増えた時にリンクボタン表示
                 editable: true, // 編集可能設定
                 slotEventOverlap: true, // イベントの見た目を重ねて表示
