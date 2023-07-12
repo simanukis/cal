@@ -39,12 +39,20 @@
 
             var calendarEl = document.getElementById('calendar');
             var calendar = new FullCalendar.Calendar(calendarEl, {
+                initialView: 'dayGridMonth',
+                local: 'local', // 日本語対応
+                themeSystem: 'bootstrap5', // bootstrap
                 headerToolbar: {
                     left: 'prev,next today',
                     center: 'title',
                     right: 'dayGridMonth,timeGridWeek,timeGridDay,listWeek'
                 },
-                local: 'local', // 日本語対応
+                buttonText: {
+                    month: '月',
+                    week: '週',
+                    day: '日',
+                    list: '一覧'
+                },
                 editable: true,
                 droppable: true, // this allows things to be dropped onto the calendar
                 drop: function(arg) {
@@ -55,6 +63,14 @@
                     }
                 }
             });
+            // 新規追加時
+            calendar.addEvent({
+                start: start.value,
+                end: endDate,
+                title: title.value,
+                backgroundColor: color.value
+            });
+
             calendar.render();
 
         });
