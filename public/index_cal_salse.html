@@ -25,6 +25,12 @@
                 dayCellContent: function(arg) {
                     return arg.date.getDate();
                 },
+                googleCalendarApiKey: 'AIzaSyAsu1oi_U020Jll-hIQzu1aQguIAp49zKg',
+                eventSources: [{
+                        googleCalendarId: 'ja.japanese#holiday@group.v.calendar.google.com'
+                    }
+
+                ],
                 navLinks: true, // can click day/week names to navigate views
                 businessHours: true, // display business hours
                 editable: true,
@@ -40,11 +46,7 @@
                 // selectHelper: true, // これをtrueにすると範囲設定できます
                 selectMinDistance: 1, // selectMinDistanceに設定した間を超えたらドラッグイベントで扱う
 
-                eventSources: [{
-                    googleCalendarApiKey: 'AIzaSyAsu1oi_U020Jll-hIQzu1aQguIAp49zKg',
-                    googleCalendarId: 'japanese__ja@holiday.calendar.google.com',
-                    display: 'background',
-                }],
+
 
                 events: function(start, end, timezone, callback) {
                     // ページロード時に表示するカレンダーデータ取得イベント
