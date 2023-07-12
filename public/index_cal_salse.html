@@ -4,6 +4,7 @@
 <head>
     <meta charset="utf-8">
     <title>営業車両予約</title>
+    <script src="https://cdn.jsdelivr.net/npm/fullcalendar@6.1.8/index.global.min.js"></script>
     <script src="assets/js/index.global.js"></script>
     <script>
         document.addEventListener('DOMContentLoaded', function() {
@@ -37,9 +38,9 @@
                 eventClick: function(calEvent, jsEvent, view) {
                     // カレンダーに設定したイベントクリック時のイベント
                 },
-                dayClick: function(date, jsEvent, view) {
-                    // カレンダー空白部分クリック時のイベント
-                },
+                // dayClick: function(date, jsEvent, view) {
+                // カレンダー空白部分クリック時のイベント
+                // },
                 select: function(start, end) {
                     // カレンダー空白部分をドラッグして範囲指定した時のイベント
                 },
