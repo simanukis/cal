@@ -22,6 +22,9 @@
                     right: 'dayGridMonth,timeGridWeek,timeGridDay,listMonth',
                 },
                 locale: "ja",
+                dayCellContent: function(arg) {
+                    return arg.date.getDate();
+                },
                 navLinks: true, // can click day/week names to navigate views
                 businessHours: true, // display business hours
                 editable: true,
@@ -36,10 +39,6 @@
                 selectable: true, // カレンダー空白部分のドラッグ可能
                 // selectHelper: true, // これをtrueにすると範囲設定できます
                 selectMinDistance: 1, // selectMinDistanceに設定した間を超えたらドラッグイベントで扱う
-
-                dayCellContent: function(e) {
-                    e.dayNumberText = e.dayNumberText.replace('日', '');
-                },
 
                 eventSources: [{
                     googleCalendarApiKey: 'AIzaSyAsu1oi_U020Jll-hIQzu1aQguIAp49zKg',
