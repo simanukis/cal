@@ -30,6 +30,11 @@
                 editable: true,
 
                 selectable: true, // 日付をクリック、または範囲を選択したイベント
+                select: function(info) {
+                    // カレンダー空白部分をドラッグして範囲指定した時のイベント
+                    alert("selected " + info.startStr + " to " + info.endStr);
+                },
+
                 slotDuration: '00:15:00',
                 slotLabelInterval: '01:00',
                 editable: true, // 編集可能設定
@@ -45,10 +50,7 @@
                 // dayClick: function(date, jsEvent, view) {
                 // カレンダー空白部分クリック時のイベント
                 // },
-                select: function(start, end) {
-                    // カレンダー空白部分をドラッグして範囲指定した時のイベント
-                    alert("selected " + info.startStr + " to " + info.endStr);
-                },
+
                 eventDrop: function(event, delta, revertFunc, jsEvent, ui, view) {
                     // イベントをドラッグして別日に移動させた時のイベント
                 }
