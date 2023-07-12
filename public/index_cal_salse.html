@@ -36,6 +36,13 @@
                 selectable: true, // カレンダー空白部分のドラッグ可能
                 // selectHelper: true, // これをtrueにすると範囲設定できます
                 selectMinDistance: 1, // selectMinDistanceに設定した間を超えたらドラッグイベントで扱う
+
+                eventSources: [{
+                    googleCalendarApiKey: 'AIzaSyAsu1oi_U020Jll-hIQzu1aQguIAp49zKg',
+                    googleCalendarId: 'japanese__ja@holiday.calendar.google.com',
+                    display: 'background',
+                }],
+
                 events: function(start, end, timezone, callback) {
                     // ページロード時に表示するカレンダーデータ取得イベント
                 },
