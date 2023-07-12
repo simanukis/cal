@@ -37,6 +37,10 @@
                 // selectHelper: true, // これをtrueにすると範囲設定できます
                 selectMinDistance: 1, // selectMinDistanceに設定した間を超えたらドラッグイベントで扱う
 
+                dayCellContent: function(e) {
+                    e.dayNumberText = e.dayNumberText.replace('日', '');
+                },
+
                 eventSources: [{
                     googleCalendarApiKey: 'AIzaSyAsu1oi_U020Jll-hIQzu1aQguIAp49zKg',
                     googleCalendarId: 'japanese__ja@holiday.calendar.google.com',
