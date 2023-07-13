@@ -32,7 +32,20 @@
                 selectable: true, // 日付をクリック、または範囲を選択したイベント
                 select: function(info) {
                     // カレンダー空白部分をドラッグして範囲指定した時のイベント
-                    alert("selected " + info.startStr + " to " + info.endStr);
+                    // alert("selected " + info.startStr + " to " + info.endStr);
+
+                    // 入力ダイアログ
+                    const eventName = prompt("予約内容を入力してください");
+
+                    if (eventName) {
+                        // イベントの追加
+                        calendar.addEvent({
+                            title: eventName,
+                            start: info.start,
+                            end: info.end,
+                            allDay: true,
+                        });
+                    }
                 },
 
                 slotDuration: '00:15:00',
