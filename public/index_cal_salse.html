@@ -13,57 +13,24 @@
     <!-- <script src="https://cdn.jsdelivr.net/npm/@fullcalendar/moment-timezone@6.1.8/index.global.min.js"></script> -->
 
     <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            var calendarEl = document.getElementById('calendar');
-
-            var calendar = new FullCalendar.Calendar(calendarEl, {
-                headerToolbar: {
-                    // fullcalendarのヘッダーに配置するボタン
-                    // 左側には「前月、翌月、今日」のボタン
-                    // 中央には表示している月
-                    // 右側には月表示、週表示、日表示、月予定
-                    left: 'prev,next today',
-                    center: 'title',
-                    right: 'dayGridMonth,timeGridWeek,timeGridDay,listMonth',
-                },
-                initialDate: '2023-07-12',
-                locale: "locale",
+        let calendar;
+        document.addEventListener('DOMContentLoaded', () => {
+            const calendarEl = document.getElementById('calendar');
+            calendar = new FullCalendar.Calendar(calendarEl, {
+                initialView: 'dayGridMonth',
+                locale: 'local',
                 timeZone: 'local',
                 eventDisplay: 'block',
                 displayEventTime: false,
-
-                dayCellContent: function(arg) {
-                    return arg.date.getDate();
-                },
-
-                navLinks: true, // カレンダー内の日付クリックで日表示に遷移するかどうか
-                businessHours: true, // 土日色付け
-                editable: true,
-
-                selectable: true, // 日付をクリック、または範囲を選択したイベント
-                select: function(arg) {
+                selectable: true,
+                select: arg => {
                     initEditModal(arg);
                 },
                 eventClick: arg => {
-                    // カレンダーに設定したイベントクリック時のイベント
                     console.log(arg);
                     initEditModal(arg);
                 },
 
-                slotDuration: '00:15:00',
-                slotLabelInterval: '01:00',
-
-                editable: true, // 編集可能設定
-                slotEventOverlap: true, // イベントの見た目を重ねて表示
-                selectMinDistance: 1, // selectMinDistanceに設定した間を超えたらドラッグイベントで扱う
-
-                eventContent: function(arg) {
-                    // イベント（予定）毎の初期化処理
-                },
-
-                eventDrop: function(event, delta, revertFunc, jsEvent, ui, view) {
-                    // イベントをドラッグして別日に移動させた時のイベント
-                },
             });
             calendar.render();
         });
