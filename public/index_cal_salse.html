@@ -43,7 +43,8 @@
             setupModalPosition(modal, data.jsEvent);
             document.body.appendChild(modal);
             if (data.event === undefined) {
-                document.querySelector('#modal .delete').remove();
+                // document.querySelector('#modal .delete').remove();
+                document.querySelector('#modal .delete');
             }
             setupModalData(modal, data);
 
