@@ -4,7 +4,7 @@
 <head>
     <meta charset="utf-8">
     <title>営業車両予約</title>
-    <link href="assets/css/modal.scss" rel="stylesheet">
+    <!-- <link href="assets/css/modal.scss" rel="stylesheet"> -->
     <script src="assets/js/index.global.js"></script>
     <script src="packages/core/locales/ja.global.min.js"></script>
     <script src="packages/bootstrap5/index.global.js"></script>
@@ -17,24 +17,31 @@
     <div id="calendar"></div>
 
     <div class="modal" id="modal-template">
-        <div class="modal__title">
-            <label>タイトル： <input type="text" id="title"></label>
-        </div>
-        <div class="modal__color">
-            <label>背景色： <input type="color" id="color"></label>
-        </div>
-        <div class="modal__times">
-            <label>開始： <input type="date" id="start"></label>
-            <label>終了： <input type="date" id="end"></label>
-        </div>
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <div class="modal__title">
+                        <label>タイトル： <input type="text" id="title"></label>
+                    </div>
+                    <div class="modal__color">
+                        <label>背景色： <input type="color" id="color"></label>
+                    </div>
+                    <div class="modal__times">
+                        <label>開始： <input type="date" id="start"></label>
+                        <label>終了： <input type="date" id="end"></label>
+                    </div>
 
-        <div class="modal-action-buttons">
-            <button class="modal-action-buttons__button save" id="save">保存</button>
-            <button class="modal-action-buttons__button delete" id="delete">削除</button>
-            <button class="modal-action-buttons close material-icons" id="cancel">cancel</button>
+                    <div class="modal-action-buttons">
+                        <button class="modal-action-buttons__button save" id="save">保存</button>
+                        <button class="modal-action-buttons__button delete" id="delete">削除</button>
+                        <button class="modal-action-buttons close material-icons" id="cancel">cancel</button>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
 
+    <link href="assets/css/modal.scss" rel="stylesheet">
     <script>
         let calendar;
         document.addEventListener('DOMContentLoaded', () => {
