@@ -43,8 +43,8 @@
             setupModalPosition(modal, data.jsEvent);
             document.body.appendChild(modal);
             if (data.event === undefined) {
-                // document.querySelector('#modal .delete').remove();
-                document.querySelector('#modal .delete');
+                document.querySelector('#modal .delete').remove();
+                // document.querySelector('#modal .delete');
             }
             setupModalData(modal, data);
 
@@ -129,6 +129,9 @@
 
             // キャンセル
             const cancelButton = modal.querySelector('#cancel');
+            if (!cancelButton) { // Cannot read properties of null
+                return false;
+            }
             cancelButton.addEventListener('click', e => {
                 e.preventDefault();
 
@@ -219,6 +222,12 @@
         <div class="modal__times">
             <label>開始： <input type="date" id="start"></label>
             <label>終了： <input type="date" id="end"></label>
+        </div>
+
+        <div class="modal-action-buttons">
+            <button class="modal-action-buttons__button save" id="save">保存</button>
+            <button class="modal-action-buttons__button delete" id="delete">削除</button>
+            <button class="modal-action-buttons close material-icons" id="cancel">cancel</button>
         </div>
     </div>
 </body>
