@@ -4,7 +4,6 @@
 <head>
     <meta charset="utf-8">
     <title>営業車両予約</title>
-    <!-- <link href="assets/css/modal.scss" rel="stylesheet"> -->
     <script src="assets/js/index.global.js"></script>
     <script src="packages/core/locales/ja.global.min.js"></script>
     <script src="packages/bootstrap5/index.global.js"></script>
@@ -49,16 +48,52 @@
             calendar = new FullCalendar.Calendar(calendarEl, {
                 initialView: 'dayGridMonth',
                 locale: 'local',
-                timeZone: 'local',
-                eventDisplay: 'block',
-                displayEventTime: false,
-                selectable: true,
-                select: arg => {
-                    initEditModal(arg);
+                headerToolbar: {
+                    left: 'doubleLeft,prev,next,doubleRight',
+                    center: 'title',
+                    right: 'dayGridMonth,dayGridWeek,timeGridDay,listMonth'
                 },
-                eventClick: arg => {
-                    console.log(arg);
-                    initEditModal(arg);
+                footerToolbar: {
+                    left: '',
+                    center: 'doubleLeft,prev,next,doubleRight',
+                    right: ''
+                },
+                buttonText: {
+                    month: '月',
+                    week: '週',
+                    day: '日',
+                    list: '一覧'
+                },
+                customButtons: {
+                    doubleLeft: {
+                        text: '',
+                        icon: 'chevrons-left',
+                        click: () => {
+                            // 二月戻る
+                            calendar.prev();
+                            calendar.prev();
+                        }
+                    },
+                    doubleRight: {
+                        text: '',
+                        icon: 'chevrons-right',
+                        click: () => {
+                            // 二月進む
+                            calendar.next();
+                            calendar.next();
+                        }
+                    },
+                    timeZone: 'local',
+                    eventDisplay: 'block',
+                    displayEventTime: false,
+                    selectable: true,
+                    select: arg => {
+                        initEditModal(arg);
+                    },
+                    eventClick: arg => {
+                        console.log(arg);
+                        initEditModal(arg);
+                    },
                 },
             });
             calendar.render();
