@@ -52,6 +52,17 @@
                 initialView: 'dayGridMonth',
                 locale: 'local',
                 themeSystem: 'bootstrap5',
+                timeZone: 'local',
+                eventDisplay: 'block',
+                displayEventTime: false,
+                selectable: true,
+                select: arg => {
+                    initEditModal(arg);
+                },
+                eventClick: arg => {
+                    console.log(arg);
+                    initEditModal(arg);
+                },
                 headerToolbar: {
                     left: 'doubleLeft,prev,next,doubleRight',
                     center: 'title',
@@ -86,17 +97,6 @@
                             calendar.next();
                             calendar.next();
                         }
-                    },
-                    timeZone: 'local',
-                    eventDisplay: 'block',
-                    displayEventTime: false,
-                    selectable: true,
-                    select: arg => {
-                        initEditModal(arg);
-                    },
-                    eventClick: arg => {
-                        console.log(arg);
-                        initEditModal(arg);
                     },
                 },
             });
