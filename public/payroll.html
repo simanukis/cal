@@ -56,18 +56,14 @@
 
     <!-- Hero Section -->
     <section id="hero" class="d-flex align-items-center">
-        <div class="row">
-            <div class="col-lg-6 d-flex flex-column justify-content-center pt-4 pt-lg-0 order-2 order-lg-1" data-aos="fade-up" data-aos-delay="200">
-                <div class="row">
-                    <div class="col-sm-6 offset-sm-3">
-                        <form actions="" method="post" enctype="multipart/form-data">
-                            <h4>アップロードするファイルを選択</h4>
-                            {% csrf_token %}
-                            <div class="form-group">
-                                {{ form.file }} {{ form.FileType }}
-                            </div>
-                            <button type="submit" class="btn btn-primary">実行</button>
-                        </form>
+        <div class="container">
+            <div class="row">
+                <div class="col-4 mt-3">
+                    <div class="input-daterange input-group" id="datepicker">
+                        <div>
+                            <!-- ファイルの読み込み -->
+                            <input type="file" name="select" id="payRollFile" accept=".xls">
+                        </div>
                     </div>
                 </div>
             </div>
