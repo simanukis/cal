@@ -32,8 +32,17 @@
     <link rel="stylesheet" href="https://pyscript.net/alpha/pyscript.css" />
     <script defer src="https://pyscript.net/alpha/pyscript.js"></script>
 
+    <!-- jQuery -->
+    <script async src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+
     <title>PyScript Playground</title>
 
+    <script type="text/javascript">
+        $('input').on('change', function() {
+            var file = $(this).prop('files')[0];
+            $('p').text(file.name);
+        })
+    </script>
     <style type="text/css">
         #app {
             width: 400px;
@@ -199,16 +208,6 @@
 
     <!-- Template Main JS File -->
     <script src="assets/js/main.js"></script>
-
-    <!-- jQuery -->
-    <script async src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
-
-    <script type="text/javascript">
-        $('input').on('change', function() {
-            var file = $(this).prop('files')[0];
-            $('p').text(file.name);
-        })
-    </script>
 </body>
 
 </html>
