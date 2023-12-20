@@ -7,12 +7,23 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="https://pyscript.net/alpha/pyscript.css" />
     <script defer src="https://pyscript.net/alpha/pyscript.js"></script>
+
+    <py-env>
+        - numpy
+    </py-env>
+    <py-env>
+        - matplotlib
+    </py-env>
+
     <title>PyScript Playground</title>
 </head>
 
 <body>
     <main class="py-5 grid gap-y-4 grid-cols-1 place-items-center">
         <p id="title" class="text-center text-7xl"></p>
+
+        <py-button id="graph-button" label="グラフを表示"></py-button>
+        <div id="graph-container"></div>
     </main>
 
     <py-script output="title">
@@ -23,6 +34,44 @@
     </py-script>
     <py-script output="title">
         print('Python version: {}'.format(platform.python_version())) # 追加
+    </py-script>
+
+    <py-script>
+        import numpy as np
+    </py-script>
+    <py-script>
+        from numpy import pi, sin, cos
+    </py-script>
+    <py-script>
+        import matplotlib.pyplot as plt
+    </py-script>
+    <py-script>
+        graph_button = Element('graph-button')
+    </py-script>
+    <py-script>
+        def display_graph(*ags, **kwgs):
+    </py-script>
+    <py-script>
+        t = np.arange(0,2*pi,0.01)
+    </py-script>
+    <py-script>
+        x = 16*sin(t)**3
+    </py-script>
+    <py-script>
+        y = 13*cos(t)-5*cos(2*t)-2*cos(3*t)-cos(4*t)
+    </py-script>
+    <py-script>
+        fig, ax = plt.subplots()
+    </py-script>
+    <py-script>
+        ax.fill_between(x, y, facecolor='red', alpha=0.5)
+    </py-script>
+    <py-script>
+        pyscript.write('graph-container', fig)
+    </py-script>
+
+    <py-script>
+        graph_button.element.onclick = display_graph
     </py-script>
 
 </body>
