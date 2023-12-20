@@ -16,7 +16,7 @@
     </main>
 
     <py-script output="title">
-        import platform print('I love PyScript')
+        from datetime import datetime now = datetime.now() print(f"今は{now:%Y年%m月%d日 %H:%M:%S}です。")
     </py-script>
 </body>
 
