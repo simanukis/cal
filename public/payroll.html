@@ -46,12 +46,6 @@
     </script>
     -->
 
-    <script type="text/javascript">
-        window.addEventListener('DOMContentLoaded', function() {
-            var file = $(this).prop('files')[0];
-            $('p').text(file.name);
-        });
-    </script>
 
     <style type="text/css">
         #app {
@@ -113,7 +107,7 @@
                         <!-- ファイルの読み込み -->
                         <div id="app">
                             <label>
-                                <input type="file" name="file">ファイルを選択
+                                <input type="file" id="selfile" name="file">ファイルを選択
                             </label>
                             <p>選択されていません</p>
                         </div>
@@ -218,6 +212,16 @@
 
     <!-- Template Main JS File -->
     <script src="assets/js/main.js"></script>
+
+    <!-- File UpLoad Script -->
+    <script type="text/javascript">
+        var obj1 = document.getElementById("selfile");
+
+        obj1.addEventListener("change", function(evt) {
+            var file = evt.target.files;
+            alert(file[0].name + "を取得しました。");
+        }, false)
+    </script>
 </body>
 
 </html>
