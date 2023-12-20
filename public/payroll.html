@@ -28,14 +28,14 @@
     <script defer src="https://pyscript.net/alpha/pyscript.js"></script>
     <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/brython/3.8.7/brython.js"></script> -->
 
+    <!--
     <py-env>
         - pandas
     </py-env>
     <py-env>
         - openpyxl
     </py-env>
-
-    <!-- select payroll script -->
+    
     <script type="text/javascript">
         $(function() {
             $('#selectPayroll').change(function() {
@@ -50,6 +50,8 @@
             });
         });
     </script>
+    -->
+
     <style type="text/css">
         ul,
         li {
@@ -255,13 +257,14 @@
                 </form>
                 <!-- /集計区分選択 -->
                 <ul>
-                    <!-- Excel結合 -->
+                    <!-- Python script -->
                     <div id="payroll1">
                         <main class="py-5 grid gap-y-4 grid-cols-1 place-items-center">
                             <p id="title" class="text-center"></p>
                             <py-button id="graph-button" label="Excel結合"></py-button>
                             <div id="graph-container"></div>
                         </main>
+                        <!--
                         <py-script output="title">
                             import platform
                         </py-script>
@@ -313,6 +316,7 @@
                         <py-script>
                             graph_button.element.onclick = display_graph
                         </py-script>
+                        -->
                     </div>
 
                     <!-- 給与集計表 -->
