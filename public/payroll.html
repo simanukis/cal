@@ -37,12 +37,22 @@
 
     <title>PyScript Playground</title>
 
+    <!--
     <script type="text/javascript">
         $('input').on('change', function() {
             var file = $(this).prop('files')[0];
             $('p').text(file.name);
         });
     </script>
+    -->
+
+    <script type="text/javascript">
+        window.addEventListener('DOMContentLoaded', function() {
+            var file = $(this).prop('files')[0];
+            $('p').text(file.name);
+        });
+    </script>
+
     <style type="text/css">
         #app {
             width: 400px;
