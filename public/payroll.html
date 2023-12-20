@@ -16,8 +16,15 @@
     </main>
 
     <py-script output="title">
-        from datetime import datetime now = datetime.now() print(f"今は{now:%Y年%m月%d日 %H:%M:%S}です。")
+        import platform # 追加
     </py-script>
+    <py-script>
+        print('I love PyScript')
+    </py-script>
+    <py-script>
+        print('Python version: {}'.format(platform.python_version())) # 追加
+    </py-script>
+
 </body>
 
 </html>
