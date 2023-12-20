@@ -64,12 +64,6 @@
         }
     </style>
 
-    <script type="text/javascript">
-        $('input').on('change', function() {
-            var file = $(this).prop('files')[0];
-            $('p').text(file.name);
-        })
-    </script>
 </head>
 
 <body>
@@ -205,6 +199,13 @@
 
     <!-- Template Main JS File -->
     <script src="assets/js/main.js"></script>
+
+    <script type="text/javascript">
+        $('input').on('change', function() {
+            var file = $(this).prop('files')[0];
+            $('p').text(file.name);
+        })
+    </script>
 </body>
 
 </html>
