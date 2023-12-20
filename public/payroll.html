@@ -24,7 +24,7 @@
         import platform print('I love PyScript') print('Python version: {}'.format(platform.python_version()))
     </py-script>
     <py-script>
-        import numpy as np from numpy import pi, sin, cos import matplotlib.pyplot as plt graph_button = Element('graph-button') def display_graph(*ags, **kwgs): t = np.arange(0,2*pi.0.01) x = 16*sin(t)**3 y = 13*cos(t)-5*cos(2*t)-2*cos(3*t)-cos(4*t) fig, ax
+        import numpy as np from numpy import pi, sin, cos import matplotlib.pyplot as plt graph_button = Element('graph-button') def display_graph(*ags, **kwgs): t = np.arange(0,2*pi,0.01) x = 16*sin(t)**3 y = 13*cos(t)-5*cos(2*t)-2*cos(3*t)-cos(4*t) fig, ax
         = plt.subplots() ax.fill_between(x, y, facecolor='red', alpha=0.5) pyscript.write('graph-container', fig) graph_button.element.onclick = display_graph
     </py-script>
 
