@@ -1,7 +1,7 @@
 // -----------------------------------------------------------------------
 //  jquery_upload_python.js
 //
-//                  Apr/10/2021
+//                  Dec/12/2023
 jQuery(function() {
     jQuery("#upload").bind("click", function() {
         jQuery("#outarea_bb").html("*** clicked ***<br />");
