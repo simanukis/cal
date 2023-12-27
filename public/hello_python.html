@@ -4,7 +4,7 @@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-    <title>pyodide test (simple)</title>
+    <title>pyodide test</title>
     <style type="text/css" media="screen">
         #editor {
             width: 100%;
@@ -12,17 +12,91 @@
             margin-top: auto;
             margin-bottom: auto;
         }
+        
+        #editorGroup {
+            position: absolute;
+            margin-left: 810px;
+            margin-right: 0;
+            margin-top: auto;
+            margin-bottom: auto;
+            height: 600px;
+        }
+        
+        .button {
+            width: 120px;
+            height: 60px;
+            background-color: #AAAAAA;
+            border: none;
+            color: white;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 16px;
+            margin: 4px 2px;
+            border-radius: 4px;
+        }
+        
+        #layout {
+            float: left;
+            width: 800px;
+            background-color: #FFFFFF;
+        }
+        
+        .clear {
+            clear: both;
+        }
+        
+        table {
+            border-collapse: collapse;
+            /* セルの境界線を共有 */
+        }
+        
+        td {
+            border: 1px solid black;
+            /* 表の罫線(=セルの枠線) */
+            padding: 0.5em 1em;
+            /* セル内側の余白量 */
+        }
+        
+        body {
+            background: #eeeeee;
+            font-family: Meiryo;
+        }
+        
+        h1 {
+            border: none;
+            text-align: center;
+            text-decoration: none;
+            margin: 4px 2px;
+        }
     </style>
     <script src="https://cdn.jsdelivr.net/pyodide/v0.17.0/full/pyodide.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/ace/1.4.12/ace.js" type="text/javascript" charset="utf-8"></script>
+
 </head>
 
 <body style="text-align: center">
     <div id="layout">
+        <h1>Python Editor</h1>
         <div id="editor">import numpy as np a=np.array([1,2,3]) b=np.array([4,5,6]) print(a+b)
         </div>
         <br/>
-        <input class="button" id="runBtn" style="background-color: #4CAF50;" type="button" value="Run Script" onclick="RunCode();" />
+        <table id="control_panel" style="width:800px">
+            <tr>
+                <td rowspan="2">
+                    <input class="button" id="runBtn" style="background-color: #4CAF50;" type="button" value="Run Script" onclick="RunCode();" />
+                </td>
+                <td>Load File:
+                    <input type="file" id="loadBtn" onchange="Load(this.files);this.value=null;return false;" value="Open" />
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <input id="inputFileNameToSaveAs" />
+                    <input class="button" id="saveasBtn" style="background-color: #728edb;height:30px;" type="button" value="Download" onclick="Save();" />
+                </td>
+            </tr>
+        </table>
     </div>
 
     <script>
@@ -47,6 +121,36 @@
             } catch (err) {
                 console.log(err);
             }
+        }
+
+        function Load(files) {
+            var file = files[0]
+            console.log("Load:" + file);
+            if (!file) return;
+            reader = new FileReader();
+            reader.onload = function() {
+                editor.session.setValue(reader.result)
+            }
+            reader.readAsText(file)
+        }
+
+        function Save() {
+            var textToSaveAsBlob = new Blob([editor.getValue()], {
+                type: "text/plain"
+            });
+            var textToSaveAsURL = window.URL.createObjectURL(textToSaveAsBlob);
+            var fileNameToSaveAs = document.getElementById("inputFileNameToSaveAs").value;
+            var downloadLink = document.createElement("a");
+            downloadLink.download = fileNameToSaveAs;
+            downloadLink.innerHTML = "Download File";
+            downloadLink.href = textToSaveAsURL;
+            downloadLink.onclick = function() {
+                document.body.removeChild(event.target);
+            }
+            downloadLink.style.display = "none";
+            document.body.appendChild(downloadLink);
+
+            downloadLink.click();
         }
     </script>
 </body>
