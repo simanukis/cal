@@ -8,11 +8,19 @@
 </head>
 
 <body>
+    <div id="text"></div>
     <script>
-        $.ajax({}).done(function(response) {
-            alert("OK");
-        }).fail(function() {
-            alert("failed");
+        let text = document.getElementById("text");
+        $(function() {
+            $.ajax({
+                url: 'test.py',
+                type: 'post',
+                data: 'success'
+            }).done(function(data) {
+                text.innerHTML = data;
+            }).fail(function() {
+                alert('failed');
+            });
         });
     </script>
 </body>
