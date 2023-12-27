@@ -1,19 +1,53 @@
 <!DOCTYPE html>
-<html>
+<html lang="en-us">
 
-<body>
-    <!-- Pyodideが使えるようにライブラリを取り込む --- (*1) -->
-    <script src="https://cdn.jsdelivr.net/pyodide/v0.22.1/full/pyodide.js"></script>
-    <!-- JavaScriptからPythonを実行する --- (*2) -->
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <title>pyodide test (simple)</title>
+    <style type="text/css" media="screen">
+        #editor {
+            width: 100%;
+            height: 500px;
+            margin-top: auto;
+            margin-bottom: auto;
+        }
+    </style>
+    <script src="https://cdn.jsdelivr.net/pyodide/v0.17.0/full/pyodide.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/ace/1.4.12/ace.js" type="text/javascript" charset="utf-8"></script>
+</head>
+
+<body style="text-align: center">
+    <div id="layout">
+        <div id="editor">import numpy as np a=np.array([1,2,3]) b=np.array([4,5,6]) print(a+b)
+        </div>
+        <br/>
+        <input class="button" id="runBtn" style="background-color: #4CAF50;" type="button" value="Run Script" onclick="RunCode();" />
+    </div>
+
     <script>
-        (async() => {
-            // Pyodideを読み込む --- (*3)
-            const pyodide = await loadPyodide();
-            // JavaScriptのalertをPythonで使えるように登録 --- (*4)
-            pyodide.globals.set("alert", alert);
-            // Pythonのプログラムを実行 --- (*5)
-            pyodide.runPython("alert('Hello, world!')");
-        })();
+        // init Ace Editor
+        var editor = ace.edit("editor");
+        editor.setTheme("ace/theme/twilight");
+        editor.session.setMode("ace/mode/python");
+
+        // init Pyodide
+        async function main() {
+            await loadPyodide({
+                indexURL: 'https://cdn.jsdelivr.net/pyodide/v0.17.0/full/'
+            });
+        }
+        let pyodideReadyPromise = main();
+
+        async function RunCode() {
+            await pyodideReadyPromise;
+            try {
+                code = editor.getValue();
+                let output = await pyodide.runPythonAsync(code);
+            } catch (err) {
+                console.log(err);
+            }
+        }
     </script>
 </body>
 
