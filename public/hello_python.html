@@ -81,10 +81,17 @@
         <h1>Python Editor</h1>
         <!-- Python code -->
         <div id="editor">
-            import numpy as np
-            <p>a=np.array([1,2,3])</p>
-            <p>b=np.array([4,5,6])</p>
-            <p>print(a+b)</p>
+            import pandas as pd
+            <p>import numpy as np</p>
+            <p>import glob</p>
+            <p>import re</p>
+            <p>import os</p>
+            <p>from openpyxl import Workbook</p>
+            <p>from openpyxl.utils.dataframe import dataframe_to_rows</p>
+            <p>from openpyxl.styles import PatternFill, Border, Side, Font, numbers</p>
+            <p>from openpyxl.formatting.rule import Rule</p>
+            <p>from openpyxl.styles.differential import DifferentialStyle</p>
+            <p>from openpyxl.styles.alignment import Alignment</p>
         </div>
         <br/>
         <table id="control_panel" style="width:800px">
@@ -94,7 +101,7 @@
                 </td>
                 <td>Load File:
                     <!--<input type="file" id="loadBtn" onchange="Load(this.files);this.value=null;return false;" value="Open" />-->
-                    <input type="file" />
+                    <input type="file" id="loadBtn" accept=".xls" />
                 </td>
             </tr>
             <tr>
