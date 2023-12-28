@@ -93,7 +93,8 @@
                     <input class="button" id="runBtn" style="background-color: #4CAF50;" type="button" value="Run Script" onclick="RunCode();" />
                 </td>
                 <td>Load File:
-                    <input type="file" id="loadBtn" onchange="Load(this.files);this.value=null;return false;" value="Open" />
+                    <!--<input type="file" id="loadBtn" onchange="Load(this.files);this.value=null;return false;" value="Open" />-->
+                    <input type="file" />
                 </td>
             </tr>
             <tr>
@@ -131,6 +132,7 @@
             }
         }
 
+        // file upload
         function Load(files) {
             var file = files[0]
             console.log("Load:" + file);
