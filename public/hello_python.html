@@ -117,7 +117,8 @@
             await pyodideReadyPromise;
             try {
                 code = editor.getValue();
-                let output = await pyodide.runPythonAsync(code);
+                // let output = await pyodide.runPythonAsync(code);
+                var output = await pyodide.runPythonAsync(code);
             } catch (err) {
                 console.log(err);
             }
